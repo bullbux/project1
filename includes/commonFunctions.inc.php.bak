@@ -426,15 +426,12 @@ function generatetooltipurl($url = array()) {
  */
 function download($path = '') {
 // If requested file exists
-	
-   // if (!empty($path) && file_exists($path)) {
-   if (!empty($path)) {
+    if (!empty($path) && file_exists($path)) {
 
         $file = substr($path, strrpos($path, '/') + 1);
 
         // Get extension of requested file
         $extension = strtolower(substr($file, strrpos($file, '.') + 1));
-
         // Determine correct MIME type
         switch($extension) {
 
@@ -493,95 +490,6 @@ function download($path = '') {
         header("Content-Length: " . filesize($path));
         // Send file for download
         if ($stream = fopen($path, 'rb')) {
-		
-            while(!feof($stream) && connection_status() == 0) {
-            //reset time limit for big files
-                set_time_limit(0);
-                print(fread($stream,1024*8));
-                flush();
-            }
-            fclose($stream);
-        }
-        return true;
-    }else {
-        return false;
-    }
-}
-
-/**
- * Download Floor-Plan file.
- * @param	String	Actual file path.
- */
-function download_floor($path = '') {
-// If requested file exists
-	
-   // if (!empty($path) && file_exists($path)) {
-   if (!empty($path)) {
-
-        $file = substr($path, strrpos($path, '/') + 1);
-
-        // Get extension of requested file
-        $extension = strtolower(substr($file, strrpos($file, '.') + 1));
-
-        // Determine correct MIME type
-        switch($extension) {
-
-            case "exe":     $type = "application/octet-stream";      break;
-
-            case "txt":     $type = "text/plain";                    break;
-            case "htm":     $type = "text/html";                   	 break;
-            case "html":    $type = "text/html";                     break;
-            case "php":     $type = "text/html";                     break;
-            case "css":     $type = "text/css";                      break;
-            case "js":      $type = "application/javascript";        break;
-            case "json":    $type = "application/json";              break;
-            case "xml":     $type = "application/xml";               break;
-
-            // audio / videos
-            case "wav":     $type = "audio/wav";                     break;
-            case "wma":     $type = "audio/x-ms-wma";                break;
-            case "wmv":     $type = "video/x-ms-wmv";                break;
-            case "mov":     $type = "video/quicktime";               break;
-            case "mp3":     $type = "audio/mpeg";                    break;
-            case "mpg":     $type = "video/mpeg";                    break;
-            case "mpeg":    $type = "video/mpeg";                    break;
-            case "asf":     $type = "video/x-ms-asf";                break;
-            case "avi":     $type = "video/x-msvideo";               break;
-            case "flv":     $type = "video/x-flv";               break;
-
-            case "zip":     $type = "application/x-zip-compressed";  break;
-            case "rar":     $type = "encoding/x-compress";           break;
-
-            // images
-            case "png":     $type = "image/png"; 					 break;
-            case "png":     $type = "image/x-png"; 					 break;
-            case "jpe":     $type = "image/jpeg"; 					 break;
-            case "jpg":     $type = "image/jpeg"; 					 break;
-            case "jpeg":    $type = "image/jpeg"; 					 break;
-            case "jpg":     $type = "image/pjpeg"; 					 break;
-            case "gif":     $type = "image/gif"; 					 break;
-            case "bmp":     $type = "image/bmp"; 					 break;
-            case "ico":     $type = "image/vnd.microsoft.icon"; 	 break;
-
-            default:        $type = "application/force-download";    break;
-
-        }
-        // Fix IE bug [0]
-        $header_file = (strstr($_SERVER['HTTP_USER_AGENT'], 'MSIE')) ? preg_replace('/\./', '%2e', $file, substr_count($file, '.') - 1) : $file;
-        // Prepare headers
-        header("Pragma: public");
-        header("Expires: 0");
-        header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-        header("Cache-Control: public", false);
-        header("Content-Description: File Transfer");
-        header("Content-Type: " . $type);
-        header("Accept-Ranges: bytes");
-        header("Content-Disposition: attachment; filename=\"" . $header_file . "\";");
-        header("Content-Transfer-Encoding: binary");
-        header("Content-Length: " . filesize($path));
-        // Send file for download
-        if ($stream = fopen($path, 'rb')) {
-		die($stream);
             while(!feof($stream) && connection_status() == 0) {
             //reset time limit for big files
                 set_time_limit(0);

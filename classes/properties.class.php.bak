@@ -1946,7 +1946,7 @@ $sql = "INSERT INTO pr_flag(pr_id, user_id, flag_desc) Values(".$rows[0]['id']."
         //$slug = $this->Database->escape($slug);
         $where = "properties.slug = '$slug'";
         $where .= " AND properties.status = " . PropertyStatusConsts::PUBLISH;
-        $result = $this->Database->assoc(array('pr_unit_info', 'pr_gallery', 'pr_contact_info', 'properties'), array(array('properties.pr_id'), array('properties.pr_id'), array('properties.pr_id')), $where, '', "properties.id");
+        $result = $this->Database->assoc(array('pr_unit_info', 'pr_gallery','pr_search_tags', 'pr_contact_info', 'properties'), array(array('properties.pr_id'), array('properties.pr_id'),array('properties.pr_id'), array('properties.pr_id')), $where, '', "properties.id");
         $row = $this->Database->mysqlfetchassoc($result);
         if ($row) {
             $this->pageTitle = $row[0]['properties.title'];
@@ -2019,6 +2019,7 @@ $sql = "INSERT INTO pr_flag(pr_id, user_id, flag_desc) Values(".$rows[0]['id']."
             $this->pageTitle = 'Not found';
         }
         $this->set('property', $row);
+		$this->set('pr_tags', $row[0]['prSearchTags.tags']);
         $this->set('city_advance_search', $this->listCities());
 		$this->set('apartment_building_features', $this->listBuildingFeatures());
 		$this->set('lease', $this->listLease());

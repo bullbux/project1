@@ -1361,7 +1361,7 @@ class properties extends classIlluminz
     }
 
     function downloadplan($path){
-		download(base64_decode($path));
+		download_floor(base64_decode($path));
 		exit;
     }
 
@@ -1393,6 +1393,11 @@ class properties extends classIlluminz
      * @param <type> $slug
      */
 	 
+	 function dashboard_flagListing($slug = '')
+	 {
+	 	if($slug != '')
+		$this->flagListing($slug);
+	 }
 	  function flagListing($slug = '')
     {	
 //		echo "Every Thing is Fine:)" ;

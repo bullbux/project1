@@ -79,8 +79,7 @@ function showdiv(id) {
 	}
 }
 </script>
-<?php
- echo $Form->create('addPropertyForm', array('action' => '', 'method' => 'post', 'enctype' => 'multipart/form-data')); ?>
+<?php echo $Form->create('addPropertyForm', array('action' => '', 'method' => 'post', 'enctype' => 'multipart/form-data')); ?>
 <?php if ($Content->params['prefix'] == 'dashboard') { ?>
 <div class="main_left">
     <div class="profile_listing">

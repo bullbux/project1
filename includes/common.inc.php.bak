@@ -1,7 +1,6 @@
 <?php 
-//This File Contain the variable related to "Assets or Resources" of the Whole Website Like :- CSS,JS,IMAGE
-	include_once(dirname(dirname(__FILE__)).'/constants.php');/*All The Constants Define here*/
-	include_once(dirname(__FILE__).'/define.php'); /*Here Define "Root Path" to all Sub Directory*/
+	include_once(dirname(dirname(__FILE__)).'/constants.php');
+	include_once(dirname(__FILE__).'/define.php');
         include_once(dirname(__FILE__).'/configure.php');
 	class include_resource{
 		private $css_file	= '';

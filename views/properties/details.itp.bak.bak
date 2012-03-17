@@ -62,11 +62,7 @@
                             <a class="map" target="_blank" href="http://maps.google.com/maps?q=google+map+<?php echo $map_address;?>">Map</a>
                             <a class="add_fav" href="#">Add to Favorites</a>
                             <a class="frnd" href="javascript: void(0);" id="sendmail_popup">Send to a Friend</a>
-                            <a class="flag" href="javascript: void(0);" id="flaglisting_popup">Flag</a>
-
-							 <?php //echo $Form->ajaxLink('Flag', array('class'=>'properties', 'method'=>'flagListing', $property['properties.slug']), array('class'=>'flag', 'open'=>array('type'=>'lightbox', 'width'=>722, 'reLoad'=>false, 'scroll'=>false, 'lbHeader'=>array('bgColor'=>'#73ADDD', 'textColor'=>'#FFFFFF', 'borderColor'=>'#73addd')))); ?>
-							
-
+                            <a class="flag" href="#">Flag</a>
 							<?php echo $Form->Link('Print', array('class'=>'properties', 'method'=>'printListing', $property['properties.slug']), array('class'=>'printListing', 'target'=>'_blank', 'open'=>array('type'=>'thickbox', 'width'=>722, 'reLoad'=>false, 'scroll'=>true, 'lbHeader'=>array('display'=>'#73ADDD', 'textColor'=>'#FFFFFF', 'borderColor'=>'#73addd')))); ?>
 							<?php echo $Form->Link('PrintLarge', array('class'=>'properties', 'method'=>'printListing', $property['properties.slug'], 'images'), array('class'=>'printLarge', 'target'=>'_blank', 'open'=>array('type'=>'thickbox', 'width'=>722, 'reLoad'=>false, 'scroll'=>true, 'lbHeader'=>array('display'=>'#73ADDD', 'textColor'=>'#FFFFFF', 'borderColor'=>'#73addd')))); ?>
                         </div>
