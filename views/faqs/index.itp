@@ -1,0 +1,59 @@
+<h1 class="page-heading">HELP CENTER</h1>
+<div class="profile_container" id="help-center">
+    <div class="float-left">
+        <div class="faqs-search">
+            <?php echo $Form->create('faqSearchForm', array('method'=>'get')) ?>
+            <h3 class="title">SEARCH</h3>
+            <div class="faq-box">
+                <div class="txt_l">
+                    <div class="txt_r">
+                        <div class="txt_m">
+                            <?php echo $Form->input('s', array('type'=>'text', 'class'=>'{default: "FAQ or Category"}')); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php echo $Form->end(); ?>
+        </div>
+        <div class="faqs-categories">
+            <h3 class="title">Help desk topics</h3>
+            <div class="faq-box">
+                <?php
+                $firstCatId = 0;
+                if($categories) {
+                    ?>
+                <ul>
+                        <?php
+                        foreach($categories as $id=>$category) {
+                            $firstCatId = $category->id;
+                            ?>
+                    <li>
+                                <?php
+                                echo $Form->ajaxLink($category->category . ' (' . $category->total_faqs . ')', array('class'=>'faqs', 'method'=>'listfaqs', $category->id), array('update'=>array('faqs'), 'position'=>'INNER'));
+                                ?>
+                    </li>
+                        <?php
+                        } 
+                        ?>
+                </ul>
+                <?php
+                }else{
+                    ?>
+                <div class="no-record">No Topic posted yet.</div>
+                    <?php
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+    <div class="float-right">
+        <h3 class="title">Top Questions about AFR</h3>
+        <div id="faqs" class="faq-box">
+            <?php
+            $Content->render(array('class'=>'faqs', 'method'=>'listfaqs', $firstCatId));
+            include($Content->element);
+            ?>
+        </div>
+    </div>
+    <div class='clear'></div>
+</div>

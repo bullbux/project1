@@ -1,0 +1,17 @@
+<h2 class="lb-heading">
+    <?php if($floorplan){echo $floorplan->title;} ?> Floor plan
+</h2>
+<?php
+if($floorplan){
+	if (preg_match("/pdf/", $floorplan->file)) {
+		echo '<iframe src="http://docs.google.com/gview?url='.WWW_ROOT.'/resources/uploads/properties/gallery/'.$floorplan->file.'&embedded=true" style="width:580px; height:400px;" frameborder="0"></iframe>';
+	} else {
+		echo $Include->showImage(WWW_ROOT . '/resources/uploads/properties/gallery/' . $floorplan->file, array('alt' => 'Photo', 'dims'=>array('width'=>'580', 'height'=>'400')));
+	}
+}else{
+    echo 'No floorplan upload yet.';
+}
+?>
+<div>
+<?php echo $Form->link('download plan',array('class'=>'properties','method'=>'downloadplan',base64_encode(WWW_ROOT . '/resources/uploads/properties/gallery/' . $floorplan->file)));?>
+</div>

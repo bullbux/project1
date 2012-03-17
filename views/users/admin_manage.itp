@@ -1,0 +1,68 @@
+<h2 class="heading">
+    <span class='float-left'>Manage Users</span>
+<div class='clear'></div>
+</h2>
+<?php echo $Form->create("listing", array("method"=>"post","action"=>"")); ?>
+<div class="data">
+    <?php if($list['order'] == "desc") {
+        $order = "asc";
+    }else {
+        $order = "desc";
+    }
+    ?>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="top">
+        <tr class="heading">
+            <td width="1%" class="check"><?php echo $Form->input("checkbox",array('type'=>'checkbox','id'=>'checkbox', 'checkAll'=>'check', 'class'=>'check')); ?></td>
+            <td><?php echo $Form->link("Username",array("class"=>"users","method"=>"admin_manage", $userType,$list['page'],'username',$order)); ?></td>
+            <td><?php echo $Form->link("Created",array("class"=>"users","method"=>"admin_manage", $userType,$list['page'],'created',$order)); ?></td>
+            <td><?php echo $Form->link("Activated",array("class"=>"users","method"=>"admin_manage", $userType,$list['page'],'activated_date',$order)); ?></td>
+            <td width="50px" align='center'>Actions</td>
+            <td width="30px" align='center'>Status</td>
+        </tr>
+    <?php if($list['records']){ ?>
+		<?php foreach($list['records'] as $key=>$value){ ?>
+        <tr class="rowwhite <?php echo $activeClass; ?>">
+            <td width="1%" class="check"><?php echo $Form->input("checkboxArray[".$value->id."]",array('type'=>'checkbox','id'=>'checkbox_'.$value->id, 'class'=>'check')); ?></td>
+            <td><?php echo $value->username; ?></td>
+            <td><?php echo dateformat($value->created, 'd/M/Y'); ?></td>
+            <td><?php if($value->activated_date != '0000-00-00 00:00:00')
+                echo dateformat($value->activated_date, 'd/M/Y');
+            ?></td>
+            <td width="80px" align='center'>
+                <ul>
+					<li><?php echo $Form->ajaxLink($Include->image("admin/user_roles.png",array('width'=>'16','height'=>'16','alt'=>'Set User Roles','title'=>'Set User Roles')),array("class"=>"users", "method"=>"admin_roles", $value->id), array('open'=>array('type'=>'lightbox', 'width'=>'600', 'reLoad'=>false, 'scroll'=>false, 'lbHeader'=>array('bgColor'=>'#f1f1f1', 'textColor'=>'#333', 'borderColor'=>'#555')))); ?></li>
+                    <li><?php echo $Form->ajaxLink($Include->image("admin/view.gif",array('width'=>'16','height'=>'16','alt'=>'View User Details','title'=>'View User Details')),array("class"=>"users", "method"=>"admin_details", $value->id), array('open'=>array('type'=>'lightbox', 'width'=>'600', 'reLoad'=>false, 'scroll'=>false, 'lbHeader'=>array('bgColor'=>'#f1f1f1', 'textColor'=>'#333', 'borderColor'=>'#555')))); ?></li>
+                    <?php if($value->user_type == PAIDUSER){ ?>
+                    <li><?php echo $Form->link($Include->image("admin/edit.png",array('width'=>'16','height'=>'16','alt'=>'Edit','title'=>'Edit')),array("class"=>"users", "method"=>"admin_editPaidUser", $value->id, $list['page'], $list['order_by'], $list['order'])); ?></li>
+                    <?php } ?>
+                    <li><?php echo $Form->link($Include->image('admin/delete.png',array('width'=>'16','height'=>'16','alt'=>'Delete','title'=>'Delete')),array("class"=>"users","method"=>"admin_delete", $value->user_type, $value->id, $list['page'],$list['order_by'],$list['order']), array('confirm'=>'Are you sure to delete the user?')); ?></li>
+                </ul>
+            </td>            
+            <td width="30px" align='center'>
+                <ul>
+                    <li>
+                    <?php
+                    if($value->status)
+                        echo $Form->ajaxLink($Include->image('admin/active.png',array('width'=>'16','height'=>'16','alt'=>'Active','title'=>'Active')), array('class'=>'users', 'method'=>'admin_toggleStatus', $value->id), array('id'=>'status_'.$value->id, 'update'=>array('status_'.$value->id, 'ab_'.$value->id), 'reLoad'=>true));
+                    else
+                        echo $Form->ajaxLink($Include->image('admin/inactive.png',array('width'=>'16','height'=>'16','alt'=>'Inactive','title'=>'Inactive')), array('class'=>'users', 'method'=>'admin_toggleStatus', $value->id), array('id'=>'status_'.$value->id, 'update'=>array('status_'.$value->id, 'ab_'.$value->id), 'reLoad'=>true));
+                    ?>
+                    </li>
+                </ul>
+            </td>            
+        </tr>
+		<?php } ?>    
+    <?php }else{ ?>
+    <tr><td colspan='5'>No user found...</td></tr>
+    <?php } ?>
+    </table>
+    <?php if($list['records']){
+        $Content->element('admin/list_actions_users');
+        include_once($Content->element);
+    } ?>
+</div>
+<?php
+    $Content->render(array('class'=>'paginate','method'=>'pagination', $list['pages'], $list['page'], array("class"=>"users", "method"=>"admin_manage", $value->user_type), $list['order_by'], $list['order']));
+    include_once($Content->element);
+?>
+<?php echo $Form->end(); ?>

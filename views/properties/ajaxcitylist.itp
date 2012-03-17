@@ -1,0 +1,5 @@
+			<?php foreach($rows as $row){?> 
+			<?php if($row){ ?>
+			<div style="width:107.5px; height:20px; float:left;"><input type="checkbox" name="hoods[]" value="<?php echo $row->name; ?>"><?php echo $row->name; ?></div>
+			
+                <?php }} ; ?>

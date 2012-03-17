@@ -1,0 +1,11 @@
+<div id="home-search">
+    <?php echo $Form->create('propertySearchForm', array('method'=>'get', 'action'=>array('class'=>'properties', 'method'=>'advancedListing'))) ?>
+    <h1 class="page-heading">PROPERTY SEARCH</h1>
+    <div class="home-search-box">
+        <?php echo $Form->input('s', array('type'=>'text', 'class'=>'mandatory {title: "Search keyword"}')); ?>
+    </div>
+    <div class="home-search-box">
+        <?php echo $Form->input('', array('type'=>'submit', 'value'=>'Search')); ?>
+    </div>
+    <?php echo $Form->end(); ?>
+</div>

@@ -1,0 +1,105 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title><?php echo $Content->pageTitle; ?> &laquo; <?php echo defined('PROJECT_NAME') ? SITE_NAME : ''; ?> </title>
+<meta content="<?php echo !empty($Content->metaDescription) ? $Content->metaDescription : (defined('META_DESCRIPTION') ? META_DESCRIPTION : ''); ?>" name="description" />
+<meta content="<?php echo !empty($Content->metaKeywords) ? $Content->metaKeywords : (defined('META_KEYWORDS') ? META_KEYWORDS : ''); ?>" name="Keywords" />
+<?php echo $Include->css('front/print/colors.css'); ?>
+<?php echo $Include->css('front/print/details_print.css'); ?>
+<?php echo $Include->css('front/print/main.css'); ?>
+</head>
+<?php if($property){ 
+	$property = $property[0];
+	}
+?>  
+<body id="details_print" onLoad="window.print();">
+<div id="cobrand_custom_header"> </div>
+<div class="page">
+  <div id="header" class="clearfix padb5"> <?php echo $Form->link($Include->image('logo.png', array('alt'=>SITE_NAME,'class'=>'fright')), WWW_ROOT, array('title'=>'logo')); ?> </div>
+  <div id="overview" class="clearfix">
+    <div id="property_overview"> 
+    <div class="fleft" style="width:200px;">
+        <?php
+		if(isset($Content->params['pass'][1])) { 
+			if($Content->params['pass'][1] == 'images') {
+			echo $Include->showImage(WWW_ROOT.'/resources/uploads/properties/gallery/'.$property['prGallery.file'], array('dims'=>array('width'=>146, 'height'=>120), 'alt'=>'Photo')); 
+			}
+		}	
+		?>
+    </div>
+      <div class="fleft normal"> <span class="bold "><?php echo $property['properties.title']; ?></span><br>
+		<?php
+        $location = $property['prUnitInfo.unit_street_address'].', '.$property['prUnitInfo.city'].', '.$property['prUnitInfo.state'].', '.$property['prUnitInfo.zip'];
+        echo $location;
+        ?>
+      </div>
+    </div>
+  </div>
+  <div id="my_note" class="marb10" style="min-height:15px;">
+    <h3 style="color:#408AD2;margin:0px 0px 10px 0px; text-transform:uppercase;" class="f16">Property Information</h3>
+    <div class="container">
+    <p><?php echo $property['properties.description']; ?></p> </div>
+  </div>  
+  <div id="my_note" class="marb10" style="min-height:15px;">
+    <h3 style="color:#408AD2;margin:0px 0px 0px 0px; text-transform:uppercase;" class="f16">Unit features</h3>
+    <div class="container">
+		<?php
+			$Content->render(array('class'=>'properties', 'method'=>'getUnitFeatures', $property['properties.id']), 'properties/features');
+			include($Content->element);
+		?>
+    </div>
+  </div>
+  <div id="my_note" class="marb10" style="min-height:15px;">
+    <h3 style="color:#408AD2;margin:0px 0px 0px 0px; text-transform:uppercase;" class="f16">Building features</h3>
+    <div class="container">
+		<?php
+            $Content->render(array('class'=>'properties', 'method'=>'getPropertyFeatures', $property['properties.id']), 'properties/features');
+            include($Content->element);
+        ?>
+    </div>
+  </div>
+  <div id="my_note" class="marb10" style="min-height:15px;">
+  <h3 style="color:#408AD2;margin:0px 0px 10px 0px; text-transform:uppercase;s" class="f16">Property Info</h3>
+    <div class="container">
+		<?php
+            $Content->render(array('class'=>'properties', 'method'=>'getPropertyExtraFeatures', $property['properties.id']), 'properties/extra_features');
+            include($Content->element);
+        ?>
+    </div>  
+  </div>
+  <div id="my_note" class="marb10" style="min-height:15px;">
+    <h3 style="color:#408AD2;margin:0px 0px 10px 0px; text-transform:uppercase;" class="f16">Unit Info</h3>
+        <div class="container">
+		<?php
+            $Content->render(array('class'=>'properties', 'method'=>'getUnitExtraFeatures', $property['properties.id']), 'properties/extra_features');
+            include($Content->element);
+        ?>
+    </div>
+  </div>
+  <div id="my_note" class="marb10" style="min-height:15px;">
+    <h3 style="color:#408AD2;margin:0px 0px 10px 0px; text-transform:uppercase;" class="f16">Lease Information</h3>
+        <div class="container">
+		<?php
+            $Content->render(array('class'=>'properties', 'method'=>'getLeaseExtraFeatures', $property['properties.id']), 'properties/lease');
+			include($Content->element);
+        ?>
+    </div>
+  </div>  
+  
+    <div id="my_note" class="marb10" style="min-height:15px;">
+    <h3 style="color:#408AD2;margin:0px 0px 10px 0px; text-transform:uppercase;" class="f16">Contact Information</h3>
+    <div class="container">
+    <p>
+	<?php echo $property['prContactInfo.contact_name']; ?><br />
+	<?php if($property['prContactInfo.phone'] && $property['prContactInfo.phone'] != '--'){
+            echo '('. preg_replace('/-/', ') (', $property['prContactInfo.phone']) . ')';
+            if($property['prContactInfo.prefer'] == 'phone') echo ' (prefered)<br />'; else '<br />';
+    } ?>
+    <?php //echo $Form->link($property['prContactInfo.contact_email'], 'mailto:'.$property['prContactInfo.contact_email'], array('title'=>'Email')); ?><!--<br />-->
+    <?php echo $Form->link($property['prContactInfo.website'], $property['prContactInfo.website'], array('title'=>'Visit website', 'target'=>'_blank')); ?>
+    </p> </div>
+  </div>
+</div>
+
+
+</div></body></html>

@@ -1,0 +1,1078 @@
+<?php echo $Include->js('drop_down.js'); ?>
+<?php echo $Include->js('textcounter.js'); ?>
+<?php echo $Include->js('date.js'); ?>
+<?php echo $Include->js('datePicker.js'); ?>
+<?php echo $Include->css('datepicker.css'); ?>
+<script type="text/javascript">
+    var counter = 1;
+    var draft_counter = 1;
+    var time_unit = 'minute';
+    var time_unit_suffix = '';
+    $().ready(function() {
+        // Auto save form at each 1 minute of time interval
+        setInterval(auto_save_draft, 60000);
+        $('form[name=addPropertyForm]').submit(function() {
+            if (false == formValidationErrors)
+                $(window).unbind('beforeunload.warning_msg');
+        });
+    });
+
+    function auto_save_draft() {
+        $.ajax({
+            url: draft_url,
+            type: 'post',
+            data: $('form[name=addPropertyForm]').serialize(),
+            success: function(response) {
+                response = eval('(' + response + ')');
+                if (response) {
+                    if (counter > 59) {
+                        time_unit = 'hour';
+                        draft_counter = parseInt(counter / 60);
+                    } else
+                        draft_counter = counter;
+                    if (draft_counter > 1)
+                        time_unit_suffix = 's';
+                    $('span#auto-save-status').text('Auto saved: ' + draft_counter + ' ' + time_unit + time_unit_suffix + ' ago');
+                    $('input[name=auto_saved_id]').val(response.auto_saved_id);
+                    counter++;
+                }
+            }
+        });
+    }
+
+    // Warning on leaving this page
+    $(window).unbind('beforeunload').bind('beforeunload.warning_msg', before_unload);
+    function before_unload() {
+        return "The changes you made will be lost if you navigate away from this page.";
+    }
+
+
+    $(function() {
+        $('.date-pick').datePicker();
+    });
+
+    $(document).ready(function() {
+        $('#first_select').change(function() {
+
+            var select_value = escape($(this).val());
+
+            $('#second_select').load('<?php echo WWW_ROOT; ?>/ajax.php?a=' + select_value);
+
+        });
+    });
+</script>
+<script language="JavaScript">
+
+function showdiv(id) {
+	var hide ="a"+ id;
+	if (document.getElementById) { // DOM3 = IE5, NS6
+		document.getElementById(id).style.display = 'block';
+		document.getElementById(hide).style.display = 'none';
+	}
+	else {
+		if (document.layers) { // Netscape 4
+			document.id.display = 'block';
+		}
+		else { // IE 4
+			document.all.id.style.display = 'block';
+		}
+	}
+}
+</script>
+<?php echo $Form->create('addPropertyForm', array('action' => '', 'method' => 'post', 'enctype' => 'multipart/form-data')); ?>
+<?php if ($Content->params['prefix'] == 'dashboard') { ?>
+<div class="main_left">
+    <div class="profile_listing">
+        <div class="sorting_top_box">
+            <h1>LIST YOUR PROPERTY</h1>
+
+            <div class="sort_right">
+                <span id="auto-save-status"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<?php } ?>
+<div class="profile_container">
+<div class="profile_top">
+<div class="profile_bot">
+<div class="property_mid">
+<div class="property_content">
+    <h3>Lets get started!  What is some of the basic information for your listing?</h3>
+
+    <div class="left_container">
+        <div class="description_box">
+            <div class="input_box">
+                <div class="input_left">
+                    <div class="input_right">
+                        <div class="input_mid">
+                            <?php echo $Form->input('title', array('type' => 'text', 'class' => 'mandatory {title: "Title"}')); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <label>LISTING DESCRIPTION</label>
+
+            <div class="textarea_main">
+                <div class="text_box">
+                    <div class="box_left">
+                        <div class="box_right">
+                            <div class="box_mid">
+                                <?php echo $Form->textarea('description', array('class' => 'word_count {charcount: 596, counter_class: "counter1"}')); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <label class="counter1">596 characters left</label>
+            </div>
+            <!--            <label>EXPIRATION DATE</label>-->
+            <!--            <div class="description_box">-->
+            <!--                <div class="input_box">-->
+            <!--                    <div class="input_left">-->
+            <!--                        <div class="input_right">-->
+            <!--                            <div class="input_mid">-->
+            <!--                                --><?php //echo $Form->input('expiry_date', array('type' => 'text', 'class' => 'date-pick')); ?>
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--            </div>-->
+        </div>
+    </div>
+    <div class="right_container">
+        <div class="tips">
+            <div class="tips_top">
+                <div class="tips_left">
+                    <div class="tips_right">
+                        <div class="tips_mid">
+                            TIPS
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tips_contain">
+                <div class="tips_bot">
+                    <div class="tips_mid">
+                        The title and description are very important for the searchability of your listing.  For the Title make sure to create something that will stand out against the other listings.  For the description be as detailed as possible listing the content that you feel is
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="property_content">
+    <div class="left_container">
+        <h3>List some of the details about this property.</h3>
+
+        <div class="description_box">
+            <label>Property Type</label>
+
+            <div class="select_box">
+                <?php echo $Form->select('pr_unit_type_id', $unitTypes, null, array('class' => 'styled')); ?>
+            </div>
+            <ul>
+                <li>
+                    <div class="input_bed">
+                        <label>Bed</label>
+
+                        <div class="select_box">
+                            <?php echo $Form->number('bed', array(1, UnitInfoConsts::MAX_BED), null, array('class' => 'styled')); ?>
+                        </div>
+                    </div>
+                    <div class="input_bed">
+                        <label>Bath</label>
+
+                        <div class="select_box">
+                            <?php echo $Form->float_number('bath', array(1, UnitInfoConsts::MAX_BATH), null, array('class' => 'styled')); ?>
+                        </div>
+                    </div>
+                    
+					<div class="input">
+                        <label>Square Feet</label>
+
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('square_feet', array('type' => 'text', 'class' => 'mandatory {title: "Square Feet"}')); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>		
+                </li>
+                <li>
+                    <div class="left_input">
+                        <label>Street Address</label>
+
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('unit_street_address', array('type' => 'text', 'class' => 'mandatory {title: "Street address"}')); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right_input">
+                        <label>Unit #</label>
+
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('unit_no', array('type' => 'text', 'class' => 'mandatory {title: "Unit #"}')); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="right_input">
+                        <label>State</label>
+
+                        <div class="select_box">
+                            <?php echo $Form->select('state', $states, null, array('class' => 'styled')); ?>
+                        </div>
+                    </div>
+                    <div class="left_input">
+
+                        <label>City</label>
+
+                        <div class="select_box">
+                            <select name="city" class="styled" id="first_select">
+                                <option value="0">Select City</option>
+                                <?php foreach ($sities as $row) { ?>
+                                <option value="<?php echo $row->name; ?>" <?php if ($row->name == $city) { ?>selected="TRUE" <?php }; ?>><?php echo $row->name; ?></option>
+                                <?php }; ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="right_input">
+                        <label>zip</label>
+
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('zip', array('type' => 'text', 'class' => 'mandatory {title: "zip"}')); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="left_input">
+                        <label>Neighborhood</label>
+
+                        <div class="select_box">
+                            <select name="neighborhood" class="styled" id="second_select">
+                                <option value="0">Select Neighborhood</option>
+                                <?php foreach ($neighborhoods as $row) { ?>
+                                <option value="<?php echo $row->name; ?>" <?php if ($row->name == $neighborhood) { ?>selected="TRUE" <?php }; ?>><?php echo $row->name; ?></option>
+                                <?php }; ?>
+                            </select>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="right_container">
+        <div class="tips">
+            <div class="tips_top">
+                <div class="tips_left">
+                    <div class="tips_right">
+                        <div class="tips_mid">
+                            TIPS
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tips_contain">
+                <div class="tips_bot">
+                    <div class="tips_mid">
+                        Make sure you fill out every box.  This data from this section is really important when users are trying to find your property.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="property_content padding_bottom">
+    <div class="left_container">
+        <h3>Check the features available for this building.</h3>
+
+        <div class="description_box">
+            <label>Click the features on/off</label>
+
+            <div class="featured">
+                <?php if ($apartment_building_features) { ?>
+<!--                <ul>-->
+                    <?php $i = 0; foreach ($apartment_building_features as $feature) { ?>
+                    <div class="features_add_block">
+                        <label>
+							<?php echo $Form->input("pr_feature_id[$feature->id]", array('type' => 'checkbox', 'value' => $feature->id, 'class' => '')); ?>
+							<?php echo $feature->feature; ?>
+                        </label>
+                    </div>
+                    <?php if ($i >= 3) { echo '<div class="clear"></div>'; $i = 0; } else $i++; } ?>
+<!--                </ul>-->
+                <?php } ?>
+            </div>
+
+        </div>
+    </div>
+    <div class="right_container">
+        <div class="tips">
+            <div class="tips_top">
+                <div class="tips_left">
+                    <div class="tips_right">
+                        <div class="tips_mid">
+                            TIPS
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tips_contain">
+                <div class="tips_bot">
+                    <div class="tips_mid">
+                        These are the most common building features used for listing properties.  Need more add those later below.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="property_content">
+    <div class="left_container">
+        <h3>List any additional building features.</h3>
+        <span>Type the features your unit has that are not on/off</span>
+
+        <div class="description_box">
+            <ul>
+                <li>
+                    <div class="input1">
+                        <label>1</label>
+
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('pr_feature[0]', array('type' => 'text')); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="input1">
+                        <label>2</label>
+
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('pr_feature[1]', array('type' => 'text')); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="input1">
+                        <label>3</label>
+
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('pr_feature[2]', array('type' => 'text')); ?>
+                                </div>
+							<a id='aa1' href="javascript:showdiv('a1');">add more</a>	
+                            </div>		
+                        </div>
+                    </div>
+					
+                </li>
+                <li id='a1' style='display:none'>
+                    <div class="input1" >
+                        <label>4</label>
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('pr_feature[3]', array('type' => 'text')); ?>
+                                </div>
+							<a id='aa2' href="javascript:showdiv('a2');">add more</a>
+                            </div>							
+                        </div>					
+                    </div>					
+                </li>
+                <li id='a2' style='display:none'>
+                    <div class="input1" >
+                        <label>5</label>
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('pr_feature[4]', array('type' => 'text')); ?>
+                                </div>
+							<a id='aa3' href="javascript:showdiv('a3');">add more</a>	
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li id='a3' style='display:none'>
+                    <div class="input1" >
+                        <label>6</label>
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('pr_feature[5]', array('type' => 'text')); ?>
+                                </div>
+							<a id='aa4' href="javascript:showdiv('a4');">add more</a>	
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li id='a4' style='display:none'>
+                    <div class="input1" >
+                        <label>7</label>
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('pr_feature[6]', array('type' => 'text')); ?>
+                                </div>
+							<a id='aa5' href="javascript:showdiv('a5');">add more</a>	
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li id='a5' style='display:none'>
+                    <div class="input1" >
+                        <label>8</label>
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('pr_feature[7]', array('type' => 'text')); ?>
+                                </div>	
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+
+        </div>
+    </div>
+    <div class="right_container">
+        <div class="tips">
+            <div class="tips_top">
+                <div class="tips_left">
+                    <div class="tips_right">
+                        <div class="tips_mid">
+                            TIPS
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tips_contain">
+                <div class="tips_bot">
+                    <div class="tips_mid">
+                        Add more features that you feel the renters will want to see.  Need more boxes?  Click the add button to add more features!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="property_content">
+    <div class="left_container">
+        <h3>Check the features available for this unit.</h3>
+
+        <div class="description_box">
+            <label>Click the features on/off </label>
+
+            <div class="featured">
+				<?php if ($apartment_unit_features) { ?>
+				<!--                <ul>-->
+				<?php $i = 0; foreach ($apartment_unit_features as $feature) { ?>
+					<div class="features_add_block">
+						<label>
+							<?php echo $Form->input("pr_feature_id[$feature->id]", array('type' => 'checkbox', 'value' => $feature->id, 'class' => '')); ?>
+							<?php echo $feature->feature; ?>
+						</label>
+					</div>
+					<?php if ($i >= 3) { echo '<div class="clear"></div>'; $i = 0; } else $i++; } ?>
+				<!--                </ul>-->
+				<?php } ?>
+            </div>
+
+        </div>
+    </div>
+    <div class="right_container">
+        <div class="tips">
+            <div class="tips_top">
+                <div class="tips_left">
+                    <div class="tips_right">
+                        <div class="tips_mid">
+                            TIPS
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tips_contain">
+                <div class="tips_bot">
+                    <div class="tips_mid">
+                        These are the most common unit features used for listing properties.  Need more add those later below.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="property_content">
+    <div class="left_container">
+        <h3>List any additional unit features.</h3>
+        <span>Type the features your unit has that are not on/off</span>
+
+        <div class="description_box">
+            <ul>
+                <li>
+                    <div class="input1">
+                        <label>1</label>
+
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('pr_unit_feature[0]', array('type' => 'text')); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="input1">
+                        <label>2</label>
+
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('pr_unit_feature[1]', array('type' => 'text')); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="input1">
+                        <label>3</label>
+
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('pr_unit_feature[2]', array('type' => 'text')); ?>
+                                </div>
+							<a id='ab1' href="javascript:showdiv('b1');">add more</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li id='b1' style='display:none'>
+                    <div class="input1">
+                        <label>4</label>
+
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('pr_unit_feature[3]', array('type' => 'text')); ?>
+                                </div>
+							<a id='ab2' href="javascript:showdiv('b2');">add more</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li id='b2' style='display:none'>
+                    <div class="input1">
+                        <label>5</label>
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('pr_unit_feature[4]', array('type' => 'text')); ?>
+                                </div>
+							<a id='ab3' href="javascript:showdiv('b3');">add more</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li id='b3' style='display:none'>
+                    <div class="input1">
+                        <label>6</label>
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('pr_unit_feature[5]', array('type' => 'text')); ?>
+                                </div>
+							<a id='ab4' href="javascript:showdiv('b4');">add more</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li id='b4' style='display:none'>
+                    <div class="input1">
+                        <label>7</label>
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('pr_unit_feature[6]', array('type' => 'text')); ?>
+                                </div>
+							<a id='ab5' href="javascript:showdiv('b5');">add more</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li id='b5' style='display:none'>
+                    <div class="input1">
+                        <label>8</label>
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('pr_unit_feature[7]', array('type' => 'text')); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+
+        </div>
+    </div>
+    <div class="right_container">
+        <div class="tips">
+            <div class="tips_top">
+                <div class="tips_left">
+                    <div class="tips_right">
+                        <div class="tips_mid">
+                            TIPS
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tips_contain">
+                <div class="tips_bot">
+                    <div class="tips_mid">
+                        Add more features that you feel the renters will want to see.  Need more boxes?  Click the add button to add more features!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="property_content">
+    <div class="left_container">
+        <h3>What are the leasing details for this listing?</h3>
+
+        <div class="description_box">
+            <ul>
+                <li>
+					<div class="input">
+                        <label>Rent <?php echo SiteConsts::CURRENCY; ?></label>
+
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('rent', array('type' => 'text', 'class' => 'mandatory {title: "Rent"}')); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input">
+                        <label>Lease Length</label>
+
+                        <div class="select_box">
+                            <?php  echo $Form->select('lease_length', $lease, null, array('class' => 'styled')); ?>
+                        </div>
+                    </div>
+                   <!-- <div class="input">
+                        <label>Security Deposit/Move In Fee <?php //echo SiteConsts::CURRENCY; ?></label>
+
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php //echo $Form->input('deposit_amount', array('type' => 'text', 'class' => 'mandatory {title: "Deposit amount"}')); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+
+                </li>
+                <li>
+				    <div class="input">
+                        <label>Application Fee <?php echo SiteConsts::CURRENCY; ?></label>
+
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('application_fee', array('type' => 'text', 'class' => 'mandatory {title: "Application Fee"}')); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input">
+                        <label>Move in date available</label>
+
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('move_in_date', array('type' => 'text', 'class' => 'date-pick')); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 </li>
+                 <li>
+                    <div class="input">
+                        <label>Other Fee <?php echo SiteConsts::CURRENCY; ?></label>
+
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('other1', array('type' => 'text')); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                                
+                    <div class="input1">
+                        <label>Other fees description</label>
+
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('other2', array('type' => 'text')); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>        
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="right_container">
+        <div class="tips">
+            <div class="tips_top">
+                <div class="tips_left">
+                    <div class="tips_right">
+                        <div class="tips_mid">
+                            TIPS
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tips_contain">
+                <div class="tips_bot">
+                    <div class="tips_mid">
+                        Make sure you fill out every box.  This data from this section is really important when users are trying to find your property.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="property_content">
+    <div class="left_container">
+        <h3>What are the keywords that you would like to include for search engine optimization?</h3>
+
+        <div class="description_box">
+            <label>OPTIONAL SEARCH KEYWORDS</label>
+            <span>Type your keywords here and remember to separate each keywork with a comma</span>
+
+            <div class="textarea_main">
+                <div class="text_box">
+                    <div class="box_left">
+                        <div class="box_right">
+                            <div class="box_mid">
+                                <?php echo $Form->textarea('tags', array('class' => 'word_count {charcount: 1000, counter_class: "counter2"}')); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <label class="counter2">1000 characters left</label>
+            </div>
+        </div>
+    </div>
+    <div class="right_container">
+        <div class="tips">
+            <div class="tips_top">
+                <div class="tips_left">
+                    <div class="tips_right">
+                        <div class="tips_mid">
+                            TIPS
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tips_contain">
+                <div class="tips_bot">
+                    <div class="tips_mid">
+                        We want to make sure that your listing is easily found on search engines.  These tags will help with your ranking.  Add tags that relate to your listing. A good tip from the pros: Make sure your tag words are also in your description above.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="property_content">
+    <div class="left_container">
+        <h3>List your contact information for this listing.</h3>
+        <!--<span>Not you? <strong>Change your contact information</strong></span>-->
+
+        <div class="description_box">
+            <ul>
+                <li>
+                    <div class="input">
+                        <label>Contact Name</label>
+
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('contact_name', array('type' => 'text', 'class' => 'mandatory {title: "Contact name"}')); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="phone">
+                        <label>Phone</label>
+
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('phone1', array('type' => 'text', 'class' => '{default: "xxx"}', 'maxlength' => 3)); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="phone">
+                        <label>&nbsp;</label>
+
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('phone2', array('type' => 'text', 'class' => '{default: "xxx"}', 'maxlength' => 3)); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="phone">
+                        <label>&nbsp;</label>
+
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('phone3', array('type' => 'text', 'class' => '{default: "xxxx"}', 'maxlength' => 4)); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="input">
+                        <label>Contact Email</label>
+
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('contact_email', array('type' => 'text', 'class' => 'mandatory {title: "Contact email"}')); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input">
+                        <label>Confirm Email</label>
+
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('confirm_email', array('type' => 'text')); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input">
+                        <label>Website</label>
+
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('website', array('type' => 'text')); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+				<li>
+                    <div class="input">
+                        <label>What is your preferred contact method?</label>
+                    </div>
+                    <div class="input">
+                        <label><?php echo $Form->input('prefer', array('type' => 'radio', 'value' => 'email')); ?> Email</label>
+                    </div>
+                    <div class="input">
+                        <label><?php echo $Form->input('prefer', array('type' => 'radio', 'value' => 'phone')); ?> Phone</label>
+                    </div>
+                </li>				
+            </ul>
+        </div>
+    </div>
+    <div class="right_container">
+        <div class="tips">
+            <div class="tips_top">
+                <div class="tips_left">
+                    <div class="tips_right">
+                        <div class="tips_mid">
+                            TIPS
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tips_contain">
+                <div class="tips_bot">
+                    <div class="tips_mid">
+                        Let us know how the renters can get a hold of you.  List the best contact information so that someone can respond to the renters questions.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <?php
+                                        // Drag and drop multiple files uploader
+            $Content->element('properties/drag_n_drop_files_upload');
+            include($Content->element);
+            ?>
+<div class="property_content property_content1">
+    <div class="left_container">
+        <h3>Link your You Tube video for this listing.</h3>
+        <div class="description_box">            
+            
+            <ul>
+                <li>
+                    <div class="left_input1">
+							<span>Paste unique youtube ID in the box below.  Note this the the random 
+characters at the end of the youtube URL such as "84mmDjr_aJ4" is at the end of "http://www.youtube.com/watch?v=84mmDjr_aJ4"</span>
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('youtube_id', array('type' => 'text','id'=>'youtube_id')); ?>
+                                </div>
+				
+                            </div>
+                        </div>
+			<div id='videoimage'></div>
+				<div style="clear:both"></div>
+				<script>$('#youtube_id').blur(function(){
+					$('#videoimage').html("<img src='http://img.youtube.com/vi/"+$('#youtube_id').val()+"/2.jpg'>");
+				})</script>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="right_container">
+        <div class="tips">
+            <div class="tips_top">
+                <div class="tips_left">
+                    <div class="tips_right">
+                        <div class="tips_mid">
+                            TIPS
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tips_contain">
+                <div class="tips_bot">
+                    <div class="tips_mid">
+                        After you upload your video to youtube it is essential that you add it to your listing too.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="property_content property_content1">
+    <div class="left_container">
+        <h3>Last Step! Get your listing on the map.</h3>
+        <div class="description_box">            
+            
+            <ul>
+                <li>
+                    <div class="left_input1">
+                        <label>Type full street address so that Google Maps can identify this listing</label>
+
+                        <div class="input_left">
+                            <div class="input_right">
+                                <div class="input_mid">
+                                    <?php echo $Form->input('street_address', array('type' => 'text')); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="right_container">
+        <div class="tips">
+            <div class="tips_top">
+                <div class="tips_left">
+                    <div class="tips_right">
+                        <div class="tips_mid">
+                            TIPS
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tips_contain">
+                <div class="tips_bot">
+                    <div class="tips_mid">
+                        Google requires us to do this.  This makes it easier for renters to see exactly where your place is located.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="property_content">
+    <div class="left_container">
+        <div class="description_box">
+            <?php if (!$session->checkUserSession($session, array(UserTypeConsts::ADMIN))) { ?>
+            <div class="term_box">
+                <h3>TERMS AND CONDITIONS</h3>
+
+                <div class="term_top">
+                    <div class="term_bot">
+                        <div class="term_mid">
+                            <div class="txt_container">
+                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam eu nulla. Donec lobortis
+                                purus vel urna. Nunc laoreet lacinia nunc. In volutpat sodales ipsum. Sed vestibulum.
+                                Integer in ante. Sed posuere ligula rhoncus erat. Fusce urna dui, sollicitudin ac,
+                                pulvinar quis, tincidunt et, risus. Quisque a nunc eget nibh interdum fringilla. Fusce
+                                dapibus odio in est. Nunc egestas mauris ac leo. Nullam orci.
+                            </div>
+                            <div class="check">
+                                <?php echo $Form->input('agree', array('type' => 'checkbox', 'class' => 'mandatory {title: "Agreement"}', 'value' => 1)); ?>
+                                <label>Agree</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php } ?>
+            <div class="button_box">
+                <?php echo $Form->input('auto_saved_id', array('type' => 'hidden', 'value' => '')); ?>
+                <?php echo $Form->input('save_property', array('type' => 'hidden', 'value' => '1')); ?>
+                <?php echo $Form->input('edit_property', array('type' => 'hidden', 'value' => '')); ?>
+				<?php echo $Form->input('preview', array('type' => 'submit', 'class' => 'preview-btn', 'value' => '1')); ?>
+                <?php echo $Form->input('save', array('type' => 'submit', 'class' => 'save-draft-btn', 'value' => '1')); ?>
+                <?php echo $Form->input('publish', array('type' => 'submit', 'class' => 'publish-btn', 'value' => '1')); ?>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<?php echo $Form->end(); ?>

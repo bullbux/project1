@@ -1,0 +1,53 @@
+<?php echo $Include->js("tiny_mce/tiny_mce.js"); ?>
+<script type="text/javascript">
+    tinyMCE.init({
+        mode	: "textareas",
+        theme	: "advanced",
+        elements: "textarea",
+        plugins : "imanager,ibrowser",
+        theme_advanced_buttons3_add : "imanager",
+        theme_advanced_buttons2_add : "ibrowser",
+        theme_advanced_buttons1 : "bold,italic,underline,separator,cut,copy,paste,separator,strikethrough,justifyleft,justifycenter,justifyright, justifyfull",
+        theme : "advanced",
+        theme_advanced_toolbar_location : "top",
+        theme_advanced_toolbar_align : "left",
+        height	: "500px",
+        width	: "800px",
+        editor_selector:'mceEditor'
+    });
+</script>
+<h2 class="heading pages-ico">Static Pages Management [Edit Page]</h2>
+<div class="data">
+    <?php echo $Form->create("edit",array("method"=>"post","action"=>"")); ?>
+	<div>
+        <label>Parent Page </label>
+        <?php echo $Form->select("parent_id",$pageList,array($selected_page),array(),'Select Parent page'); ?>
+    </div>
+    <div>
+        <label>Page Title <span class='required'>*</span></label>
+        <?php echo $Form->input("pageTitle",array("class"=>"bigfield mandatory", "type"=>"text", "title"=>"Page title")); ?>
+    </div>
+    <div>        
+        <?php echo $Form->input("showTitle",array("type"=>"checkbox", 'id'=>'show-title')); ?>
+        <label for="show-title" style="display: inline;">Show Page Title </label>
+    </div>
+    <br/>
+    <div>
+        <label>Meta Keywords</label>
+        <?php echo $Form->textarea("pageKeywords",array("class"=>"bigfield")); ?>
+        <br/><small>Keywords must be separated by comma(,)</small>
+    </div>
+    <div>
+        <label>Meta Description</label>
+        <?php echo $Form->textarea("pageDescription",array("class"=>"bigfield")); ?>
+    </div>
+    <div>
+        <label>Page Body</label>
+        <?php echo $Form->textarea("pageBody",array("class"=>"mceEditor")); ?>
+    </div>
+    <div>
+        <?php echo $Form->input('submit', array('type'=>'hidden', 'value'=>'1')); ?>
+        <?php echo $Form->input('edit', array('type'=>'submit', 'value'=>'Edit Page')); ?>
+    </div>
+    <?php echo $Form->end(); ?>
+</div>

@@ -1,0 +1,25 @@
+<h2 class="heading adduser-ico">Update Profile</h2>
+<div id="data">
+    <?php echo $Form->create('updateProfile', array('action'=>WWW_ROOT.'/admin/users/profile', 'method'=>'post')); ?>
+    <div>
+        <label for="username">Username : </label>
+        <?php echo $Form->input('username', array('type'=>'text', 'id'=>'username', 'class'=>'mediumfield')); ?>
+        <div class="clear"></div>
+    </div>
+    <div>
+        <label for="password">New Password : </label>
+        <?php echo $Form->input('password', array('type'=>'text', 'id'=>'password', 'class'=>'mediumfield')); ?>
+        <div class="clear"></div>
+    </div>
+    <div>
+        <label for="cpassword">Confirm Password : </label>
+        <?php echo $Form->input('cpassword', array('type'=>'text', 'id'=>'cpassword', 'class'=>'mediumfield')); ?>
+        <div class="clear"></div>
+    </div> 
+    <div>
+        <?php echo $Form->input('submit', array('type'=>'hidden', 'value'=>'1')); ?>
+        <?php echo $Form->input('update', array('type'=>'submit', 'value'=>'Update Profile')); ?>
+        <div class="clear"></div>
+    </div>  
+    <?php echo $Form->end(); ?>
+</div>

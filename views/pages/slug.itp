@@ -1,0 +1,18 @@
+<?php 
+if($page) {
+    ?>
+<div class="page-outer">
+    <div id="page" class="page-inner">
+            <?php
+            if($page->showTitle) {
+                ?>
+        <div class="listing-heading">
+                    <?php
+                    echo $page->pageTitle;
+                    ?>
+        </div>
+            <?php } ?>
+        <div class="page-body"><?php echo $page->pageBody;?></div>
+    </div>
+</div>
+<?php } ?>

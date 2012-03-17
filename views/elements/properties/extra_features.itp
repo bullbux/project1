@@ -1,0 +1,11 @@
+<?php if($features){ ?>
+<ul> 
+    <?php foreach($features as $key=>$feature){ ?>
+    <?php
+    if($key == 8)
+        echo '</ul><ul>';
+    ?>
+    <li><span><?php echo $feature['pr_feature']; ?></span></li>
+    <?php } ?>
+</ul>
+<?php } ?>

@@ -1,0 +1,4 @@
+<?php
+$this->render(array('class'=>'properties', 'method'=>'dashboard_message', $data['messageId'], $data['prId']), 'emails/reply_email');
+include($this->element);
+?>

@@ -1,0 +1,144 @@
+<div class="main_left">
+    <div class="profile_listing">
+        <div class="sorting_top_box">
+            <h1>MY MESSAGES</h1>
+            <div class="msg_sort_links">
+                <span>select:&nbsp;</span>
+                <a href="#" title='Check all messages' class='check-all'>All</a><span>,&nbsp;</span><a href="#" title='Delete messages' class='delete-msgs'>Delete</a><span>,&nbsp;</span><a href="#" title='Mark read' class='mark-read'>Read</a><span>,&nbsp;</span><a href="#" title='Uncheck all messages' class='uncheck-all'>None </a>
+            </div>
+            <div class="sort_right">
+                <label>SORT BY:</label>
+                <div class="select_box"><select class="styled" name="sort_type" ><option>Most recent</option><option>Most recent2</option></select></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="profile_container">
+    <div class="profile_top">
+        <div class="profile_bot">
+            <div class="profile_mid">
+                <div class="profile_content">
+                    <div class="message_container">
+                        <?php echo $Form->create('changeReadFlagForm', array('action'=>array('class'=>'messages', 'method'=>$Content->params['prefix'] . '_toggleStatus'))); ?>
+                        <ul>
+                            <?php if($list['records']){ ?>
+                            <?php foreach($list['records'] as $m){
+                                if($m['msg']){
+                                $className = $m['msg']['flag'] == MessageStatusConsts::READ ? 'read-flag' : '';
+                            ?>
+                            <li class='<?php echo $className; ?>'>
+                                <div class="left_img">
+                                    <?php
+                                    $statusTag = '';
+                                    if($m['properties.status'] == PropertyStatusConsts::DRAFT)
+                                        $statusTag = '<div class="draft_hover"></div>';
+                                    else{
+                                        if($m['properties.status'] == PropertyStatusConsts::SOLD)
+                                            $statusTag = '<div class="sold_hover"></div>';
+                                        elseif($m['properties.status'] == PropertyStatusConsts::EXPIRED)
+                                            $statusTag = '<div class="expired_hover"></div>';
+                                    }
+                                    ?>
+                                    <?php echo $Form->link($Include->showImage(WWW_ROOT.'/resources/uploads/properties/gallery/'.$m['prGallery.file'], array('dims'=>array('width'=>146, 'height'=>120), 'alt'=>$m['properties.title'])).$statusTag, array('class'=>'properties', 'method'=>$Content->params['prefix'] . '_message', $m['msg']['id'], $m['userPropertyMessages.pr_id'])); ?>
+                                </div>
+                                <div class="message_content">
+                                    <?php if($m['msg']['root']){ ?>
+                                    <strong class='float-left reply-tag'>Re:&nbsp;&nbsp;</strong>
+                                    <?php } ?>
+                                    <a href="mailto:<?php echo $m['msg']['email']; ?>"><?php echo $m['msg']['email']; ?></a><br>
+                                    <span><?php echo dateformat($m['msg']['modified'], 'F d \a\t H:i A'); ?></span>
+                                    <p><?php echo $m['msg']['message']; ?></p>
+                                    <?php echo $Form->link('Send Message', array('class'=>'properties', 'method'=>$Content->params['prefix'] . '_message', $m['msg']['id'], $m['userPropertyMessages.pr_id'] . '#reply'), array('class'=>'reply', 'title'=>'Reply to this message')); ?>
+                                </div>
+                                <?php echo $Form->input('msg[]', array('type'=>'checkbox', 'class'=>'check', 'value'=>$m['msg']['id'])); ?>
+                            </li>
+                            <?php }}}else{ ?>
+                            <li>
+                                No message...
+                            </li>
+                            <?php } ?>
+                        </ul>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
+    $Content->render(array('class'=>'paginate','method'=>'pagination', $list['pages'], $list['page'], array("class"=>"messages", "method"=>$Content->params['prefix'] . "_inbox"), $list['order_by'], $list['order']), 'pagination/frontend_pagination');
+    include_once($Content->element);
+    ?>
+</div>
+<script type='text/javascript'>
+    $('input.check').click(function(){
+        if($(this)[0].checked)
+            $(this).parents('li:eq(0)').addClass('selected-msg');
+        else
+            $(this).parents('li:eq(0)').removeClass('selected-msg');
+    });
+    // Check all
+    $('a.check-all').click(function(){
+        $('input.check').attr('checked', 'checked');
+        $('form[name=changeReadFlagForm] li').addClass('selected-msg');
+        return false;
+    });
+    // UnCheck all
+    $('a.uncheck-all').click(function(){
+        $('input.check').removeAttr('checked', 'checked');
+        $('form[name=changeReadFlagForm] li').removeClass('selected-msg');
+        return false;
+    });
+    // Delete messages
+    $('a.delete-msgs').click(function(){
+        // if any message is checked
+        if($('input.check:checked').length > 0){
+            if(confirm('Are you sure to delete messages?')){
+                $('input.check:checked').each(function(){
+                    $(this).parents('li:eq(0)').slideUp();
+                });
+                $.ajax({
+                    url: $('form[name=changeReadFlagForm]').attr('action'),
+                    type: 'post',
+                    data: $('form[name=changeReadFlagForm]').serialize() + '&action=delete',
+                    success: function(response){
+                        var s = $('title').text();
+                        $('title').html(s.replace(/\(.*\)/, '('+response+')'));                        
+                    },
+                    error: function(status, a, b){
+                        alert('Oops! an error occurred, please try again.');
+                    }
+                });
+            }
+        }else{
+            alert('Please select atleast one message to delete.');
+        }
+        return false;
+    });
+
+    // Mark read
+    $('a.mark-read').click(function(){
+        // if any message is checked
+        if($('input.check:checked').length > 0){
+            $('input.check:checked').each(function(){
+                $(this).parents('li:eq(0)').addClass('read-flag');
+            });
+            $.ajax({
+                url: $('form[name=changeReadFlagForm]').attr('action'),
+                type: 'post',
+                data: $('form[name=changeReadFlagForm]').serialize() + '&action=mark_read',
+                success: function(response){
+                    var s = $('title').text();
+                    $('title').html(s.replace(/\(.*\)/, '('+response+')'));
+                },
+                error: function(status, a, b){
+                    alert('Oops! an error occurred, please try again.');
+                    $('input.check:checked').each(function(){
+                        $(this).parents('li:eq(0)').removeClass('read-flag');
+                    });
+                }
+            });
+        }else{
+            alert('Please select atleast one message to mark read.');
+        }
+        return false;
+    });
+</script>

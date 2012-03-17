@@ -1,0 +1,28 @@
+<?php if(isset($messages) && $messages) { ?>
+<?php if($session->checkSession($session)){ ?>
+<?php foreach($messages as $key=>$m) { ?>
+<div class="message_content">
+
+    <!--<a href="mailto:<?php //echo $m['users.email']; ?>"><?php echo $m['users.email']; ?></a><br>-->
+	<p><?php echo $m['users.username']; ?></p>
+    <span><?php echo dateformat($m['userPropertyMessages.modified'], 'F d \a\t H:i A'); ?></span>
+    <p><?php echo $m['userPropertyMessages.message']; ?></p>
+</div>
+<?php }}else{ ?>
+
+<?php 
+$i=0; 
+foreach($messages as $key=>$m) { 
+?>
+<div class="message_content">
+<?php 
+if($i==3)
+{break;}
+else{ ?>
+	<p><?php echo $m['users.username']; ?></p>
+    <span><?php echo dateformat($m['userPropertyMessages.modified'], 'F d \a\t H:i A'); ?></span>
+    <p><?php echo $m['userPropertyMessages.message']; ?></p>
+	<?php } $i++; ?>
+</div>
+
+<?php }}} ?>

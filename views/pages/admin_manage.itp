@@ -1,0 +1,65 @@
+<?php $pages  =  $Content->pages->page['records'];?>
+<h2 class="heading pages-ico"><span class='float-left'>Static Pages Management</span> <?php echo $Form->link('Add Page', array('class'=>'pages', 'method'=>'admin_add'), array('class'=>'float-right button')); ?>
+<div class='clear'></div>
+</h2>
+<div class="data">
+	<?php echo $Form->create("listing",array("method"=>"post", "action"=>"")); ?>
+	<?php if($Content->pages->page['order'] == "desc"){ 
+			$order = "asc";
+		}else{
+			$order = "desc";
+		}
+	?>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="top">
+		<tr class="heading">
+			<td width="1%"><?php echo $Form->input("checkbox",array('type'=>'checkbox','id'=>'checkbox', 'checkAll'=>'check', 'class'=>'check')); ?></td>
+			<td width="" align='left'><?php echo $Form->link("Page Title",array("class"=>"pages","method"=>"admin_manage",$Content->pages->page['page'],'pageTitle',$order)); ?></td>
+			<td width="" align='left'><?php echo $Form->link("Slug",array("class"=>"pages","method"=>"admin_manage",$Content->pages->page['page'],'slug',$order)); ?></td>
+			<td width="" align='left'><?php echo $Form->link("Created",array("class"=>"pages","method"=>"admin_manage",$Content->pages->page['page'],'created',$order)); ?></td>
+			<td width="50px" align='center'>Actions</td>
+                        <td width="30px" align='center'>Status</td>
+		 </tr>
+	<?php 
+	if($pages){
+		foreach($pages as $key=>$value) { ?>
+			<tr class="rowwhite">
+                            <td width="1%"><?php echo $Form->input("checkboxArray[".$value->id."]",array('type'=>'checkbox', 'class'=>'check', 'id'=>'checkbox_'.$value->slug)); ?></td>
+                            <td><?php echo $value->pageTitle; ?></td>
+                            <td><?php echo $value->slug; ?></td>
+                            <td><?php echo $value->created; ?></td>
+                            <td width="50px" align='center'>
+                                <ul>
+                                    <li><?php echo $Form->link($Include->image("admin/edit.png",array('width'=>'16','height'=>'16','alt'=>'Edit','title'=>'Edit')),array("class"=>"pages", "method"=>"admin_edit", $value->slug, $Content->pages->page['page'], $Content->pages->page['order_by'], $Content->pages->page['order'])); ?></li>
+                                    <li><?php echo $Form->link($Include->image("admin/delete.png",array('width'=>'16','height'=>'16','alt'=>'Delete','title'=>'Delete')),array("class"=>"pages", "method"=>"admin_delete", $value->slug, $Content->pages->page['page'], $Content->pages->page['order_by'], $Content->pages->page['order']), array('confirm'=>'Are you sure to delete?')); ?></li>
+                                </ul>
+                            </td>
+                            <td width="30px" align='center'>
+                                <ul>
+                                    <li>
+                                    <?php
+                                    if($value->status)
+                                        echo $Form->ajaxLink($Include->image('admin/active.png',array('width'=>'16','height'=>'16','alt'=>'Active','title'=>'Active')), array('class'=>'pages', 'method'=>'admin_toggleStatus', $value->slug), array('id'=>'status_'.$value->slug, 'update'=>array('status_'.$value->slug, 'flag'), 'reLoad'=>true));
+                                    else
+                                        echo $Form->ajaxLink($Include->image('admin/inactive.png',array('width'=>'16','height'=>'16','alt'=>'Inactive','title'=>'Inactive')), array('class'=>'pages', 'method'=>'admin_toggleStatus', $value->slug), array('id'=>'status_'.$value->slug, 'update'=>array('status_'.$value->slug, 'flag'), 'reLoad'=>true));
+                                    ?>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+
+		<?php } ?>
+
+		<?php }else{ ?>
+		<tr><td colspan="8" align="center">No records found</td></tr>
+		<?php } ?>
+	</table>
+        <?php if($pages){
+            $Content->element('admin/list_actions');
+            include_once($Content->element);
+        } ?>
+        <?php echo $Form->end(); ?>
+</div>
+<?php
+        $Content->render(array('class'=>'paginate','method'=>'pagination',$Content->pages->page['pages'],$Content->pages->page['page'],$link=array("class"=>"pages","method"=>"admin_manage"),$Content->pages->page['order_by'],$Content->pages->page['order']));
+        include_once($Content->element);
+?>

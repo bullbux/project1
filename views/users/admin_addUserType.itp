@@ -1,0 +1,36 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#usertype').blur(function(){
+            if($(this).val()){
+                $('#check-availability').html("<?php echo $Include->image('ajax-loader.gif'); ?>");
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo WWW_ROOT.'/users/checkUserTypeAvailability'; ?>/" + $(this).val(),
+                    success: function(content){
+                        $('#check-availability').html($(content));
+                        if(content.indexOf('is available') <= 0){
+                            $('#usertype').focus();
+                            $('#usertype').select();
+                        }
+                    }
+                });
+            }
+        });
+    });
+</script>
+<h2 class="heading cats-ico">Usertype [Add]</h2>
+<div class="data"> 
+    <?php echo $Form->create('usertype', array('action'=>'', 'method'=>'post')); ?>
+		<p>
+		<label for="usertype">Usertype<span class="required">*</span></label>
+        <div class='float-left'>
+			<?php echo $Form->input('usertype', array('type'=>'text', 'id'=>'usertype','class'=>'bigfield mandatory', 'title'=>'Usertype')); ?>
+            <span id="check-availability"></span>
+        </div>
+        <div class="clear"></div>
+        <label for="">&nbsp;</label>
+        <?php echo $Form->input('submit', array('type'=>'hidden', 'value'=>'1')); ?>
+        <?php echo $Form->input('addusertype', array('type'=>'submit', 'value'=>'Add Usertype')); ?>
+        <div class="clear"></div>
+    <?php echo $Form->end(); ?>
+</div>

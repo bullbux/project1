@@ -1,0 +1,109 @@
+<?php
+$users = importClass('users');
+$users->checkRememberMe();
+if($session->checkSession($session)){
+?>
+<li class="profile float-right">
+    <div class="btn_box">
+        <div class="profile_main">
+            <a href="#" class="profile"></a>
+            <div class="drop_box">
+                <a href="#" class="profile_h"></a>
+                <div class="drop_t">
+                    <div class="drop_b">
+                        <div class="drop_m">
+                            <ul>
+                                <li>
+                                   <?php 
+                                        $name = $session->read('User.name');
+                                        $username = $session->read('User.username');
+                                        echo $Form->link(($name ? $name : $username), array());
+                                    ?>
+                                </li>
+
+                                <?php 
+                                $pfx = null;
+                                $messages = importClass('messages');
+                                if($session->checkUserSession($session, array(UserTypeConsts::LANDLORD))){
+                                    $pfx = 'dashboard';
+                                    $unreadMsgs = $messages->_countUnreadMessages();
+                                }elseif($session->checkUserSession($session, array(UserTypeConsts::MEMBER))){
+                                    $pfx = 'member';
+                                    $unreadMsgs = $messages->_countUnreadReplies();
+                                } ?>
+                                <?php if($pfx){ ?>
+                                <li>
+                                    <?php echo $Form->link('Account settings', array('class'=>'users', 'method'=>$pfx . '_account'), array('title'=>'Account settings', 'class'=>'')); ?>
+                                </li>
+								<?php if($session->checkUserSession($session, array(UserTypeConsts::LANDLORD))){ ?>
+                                <li>
+                                    <?php echo $Form->link('Landlord Dashboard', array('class'=>$pfx, 'method'=>'properties' ), array('title'=>'Landlord Dashboard', 'class'=>'')); ?>
+                                </li>
+								<?php } ?>  
+                                <li>
+                                    <?php echo $Form->link('My favorites', array('class'=>'properties', 'method'=>$pfx . '_favorites'), array('title'=>'My favorite property listings', 'class'=>'')); ?>
+                                </li>
+                                <!--<li>
+                                    <?php                                                                         
+                                    echo $Form->link('Comments'.($unreadMsgs ? " ($unreadMsgs)" : ''), array('class'=>'messages', 'method'=>$pfx . '_inbox'), array('title'=>'My comments'.($unreadMsgs ? ", Unread ($unreadMsgs)" : ''), 'class'=>''));
+                                    ?>
+                                </li>-->
+                                <li>
+                                    <?php                                                                         
+                                    echo $Form->link('Messages'.($unreadMsgs ? " ($unreadMsgs)" : ''), array('class'=>'messages', 'method'=>$pfx . '_private'), array('title'=>'Messages'.($unreadMsgs ? ", Unread ($unreadMsgs)" : ''), 'class'=>''));
+                                    ?>
+                                </li>
+                                <li>
+                                    <?php echo $Form->link('My search links', array('class'=>'properties', 'method'=>$pfx . '_seachLinks'), array('title'=>'My saved search links', 'class'=>'')); ?>
+                                </li>
+                                <?php }elseif($session->checkUserSession($session, array(UserTypeConsts::ADMIN))){ ?>
+                                <li>
+                                    <?php echo $Form->link('Admin panel', array('class'=>'properties', 'method'=>'admin_index'), array('title'=>'Go to Admin panel', 'class'=>'')); ?>
+                                </li>
+                                <?php } ?>
+                            </ul>
+                            <div class="logout">
+                                <div class="logout_l">
+                                    <div class="logout_r">
+                                        <div class="logout_m">
+                                            <?php echo $Form->link('Sign Out', array('class'=>'users', 'method'=>'logout'), array('title'=>'Sign Out')); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</li>
+<?php }else{ ?>
+<li class="profile">
+    <div class="btn_box">
+        <?php echo $Form->link('Sign Up', array('class'=>'users', 'method'=>'renter_signup'), array('title'=>'click here to Sign up', 'class'=>'signup text_link')); ?>
+        <div class="profile_main">
+            <?php echo $Form->link('Log In', array('class'=>'users', 'method'=>'login'), array('title'=>'Login', 'class'=>'login top')); ?>
+            <div class="drop_box">
+                <a class="login_h" href="#"></a>
+                <div class="drop_t">
+                    <div class="drop_bot">
+                        <div class="drop_m">
+                            <?php
+                                $Content->element('users/ajaxlogin');
+                                include_once($Content->element);
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</li>
+<script type="text/javascript">
+    function login(){
+        $('form[name=loginForm] input[name=redirect]').val(window.location.href);
+        $('form[name=loginForm]').submit();
+    }
+</script>
+<?php } ?>

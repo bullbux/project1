@@ -1,0 +1,82 @@
+body {
+	background:#736F66;
+}
+
+
+
+#sidebar {
+	background: none;
+}
+
+.top_nav { background: #69655B; width:99%;}
+
+.title a { color: #575247; }
+.session { color: #FFF; }
+.session a { color: #FFFECC; }
+
+#navigation a { color: #BEB7A9; }
+#navigation a:hover { color: #D1CABB; }
+
+.navhead, .navhead_blank {
+	background: #867E6E url('../images/coffee_bg_navhead.gif') repeat-x top left;
+	border: 1px solid #8A8271;
+	color: #BEB7A9;
+}
+	.navhead:hover, .navhead_blank:hover { border: 1px solid #9B9280; }
+
+.subnav {
+	background: #69655B;
+}
+
+.subnav1 {
+	background: #69655B;
+}
+
+.navbullet {
+	background: url('../images/coffee_navbullet.png') no-repeat;
+}
+
+.submenu li a { border-bottom: 1px solid #757168; }
+
+
+
+#copyrights {
+	background: #615C52 url('../images/small.png') no-repeat 8px;
+	color: #807A6F;
+}
+#copyrights a { color: #807A6F; }
+
+
+
+#content {
+	background: #C5BEB2;
+}
+	.box {
+		background: #fff url('../images/bg_box.gif') repeat-x top left;
+		border: 1px solid #fff;
+	}
+	
+tbody tr:hover td { background: #FDF9F3; }
+
+/* Code & Pre */
+
+code,
+pre {
+	border-left: 4px solid #C5BEB2;
+}
+
+/* Forms */
+
+.submit:hover,
+.button:hover {
+	color: #70A235;
+}
+
+/* Pagination */
+/* Class .current is used to mark current page; */
+
+.paginator li a:hover, .paginator li.current a {
+	color: #545454;
+	border: 1px solid #BEB7A9;
+	background: #F2EADD;
+}

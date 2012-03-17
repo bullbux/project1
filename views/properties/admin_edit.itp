@@ -1,0 +1,15 @@
+<script type="text/javascript">
+var draft_url = '<?php echo WWW_ROOT . '/admin/properties/saveDraft'; ?>';
+</script>
+<h2 class="heading">
+    <span class="float-left">EDIT PROPERTY</span>
+    <span class="float-right" id="auto-save-status"></span>
+    <br class="clear"/>
+</h2>
+<div id="main_container">
+    <?php
+    $Content->element('properties/new_property_form');
+    include($Content->element);
+    ?>
+    <div class="clear"></div>
+</div>

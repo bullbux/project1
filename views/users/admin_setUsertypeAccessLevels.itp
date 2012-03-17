@@ -1,0 +1,30 @@
+<script language="javascript" type="text/javascript">
+	$().ready(function(){
+		// Tooltip
+		if($('.popup-tooltip').length > 0)
+		$('.popup-tooltip').tooltip({ position: 'center left', offset: [0, 0], delay: 50, tipClass: 'tooltip',events: {
+				input: 'mouseover, mouseout, click'
+		} });
+	});
+</script>
+<h2 class="heading cats-ico">Set Roles for Usertype</h2>
+<div class="data"> 
+    <?php echo $Form->create('usertype', array('action'=>'', 'method'=>'post')); ?>
+		<p>
+		<label for="usertype">Usertype - <strong><?php echo $usertype->usertype; ?></strong></label>
+        <div class='float-left'>
+			<ul class="access_levels">
+			<?php 
+				foreach($rowData as $key=>$value){
+					echo "<li>".$Form->input('access_level['.$value->id.']',array('type'=>'checkbox','value'=>$value->id,'title'=>$value->description,'class'=>'popup-tooltip'))."&nbsp;".$value->access_level."</span></li>";
+				}
+			?>
+			</ul>
+        </div>
+        <div class="clear"></div>
+        <label for="">&nbsp;</label>
+        <?php echo $Form->input('submit', array('type'=>'hidden', 'value'=>'1')); ?>
+        <?php echo $Form->input('addaccesslevels', array('type'=>'submit', 'value'=>'Update Access-levels')); ?>
+        <div class="clear"></div>
+    <?php echo $Form->end(); ?>
+</div>

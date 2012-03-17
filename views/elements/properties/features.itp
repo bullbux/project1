@@ -1,0 +1,26 @@
+<?php if($features){ ?>
+<ul>
+    <?php foreach($features as $feature){ ?>
+    <li>
+        <?php if($Content->params['method'] == 'printListing'){ ?>
+        <?php echo $feature['propertyFeatures.feature']; ?>
+        <?php }else { ?>
+        <a href="#" class="pr-feature" title="<?php echo $feature['propertyFeatures.feature']; ?>">
+        <?php
+        $style = '';
+        if(isset($Content->properties->Request->request[$fieldName][$feature['propertyFeatures.id']]))
+            $style = "border: medium solid #CCCCCC";
+        echo $Include->image(WWW_ROOT.'/resources/uploads/property_features/'.$feature['propertyFeatures.off_image'], array('alt'=>$feature['propertyFeatures.feature'], 'style'=>$style))
+        ?>
+        <?php if($Content->params['method'] == 'details' || $Content->params['method'] == 'dashboard_details'){ ?>
+        <span>
+        <?php echo $feature['propertyFeatures.feature']; ?>
+        </span>
+        <?php } ?>
+        <?php echo $Form->input("{$fieldName}[".$feature['propertyFeatures.id']."]", array('type'=>'checkbox', 'value'=>$feature['propertyFeatures.id'], 'class'=>'pr_feature_hide')); ?>
+        </a>
+		<?php } ?>
+    </li>
+    <?php } ?>
+</ul>
+<?php } ?>

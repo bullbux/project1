@@ -1,0 +1,355 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:fb="http://ogp.me/ns/fb#">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta content="<?php echo !empty($Content->metaDescription) ? $Content->metaDescription : (defined('META_DESCRIPTION') ? META_DESCRIPTION : ''); ?>" name="description" />
+        <meta content="<?php echo !empty($Content->metaKeywords) ? $Content->metaKeywords : (defined('META_KEYWORDS') ? META_KEYWORDS : ''); ?>" name="Keywords" />
+		<meta property="og:title" content="Check out my new listing on apartmentsforrent.com" /> 
+        <title><?php echo $Content->pageTitle; ?> &laquo; <?php echo defined('PROJECT_NAME') ? SITE_NAME : ''; ?> </title>
+        <?php echo $Include->css('front/style.css'); ?>
+		<?php echo $Include->css('ui-lightness/jquery-ui-1.8.18.custom.css'); ?>
+
+        <?php echo $Include->js('cufon-yui.js'); ?>
+        <?php echo $Include->js('Droid_Sans_400-Droid_Sans_700.font.js'); ?>
+        <?php echo $Include->js('cufon-replace.js'); ?>
+        <?php echo $Include->js('drop_down.js'); ?>
+		<?php echo $Include->js('jquery.js'); ?>
+        <?php //echo $Include->js('jquery-1.7.1.min.js'); ?>
+        <?php //echo $Include->js('jquery-ui-1.8.18.custom.min.js'); ?>
+        <?php echo $Include->js('validations.js'); ?>
+        <?php echo $Include->js('events.js'); ?>
+        <script type="text/javascript">
+            Event.transmsgBgColor = '#f9cc8b';
+            
+        </script>
+		<?php if($_SERVER['REQUEST_URI'] == '/apartments/'){ ?>
+		<style type="text/css">
+		.frame .header{
+			margin-top: 150px;
+		}
+		.advance_search_main {
+			top: 270px;
+		}
+		</style>
+		<?php } ?>
+        <?php echo $Include->js('popup.js'); ?>
+        <?php echo $Include->js('popup_search.js'); ?>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                if($(".tabber-container").length > 0){
+                    $(".tabber-container").hide();
+                    $(".tabber-container:eq(0)").show();
+                    $("a.tabber-tab").click(function(e){
+                        var e = e ? e : window.event;
+                        e.preventDefault();
+                        $(".tabber-container").hide(1000);
+                        $(".tabber-container").eq($("a.tabber-tab").index(this)).show(1000);
+                        $("a.tabber-tab").removeClass('sel');
+                        $(this).addClass('sel');
+                    });
+                }
+            });
+        </script>
+        <script type="text/javascript">
+            $().ready(function(){
+                // Select property features
+                if($('a.pr-feature').length > 0){
+                    $('a.pr-feature').click(function(e){
+                        var e = e ? e : window.event;
+                        e.preventDefault();
+                        var chkbox = $(this).find('input:eq(0)');
+                        var fimg = $(this).find('img:eq(0)');
+                        if(chkbox[0].checked){
+                            fimg.css('border', '0');
+                            chkbox.removeAttr('checked');
+                        }else{
+                            fimg.css('border', 'medium solid #CCCCCC');
+                            chkbox.attr('checked', 'checked');
+                        }
+                    });
+                }
+            });
+        </script>
+        <?php echo $Content->scripts(); ?>
+    </head>
+
+    <body>
+
+        <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=302360998413";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<?php 
+if(isset($_SESSION['newmessage'])) {
+	if($_SESSION['newmessage'] != ''){
+		echo $_SESSION['newmessage'];
+		$_SESSION['newmessage'] = '';
+		unset($_SESSION['newmessage']);
+		?>
+        <script>
+            $(document).keyup(function(e){
+                if (!e) var e = window.event;
+                var code = (e.keyCode ? e.keyCode : e.which);
+                // Released key is ESC
+                if(code == 27){
+                    $('#lightbox').fadeOut();
+                }
+            }); 
+        $('#lightbox #lb-close').click(function(){
+            $('#lightbox').fadeOut('slow');
+            if(!(typeof(ref.popup.backlay) != 'undefined' && (ref.popup.backlay == false || ref.popup.backlay == 'false')))
+                $('#backlayout').fadeOut('slow');
+
+            // Lightbox on close event
+            if(typeof(ref.popup.onClose) != 'undefined'){
+                if(ref.isfunctionExists(ref.popup.onClose)){
+                    ref.cal(ref.popup.onClose);
+                }
+            }
+            // unbind the click event
+            $(this).unbind( "click" );
+        });			
+		</script>	       
+        <?php
+	}
+}
+?>
+        <div id="mainframe">
+		<!-- PREVIEW DIV STARTS HERE -->
+		  <?php if($Content->method == 'preview') { ?>
+		  <div style="width:100%; text-align:center; height:30px; background:rgba(78,10,10,0.5); border:solid 1px #999999; font-size:18px; position:fixed; top:2px; z-index:1; padding-top:5px; margin:0 auto;">
+			<a href="<?php echo WWW_ROOT.'/dashboard/properties/edit/'.$Content->param.'/1/properties.id/DESC'; ?>" style="color: #FFF; text-decoration: none;">Click here to continue edit or publish the listing</a> <!--| <a href="" style="color: #FFF; text-decoration: none;" >Publish the changes</a>-->
+			</div>
+		  <?php } ?> 		
+		<!-- PREVIEW DIV ENDS HERE -->  
+        <!-- SITE HEADER STARTS HERE -->
+            <?php
+                $searchFormAction = array();
+                if($Content->params['prefix'] == 'dashboard' && $Content->params['method'] != 'dashboard_archives' && $Content->params['method'] != 'dashboard_index'){
+                    $searchFormAction = array('class'=>'properties', 'method'=>'dashboard_index', 'qs'=>$Content->params['prefix']);
+                }elseif($Content->params['prefix'] == '' && $Content->params['method'] != 'advancedListing'){
+                    $searchFormAction = array('class'=>'properties', 'method'=>'advancedListing', 'qs'=>$Content->params['prefix']);
+                }
+            ?>
+        <div class="header main-h">
+            <div class="inner">
+            <div class="left-part-header">
+                <div class="logo">
+                    <?php echo $Form->link($Include->image('logo.png', array('alt'=>SITE_NAME)), WWW_ROOT, array('title'=>'logo')); ?>
+                </div>
+                <?php if ($Content->params['method'] != 'index') : ?>
+                <div class="fl fast_search">
+                    <?php echo $Form->create('normalSearchFormM', array('action'=>array('class'=>'properties', 'method'=>'advancedListing', 'qs'=>$Content->params['prefix']), 'method'=>'GET')); ?>
+                    <div class="search_form_cont_ws">
+                        <?php echo $Form->input('s', array('type'=>'text', 'class'=>'top search {default:"Your search terms here.."}', 'value'=>'Your search terms here..')); ?>
+                        <a href="javascript: void(0);" class="find-btn-sml search" title='Search' onclick="javascript: document.normalSearchFormM.submit(); return false;"></a>
+                        <div class="clrl"></div>
+                    </div>
+                    <?php echo $Form->end(); ?>
+                    <div class="fr">
+                        <a href="#" id="a_search_popup" class="adv_min">Advanced Search</a>
+                    </div>
+                </div>
+                <div class="clr"></div>
+                <div>
+                <?php else : ?>
+                    <div style="margin-top:24px;float:left;">
+                <?php endif; ?>
+                    <div class="fb-like" data-href="http://betaafr.acapelladevelopment.com/" data-send="false" data-layout="button_count" data-width="45" data-show-faces="false"></div>
+                </div>
+                <div class="clrl"></div>
+            </div>
+                <div class="navigation<?php echo ($Content->params['method'] != 'index') ? ' short' : ''; ?>">
+                    <ul>
+                        <!-- USER LOGIN / LOGOUT LINK -->
+                        <?php
+                            $Content->element('users/login_logout_link');
+                            include_once($Content->element);
+                        ?>
+                        <li>
+                            <!-- FACEBOOK SIGN UP -->
+                            <?php
+                            $label = ($Content->params['method'] == 'index') ? 'Sign Up With Facebook' : 'Sign Up';
+                            
+                            echo $Form->ajaxLink($Include->image('facebook_icon.png', array('alt' => 'Facebook')) . '<span>' . $label . '</span>', array('class'=>'users', 'method'=>'signupWithFb'), array('open'=>array('type'=>'lightbox', 'width'=>500, 'height'=>400, 'reLoad'=>true, 'scroll'=>false, 'lbHeader'=>array('bgColor'=>'#73ADDD', 'textColor'=>'#FFFFFF', 'borderColor'=>'#73addd')), 'class' => 'facebook_big_signin'));
+                            ?> 
+                        </li>
+                        <li class="text_link"><?php echo $Form->link('Renters', array('class'=>'marketing', 'method'=>'renter_slider'), array('title'=>'Renters')); ?></li>
+                        <li class="text_link"><?php echo $Form->link('Landlords', array('class'=>'marketing', 'method'=>'landlord_slider'), array('title'=>'Landlords')); ?></li>
+                        <li class="text_link"><?php echo $Form->link('Advertise', array(), array('title'=>'Advertise')); ?></li>
+                    </ul>
+                </div>
+                <div class="clrl"></div>
+            </div>
+        </div>
+        <!-- SITE HEADER ENDS HERE -->
+    	<div class="frame">
+            <!-- SITE NORMAL SEARCH STARTS HERE -->
+            <?php if ($Content->params['method'] == 'index') : ?>
+                <h1 class="slogan">Free to list. Free to search. Free to share.</h1>
+                <div id="greeting">Hi "Chicagoan" welcome to the easiest apartment search tool. Want to <a class="orange" href="#">change your city</a>?</div>
+                <?php
+                    $Content->element('properties/normal_search');
+                    include_once($Content->element);
+                ?>
+            <?php endif; ?>
+            <!-- SITE NORMAL SEARCH ENDS HERE -->
+            <!-- SITE MAIN CONTENTS CONTAINER STARTS HERE -->
+            <div class="main_container">
+                <?php
+                    $session->flash();
+                    include_once($Content->view);
+                ?>
+                <?php if(isset($rightSidebar)){ ?>
+                <div class="main_right">
+                    <?php
+                        $Content->element($rightSidebar);
+                        include_once($Content->element);
+                    ?>
+                </div>
+                <?php } ?>
+            </div>
+            <!-- SITE MAIN CONTENTS CONTAINER ENDS HERE -->
+        </div>
+        </div>
+        <!-- SITE ADVANCE SEARCH STARTS HERE -->
+        <?php
+            $Content->element('properties/advance_search');
+            include_once($Content->element);
+        ?>
+        <!-- SITE ADVANCE SEARCH ENDS HERE -->
+        <?php
+        if($Content->params['method'] == 'details') {
+            ?>
+        <!-- Send to a friend email popup-->
+        <div id="popup_sendmail"> 
+            <div class="pop_box_t">
+                <div class="pop_box_b">
+                    <div class="pop_box_m">
+                        <div class="form_area">
+                            <a class="close"></a>
+                            <h3><?php echo $property['properties.title']; ?> </h3>
+                            <p><?php echo $location; ?></p>
+                            <p>
+                                    <?php echo $property['prContactInfo.contact_name']; ?>
+                                <br /><?php if($property['prContactInfo.phone'] && $property['prContactInfo.phone'] != '--') {
+                                        echo '('. preg_replace('/-/', ') (', $property['prContactInfo.phone']) . ')' . '<br />';
+                                    } ?>
+                                    <?php echo $property['prContactInfo.contact_email']; ?>
+                            </p>
+                            <div id="sendtofriend">
+                                <?php
+                                // Send current property link to a friend -- Popup
+                                $Content->element('properties/sendto_friend');
+                                include($Content->element);
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   <!-- Contact Property Flagging popup -->
+        <div id="popup_flaglisting"> 
+            <div class="pop_box_t">
+                <div class="pop_box_b">
+                    <div class="pop_box_m">
+                        <div class="form_area">
+                            <a class="close"></a>
+                            <h3><?php echo $property['properties.title']; ?> </h3>
+                                                       
+                            <div id="flaglisting">
+                                <?php
+                                // Send current property link to a friend -- Popup
+                                $Content->element('properties/flaglisting');
+                                include($Content->element);
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Contact property landlord email popup -->
+        <div id="popup_contactmail">
+            <div class="pop_box_t">
+                <div class="pop_box_b">
+                    <div class="pop_box_m">
+                        <div class="form_area">
+                            <a class="close"></a>
+                            <h3><?php echo $property['properties.title']; ?> </h3>
+                            <p><?php echo $location; ?></p>
+                            <p>
+                                    <?php echo $property['prContactInfo.contact_name']; ?>
+                                <br /><?php if($property['prContactInfo.phone'] && $property['prContactInfo.phone'] != '--') {
+                                        echo '('. preg_replace('/-/', ') (', $property['prContactInfo.phone']) . ')' . '<br />';
+                                    } ?>
+                                    <?php //echo $property['prContactInfo.contact_email']; ?>
+                            </p>
+                            <div id="contactUsPopup">
+                                <?php
+                                // Send current property link to a friend -- Popup
+							$Content->render(array('class'=>'users', 'method'=>'getloggeduserinfo'), 'users/contactus');
+                            include($Content->element);
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php
+        } if(($_SESSION['User']['user_type']) == 3){
+        ?>
+		<div id="backgroundPopup"></div>
+		<div class="ajTourDef" id="RenterTour" style="display:none">
+		  <div title="<?php echo WWW_ROOT;?>">
+			Time to get started! This is the main search page. You can use the search box for the location or keywords or use the advanced search tab to narrow down the search of your new apartment.Placeholder for page 1 - replace this text
+		  </div>
+		  <div title="<?php echo WWW_ROOT;?>/properties/advancedListing?s=Chicago&from=&to=&bed=0&bath=0">
+			This is the search listing page. For an example we have searched for "Chicago". In the list view you can see the apartments matching your search, click on the photos for the photo gallery, or send a message to the landlord. If you click on the "apartment title" in blue it will bring you to the detail page about that listing.
+		  </div>
+		  <div title="<?php echo WWW_ROOT;?>/member/properties/favorites">
+			When looking for a new apartment if you click on "add to favorites" on the detail page this is where all of your favorites apartments are stored
+		  </div>
+		  
+		  <div title="<?php echo WWW_ROOT;?>/member/messages/private">
+			By using our custom messaging system this is where you can communicate with all of your prospective landlords - in one, clutter free place!
+		  </div>
+		  <div title="<?php echo WWW_ROOT;?>/member/properties/seachLinks">
+			When searching for an apartment you can save your search parameters. They are stored on this page so that you can easily access them later.
+		  </div>
+		  <div title="<?php echo WWW_ROOT;?>/member/users/account">
+			Want to change your password? You contact info? Your email settings. Visit the account section to edit these items.
+		  </div>
+		   
+		</div>
+		<?php }elseif(($_SESSION['User']['user_type']) == 2){ ?>
+		<div class="ajTourDef" id="LandlordTour" style="display:none">
+		  <div title="<?php echo WWW_ROOT;?>/dashboard/properties/index">
+			This is the landlord dashboard. On this page you can check out your current listings, list a new apartment, edit your listings, or view your current messages from prospective tenants.
+		  </div>
+		  <div title="<?php echo WWW_ROOT;?>/dashboard/properties/add">
+			This is what the listing page looks like. Follow our tips on this page to help expand the visibility of your listing and increase the interactions with your future tenants. 
+		  </div>
+		  <div title="<?php echo WWW_ROOT;?>/dashboard/messages/inbox">
+			Communicate with your future tenants. Here is the messaging center where you can exchange messages with another.
+		  </div>
+		  <div title="<?php echo WWW_ROOT;?>/dashboard/users/account">
+			Want to change your password? You contact info? Your email settings. Visit the account section to edit these items.
+		  </div>	   
+		</div>		
+		<?php } ?>
+		<script type="text/javascript" src="http://amberjack.org/src/stable/amberjack.pack.js">
+		</script>
+		
+		<script type="text/javascript" defer="true">
+		  Amberjack.onCloseClickStay = true;
+		  Amberjack.open();
+		</script>	
+    </body>
+</html>

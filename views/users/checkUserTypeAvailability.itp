@@ -1,0 +1,7 @@
+<?php if($flag1){
+    if($result){
+        echo $Include->image('front/validate_error.png', array('alt'=>'')).' <font color="#d73333">Usertype is not available. Try another one.</front>';
+    }else{
+        echo $Include->image('front/validate_success.png', array('alt'=>'')).' <font color="green">Usertype is available.</front>';
+    }
+} ?>

@@ -1,0 +1,255 @@
+<div class="main_left">
+        <div class="profile_listing">
+        <div class="sorting_top_box">
+                <h1>MY ACCOUNT</h1>
+        </div>
+    </div>
+</div>
+<div class="profile_container">        
+        <div class="profile_top">
+        <div class="profile_bot">
+                <div class="profile_mid">
+                <div class="profile_content">
+                    <div class="myaccount_container">
+                        <div class="m_content_box">
+                        <?php echo $Form->create('accountSettingForm', array('action'=>'', 'method'=>'post')); ?>
+                                <h3>PROFILE</h3>
+                            <ul>
+                                <li>
+                                        <div class="inner_s_box">
+                                        <label>User Name</label>
+                                        <div class="txt_box_l">
+                                            <div class="txt_box_r">
+                                                <div class="txt_box_m">
+                                                    <?php echo $Form->input('username', array('type'=>'text', 'readonly'=>'', 'disabled'=>'')); ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                        <div class="inner_s_box">
+                                                <label>Email: <?php echo $Content->users->Request->request['email']; ?>  </label>
+                                    </div>
+                                </li>
+                                <li>
+                                        <div class="inner_s_box">
+                                        <label>Change Email</label>
+                                        <div class="txt_box_l">
+                                            <div class="txt_box_r">
+                                                <div class="txt_box_m">
+                                                    <?php echo $Form->input('new_email', array('type'=>'text')); ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="inner_s_box">
+                                        <label>Retype New Email</label>
+                                        <div class="txt_box_l">
+                                            <div class="txt_box_r">
+                                                <div class="txt_box_m">
+                                                    <?php echo $Form->input('confirm_new_email', array('type'=>'text')); ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                        <div class="inner_s_box">
+                                        <?php echo $Form->input('update', array('type'=>'hidden', 'value'=>'1')); ?>
+                                        <?php echo $Form->input('profile_settings', array('type'=>'hidden', 'value'=>'1')); ?>
+                                        <a href="#" class="save_changes"></a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <?php echo $Form->end(); ?>
+                        </div>
+
+                        <div class="m_content_box">
+                            <?php echo $Form->create('accountSettingForm', array('action'=>'', 'method'=>'post')); ?>
+                                <h3>PASSWORD</h3>
+                            <ul>
+                                <li>
+                                        <div class="inner_s_box">
+                                        <label>Current password</label>
+                                        <div class="txt_box_l">
+                                            <div class="txt_box_r">
+                                                <div class="txt_box_m">
+                                                    <?php echo $Form->input('current_password', array('type'=>'password', 'class'=>'mandatory {title: "Current password"}')); ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>Your password should be at least 6 characters and not a dictionary word or common name. You should change your password once a year.<br /><a href="<?php echo WWW_ROOT; ?>/users/forgotPassword">Forgot your password?</a></p>
+                                </li>
+                                <li>
+                                        <div class="inner_s_box">
+                                        <label>New password</label>
+                                        <div class="txt_box_l">
+                                            <div class="txt_box_r">
+                                                <div class="txt_box_m">
+                                                    <?php echo $Form->input('new_password', array('type'=>'password')); ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="inner_s_box">
+                                        <label>Retype password</label>
+                                        <div class="txt_box_l">
+                                            <div class="txt_box_r">
+                                                <div class="txt_box_m">
+                                                    <?php echo $Form->input('confirm_password', array('type'=>'password')); ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                        <div class="inner_s_box">
+                                        <?php echo $Form->input('update', array('type'=>'hidden', 'value'=>'1')); ?>
+                                        <?php echo $Form->input('password_settings', array('type'=>'hidden', 'value'=>'1')); ?>
+                                        <a href="#" class="save_changes"></a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <?php echo $Form->end(); ?>
+                        </div>
+
+                        <div class="m_content_box contact_info">
+                            <?php echo $Form->create('accountSettingForm', array('action'=>'', 'method'=>'post')); ?>
+                                <h3>CONTACT INFO</h3>
+                                <ul>
+                                    <li>
+                                        <div class="inner_contact_box">
+                                            <label>Contact Name</label>
+                                            <div class="txt_box_l">
+                                                <div class="txt_box_r">
+                                                    <div class="txt_box_m">
+                                                        <?php echo $Form->input('name', array('type'=>'text')); ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="inner_s_box">
+                                            <label>Phone</label>
+                                            <div class="phone_box">
+                                                <div class="phone_inner">
+                                                    <div class="txt_box_l">
+                                                        <div class="txt_box_r">
+                                                            <div class="txt_box_m">
+                                                                <?php echo $Form->input('phone1', array('type'=>'text', 'class'=>'s_txt {default: "xxx"}', 'maxlength'=>3)); ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="phone_inner">
+                                                    <div class="txt_box_l">
+                                                        <div class="txt_box_r">
+                                                            <div class="txt_box_m">
+                                                                <?php echo $Form->input('phone2', array('type'=>'text', 'class'=>'s_txt {default: "xxx"}', 'maxlength'=>3)); ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="phone_inner">
+                                                    <div class="txt_box_l">
+                                                        <div class="txt_box_r">
+                                                            <div class="txt_box_m">
+                                                                <?php echo $Form->input('phone3', array('type'=>'text', 'class'=>'s_txt {default: "xxxx"}', 'maxlength'=>4)); ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="inner_contact_box">
+                                            <label>Contact Email</label>
+                                            <div class="txt_box_l">
+                                                <div class="txt_box_r">
+                                                    <div class="txt_box_m">
+                                                        <?php echo $Form->input('contact_email', array('type'=>'text')); ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="inner_contact_box">
+                                            <label>Confirm Email</label>
+                                            <div class="txt_box_l">
+                                                <div class="txt_box_r">
+                                                    <div class="txt_box_m">
+                                                        <?php echo $Form->input('confirm_contact_email', array('type'=>'text')); ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>                                       
+                                        <div class="inner_contact_box">
+                                            <label>Website</label>
+                                            <div class="txt_box_l">
+                                                <div class="txt_box_r">
+                                                    <div class="txt_box_m">
+                                                        <?php echo $Form->input('website', array('type'=>'text')); ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="inner_s_box">
+                                            <?php echo $Form->input('update', array('type'=>'hidden', 'value'=>'1')); ?>
+                                            <?php echo $Form->input('contact_settings', array('type'=>'hidden', 'value'=>'1')); ?>
+                                            <a href="#" class="save_changes"></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <?php echo $Form->end(); ?>
+                            </div>
+
+                        <div class="m_content_box">
+                            <?php echo $Form->create('accountSettingForm', array('action'=>'', 'method'=>'post')); ?>
+                                <h3>PREFERENCES</h3>
+                            <ul class="pref_list">
+                                <li>
+                                    <?php echo $Form->input('preference_message', array('type'=>'checkbox', 'value'=>'1')); ?>
+                                    <label>Email me when someone messages me</label>
+                                </li>
+                                <li>
+                                    <?php echo $Form->input('preference_expire', array('type'=>'checkbox', 'value'=>'1')); ?>
+                                    <label>Email me when one of my listings is about to expire</label>
+                                </li>
+                                <li>
+                                    <?php echo $Form->input('preference_updates', array('type'=>'checkbox', 'value'=>'1')); ?>
+                                    <label>Keep me informed of new features and updates</label>
+                                </li>
+
+                                <li>
+                                    <div class="inner_s_box">
+                                        <?php echo $Form->input('update', array('type'=>'hidden', 'value'=>'1')); ?>
+                                        <?php echo $Form->input('preferences_settings', array('type'=>'hidden', 'value'=>'1')); ?>
+                                        <a class="save_changes" href="#"></a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <?php echo $Form->end(); ?>
+                        </div>
+
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+<script>
+    $('a.save_changes').click(function(){
+        $(this).parents('form:eq(0)').submit();
+        return false;
+    });
+</script>

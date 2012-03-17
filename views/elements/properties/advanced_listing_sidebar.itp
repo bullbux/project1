@@ -1,0 +1,220 @@
+<script type="text/javascript">
+	//<[CDATA[
+	var default_val = 'Search city, zip or keywords';
+
+	function featuresBlockMore (elem) {
+		var default_text = ' More Features';
+		var s = elem.html().replace(default_text, '');
+		var all_li = elem.parent().find('li');
+		var param_step = 50;
+		var step_li = 7 * param_step;
+
+		if (s == '+') {
+			elem.html('-' + default_text);
+			all_li.each(function (i) {
+				if (! $(this).is(':visible')) {
+					$(this).delay(step_li).fadeIn('fast');
+					step_li += param_step;
+				}
+			});
+		} else {
+			step_li = all_li.length * param_step;
+			elem.html('+' + default_text);
+
+			all_li.each(function (i) {
+				if (i > 7) {
+					$(this).delay(step_li).fadeOut('fast');
+					step_li -= param_step;
+				}
+			});
+		}
+
+	}
+
+	$(document).ready(function () {
+		$('.more_features').click(function () {
+			featuresBlockMore ($(this));
+			return false;
+		});
+		$('dl .features_list_ul').each(function () {
+			$(this).find('li').each(function (i) {
+				if (i > 7)
+					$(this).hide();
+			});
+		});
+
+		$('.new_advanced_search_sidebar input.search').focus(function () {
+			if ($(this).val() == default_val)
+				$(this).val('');
+		});
+
+		$('.new_advanced_search_sidebar input.search').blur(function () {
+			if ($(this).val() == '')
+				$(this).val(default_val);
+		});
+
+		$( ".new_advanced_search_sidebar input.search" ).val('Search city, zip or keywords');
+
+		$( ".new_advanced_search_sidebar input.search" ).autocomplete({
+			source: function( request, response ) {
+				$.get("<?php echo WWW_ROOT; ?>/properties/getCityByWord_Ajax", {'words': request.term}, function (data) {
+					if (! data.error) {
+						response($.map( data.results, function( item ) {
+							return {
+								label: item.name,
+								value: item.name,
+								id: item.id
+							}
+						}));
+					}
+				}, 'json');
+			},
+			minLength: 1,
+			select: function( event, ui ) {
+				$('#sidebar_city_select option').remove();
+				if (ui.item.id) {
+					$.get("<?php echo WWW_ROOT; ?>/properties/getNeighborhoodByCityID_Ajax", {'city': ui.item.id}, function (data) {
+						if (! data.error) {
+							$('#sidebar_city_select').append('<option value="0">Selected Neighborhood</option>');
+							for (var iter = 0; iter < data.results.length; iter++) {
+								$('#sidebar_city_select').append('<option value="' + data.results[iter].id + '">' + data.results[iter].name + '</option>');
+							}
+						}
+					}, 'json');
+				}
+			}
+		});
+//		$( ".new_advanced_search_sidebar input.search" ).change();
+		$('.new_as_s_clearall').click(function () {
+			$('.search_history li').remove();
+			$('.new_advanced_search_sidebar input.search').val(default_val);
+			document.advanceSearchForm2.reset();
+			return false;
+		});
+
+		$('.close_search_history').live('click', function () {
+			$(this).parent().remove();
+			return false;
+		});
+
+		$('#sidebar_city_select').change(function () {
+			var nb_isset = false;
+			var val_new_nb = Number($(this).val());
+
+			if (! val_new_nb)
+				return false;
+
+			var hoods = $(this).find('option:selected').html();
+			var parent_city = $('#advance-search-form-sidebar input.search').val();
+			var htm_new_nb = parent_city + ', ' + hoods;
+
+
+			$('.search_history .neighborhood_input').each(function () {
+				if ($(this).val().toUpperCase() == hoods.toUpperCase()) {
+					nb_isset = true;
+					return false;
+				}
+			});
+
+			if (! nb_isset)
+				$('.search_history').append('<li><input type="hidden" name="hoods[]" class="neighborhood_input" value="' + hoods + '" /><input type="hidden" name="citys[]" value="' + parent_city + '" /><a href="#" title="' + '" class="close_search_history">x</a>' + htm_new_nb + '</li>');
+		});
+
+	});
+
+	//]]!>
+</script>
+<?php echo $Form->create('advanceSearchForm_sidebar', array('action' => $searchFormAction, 'method' => 'GET', 'id' => 'advance-search-form-sidebar')); ?>
+<div class="new_advanced_search_sidebar">
+	<div class="top_new_as_s">
+		<div class="top_new_bottom_arrow"></div>
+		<div class="new_as_s_title">Refine Your Search</div>
+		<a class="new_as_s_clearall" href="#" >Clear All</a>
+		<div class="clear"></div>
+
+		<ul class="search_history">
+			<?php if ($global_search && is_array($global_search))
+			foreach ($global_search as $search_param) {
+				$key_name = '';
+				$mega_val = '';
+				echo "<li>";
+				foreach ($search_param as $key => $val) {
+					$key_name = '';
+					$class = '';
+					$val_i = $val;
+					switch ($key) {
+						case 's' :
+							$key_name = 'Keywords: ';
+							break;
+						case 'city' :
+							$key_name = 'City: ';
+							$key .= '[]';
+							break;
+						case 'citys' :
+							$class="citys_input";
+							$mega_val = $val;
+							$key .= '[]';
+							break;
+						case 'hoods' :
+							$class="neighborhood_input";
+							$mega_val .= ', ' . $val;
+						default :
+							$key .= '[]';
+					}
+					echo '<input type="hidden" class="' . $class . '" name="' . $key . '" value="' . $val . '" />';
+				}
+				echo '<a href="#" class="close_search_history">x</a> ' . $mega_val .'</li>';
+			} ?>
+		</ul>
+	</div>
+	<dl class="search_param_block">
+		<dt>What keyworks or location are you looking for?</dt>
+		<dd>
+			<p><?php echo $Form->input('', array('type'=>'text', 'class'=>'search', 'value'=>'Search city, zip or keywords')); ?></p>
+			<h4>Or select a neighborhood</h4>
+			<select id="sidebar_city_select" class="normal_size">
+				<option value="0">Select Neighborhood</option>
+			</select>
+		</dd>
+	</dl>
+	<dl class="search_param_block">
+		<dt>What kind of property are you loking for?</dt>
+		<dd>
+			<div class="float-left">
+				<h4>Bedrooms</h4>
+				<?php echo $Form->number('bed', array(0, UnitInfoConsts::MAX_BED), null, array('class' => 'mini_size1')); ?>
+			</div>
+			<div class="float-right">
+				<h4>Baths</h4>
+				<?php echo $Form->number('bath', array(0, UnitInfoConsts::MAX_BED), null, array('class' => 'mini_size2')); ?>
+			</div>
+			<div class="clear"></div>
+			<div class="float-left">
+				<h4>Min Rent</h4>
+				<?php echo $Form->input('from', array('type'=>'text', 'class' => 'mini_size1')); ?>
+			</div>
+			<div class="float-right">
+				<h4>Max Rent</h4>
+				<?php echo $Form->input('to', array('type'=>'text', 'class' => 'mini_size2')); ?>
+			</div>
+			<div class="clear"></div>
+		</dd>
+	</dl>
+
+	<dl class="search_param_block">
+		<dt>What unit features are you looking for?</dt>
+		<dd>
+			<?php $Content->render(array('class'=>'properties', 'method'=>'getUnitFeatures', 0), 'properties/features_checkbox'); include($Content->element); ?>
+			<a href="#" class="more_features">+ More Features</a>
+		</dd>
+	</dl>
+	<dl class="search_param_block">
+		<dt>What building features are you looking for?</dt>
+		<dd>
+			<?php $Content->render(array('class'=>'properties', 'method'=>'getPropertyFeatures', 0), 'properties/features_checkbox'); include($Content->element); ?>
+			<a href="#" class="more_features">+ More Features</a>
+		</dd>
+	</dl>
+	<input class="search_button" value="" type="submit" />
+</div>
+<?php echo $Form->end(); ?>

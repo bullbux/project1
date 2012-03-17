@@ -1,0 +1,20 @@
+<h2 class="heading">FAQ Management [<?php echo $action; ?>]</h2>
+<div class="data">
+    <?php echo $Form->create("addFAQForm",array("method"=>"post","action"=>"")); ?>
+    <div>
+        <label for="question">Question <span class='required'>*</span></label>
+        <?php echo $Form->input("question",array('type'=>'input', 'id'=>'question', "class"=>"bigfield mandatory {title: 'Question'}")); ?>
+    </div>
+    <div>
+        <label for="answer">Answer <span class='required'>*</span></label>
+        <?php echo $Form->textarea("answer", array('id'=>'answer', "class"=>"bigfield mandatory {title: 'Answer'}", 'rows'=>4)); ?>
+    </div>
+    <div>
+        <label for="category">Category <span class='required'>*</span></label>
+        <?php echo $Form->select("faq_cat_id", $categories, array(), array('id'=>'category', 'class'=>"bigfield mandatory {title: 'Category'}"), '--Select--'); ?>
+    </div>
+    <div>
+        <?php echo $Form->input('save', array('type'=>'submit', 'value'=>'Save')); ?>
+    </div>
+    <?php echo $Form->end(); ?>
+</div>

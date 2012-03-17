@@ -1,0 +1,11 @@
+<?php if($features){ ?>
+<ul> 
+    <li><span>Lease Length - <?php echo $features->lease_length; ?></span></li>
+	<!--<li><span>Deposit Amount $ - <?php //echo $features->deposit_amount; ?></span></li>-->
+	<li><span>Application Fee $ - <?php echo $features->application_fee; ?></span></li>
+	<li><span>Move in date available - <?php echo $features->move_in_date; ?></span></li>
+	<?php if($features->other1){ ?>
+	<li><span><?php echo $features->other2; ?> $ - <?php echo $features->other1; ?></span></li>
+	<?php } ?>
+</ul>
+<?php } ?>

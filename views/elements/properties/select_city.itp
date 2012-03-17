@@ -1,0 +1,24 @@
+
+<?php //var_dump($cities); exit; ?>     
+			                    <div class="narrow_select" style="position:relative; width: 187px;">
+                        <label>City</label>  
+						
+			<select name="city" class="styled" id="first_select">
+			<option value="0">Select City</option>
+			<?php foreach($cities as $row){ ?>
+			<option value ="<?php echo $row->name; ?>" <?php if($row->name==$city){ ?>selected="TRUE" <?php  }; ?>><?php echo $row->name; ?></option>
+			<?php }; ?>
+			</select>
+                        
+                    </div>
+									    <div class="narrow_select" style="position:relative;">
+                        <label>Neighborhood</label>
+
+
+		<select name="neighborhood" class="styled" id="second_select">
+                <option value="0">Select Neighborhood</option>
+							<?php foreach($neighborhoods as $row){ ?>
+			<option value ="<?php echo $row->name; ?>" <?php if($row->name==$neighborhood){ ?>selected="TRUE" <?php  }; ?>><?php echo $row->name; ?></option>
+			<?php }; ?>
+            </select>
+                    </div>

@@ -1,0 +1,27 @@
+<?php
+global $messages;
+ if(isset($messages) && $messages) { ?>
+    <tr>
+        <td align='left' height='50'><h2 style='color:#408AD2; font-size:14px; font-weight:bold;'>Message/replies Thread</h2></td>
+     </tr>
+    <tr>
+        <td colspan='3' align='left'>
+            <table border='0'>
+                    <?php foreach($messages as $key=>$m) { ?>
+                    <tr>
+                        <td align='left' style='border-top: 1px solid #ccc'>
+                            <table border='0'>
+                                <tr>
+                                    <td align='left'><a style='color:#408AD2; text-decoration: none;' href="mailto:<?php echo $m['users.email']; ?>"><?php echo $m['users.email']; ?></a><br><?php echo dateformat($m['userPropertyMessages.modified'], 'F d \a\t H:i A'); ?></td>
+                                </tr>
+                                <tr>
+                                    <td><p style='line-height:14px;'><?php echo $m['userPropertyMessages.message']; ?></p></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <?php } ?>
+            </table>
+        </td>
+    </tr>
+    <?php } ?>

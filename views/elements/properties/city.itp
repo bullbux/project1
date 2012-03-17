@@ -1,0 +1,28 @@
+<?php 
+    $host = DB_HOST; 
+	$user = DB_USER; 
+	$pass = DB_PASSWORD; 
+	$name = DB_NAME;
+        $link = mysql_connect($host,$user,$pass);
+        mysql_select_db($name,$link);
+$result = mysql_query('SELECT * FROM city'); 
+while($data=mysql_fetch_object($result)) {
+                $rows[]=$data;
+            }; ?>
+<form action="" method="post" >
+<ul>
+<li><span>Inter new City</span></li>
+<li><input type="text" name="city" value="<?php echo $list->name; ?>"</li>
+<li><span>Parent City </span></li>
+<li><select name="Parent_city">
+  <option value="0"> Choose Parent City</option>
+  <?php foreach($rows as $row){ ?>
+  <option value ="<?php echo $row->id;?>" <?php if($row->id==$list->parent_id){ ?>selected="TRUE" <?php  }; ?> ><?php echo $row->name; ?></option>
+  <?php }; ?>
+</select></li>
+							<?php	$a=$_SERVER['REQUEST_URI'];								
+								$pieces = explode("/", $a);
+								$b=$pieces[5]; ?>
+<input type="hidden" name="id" value="<?php echo $b; ?>">
+<input type="submit" value="save" name="save">
+</form>

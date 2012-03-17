@@ -1,0 +1,49 @@
+<div style="width: 97%; background: #158cc4; text-align: center; padding: 20px; line-height: 20px;">
+<table width="900" border="0" style="border: 1px solid #035881; font-family: arial; font-size:11px; background: #FFF; margin: 0px auto; text-align: left;" cellspacing="0" cellpadding="0">
+    <tr>
+        <td height="85" style="padding: 0 8px;">
+            <?php echo $Form->link($Include->image('admin/apartments_small.png', array('alt'=>WEBSITE_NAME, 'title'=>WEBSITE_NAME, 'border'=>'0')), WWW_ROOT); ?>
+        </td>
+    </tr>
+    <tr>
+        <td height="25" bgcolor="#50b5e1" style="padding: 0 20px;" valign="middle">
+            <span style="font-size: 16px; font-weight: bold; color: #FFF;"><?php echo $emailSubject; ?></span>
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 20px;">
+            <!-- START Email Contents-->
+            <div style="font-size:12px; line-height: 20px;">
+               <?php echo $emailContent; ?>
+            </div>
+            <!-- END Email Contents-->
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 0 20px;" colspan="2">
+            --
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 0 20px;">
+            <?php echo $emailSignature; ?>
+        </td>
+    </tr>
+     <tr>
+        <td height="50" bgcolor="#3d99c8"  style="padding: 0 20px; border-top: 1px solid #035881;border-bottom: 1px solid #035881;">
+            <table>
+                <tr>
+                    <td style="color: #FFF; padding-left: 0px; font-size:14px;">Follow us on: </td>
+                    <td style="padding-left: 20px; font-size:14px;"><?php echo $Form->link($Include->image('front/facebook.png', array('alt'=>'facebook', 'title'=>'facebook', 'border'=>'0')), '#'); ?></td>
+                    <td style="padding-left: 20px; font-size:14px;"><?php echo $Form->link($Include->image('front/twitter.png', array('alt'=>'twitter', 'title'=>'twitter', 'border'=>'0')), '#'); ?></td>
+                </tr>
+            </table>
+        </td>
+    </tr> 
+    <tr>
+        <td height="35" style="padding: 0 20px;">
+            <strong style="color: #9d9d9d;">Copyright &copy; 2010 <?php echo $Form->link(WEBSITE_NAME, WWW_ROOT, array('style'=>'color: #d46576; text-decoration: underline;')); ?>. All rights reserved.</strong>
+        </td>
+    </tr>
+</table>
+</div>

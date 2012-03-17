@@ -1,0 +1,88 @@
+
+/*
+	Slideshow
+*/
+
+#slides {
+	position:absolute;
+	top:0px;
+	left:0px;
+	z-index:0;
+}
+
+/*
+	Slides container
+	Important:
+	Set the width of your slides container
+	Set to display none, prevents content flash
+*/
+
+.slides_container {
+	width:941px;
+	overflow:hidden;
+	position:relative;
+	display:none;
+}
+
+/*
+	Each slide
+	Important:
+	Set the width of your slides
+	If height not specified height will be set by the slide content
+	Set to display block
+*/
+
+.slides_container a {
+	width:941px;
+	height:274px;
+	display:block;
+}
+
+.slides_container a img {
+	display:block;
+}
+
+/*
+	Next/prev buttons
+*/
+
+#slides .next,#slides .prev {
+	position:absolute;
+	top:107px;
+	left:-28px;
+	width:24px;
+	height:55px;
+	display:block;
+	z-index:101;
+}
+
+#slides .next {
+	left:950px;
+}
+
+/*
+	Pagination
+*/
+
+.pagination {	
+	width:300px;
+        float: right !important;
+}
+
+.pagination li {
+	float:left;
+	margin:0 1px;
+	list-style:none;
+}
+
+.pagination li a {
+	display:block;	
+	background-image:url(../img/pagination.png);
+	background-position:0 0;
+	float:left;
+	overflow:hidden;
+}
+
+.pagination li.current a {
+	background-position:0 -12px;
+}

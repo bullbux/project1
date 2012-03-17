@@ -1,0 +1,55 @@
+<table width='100%' border='0' style='color:#929497; font-size:12px;'>
+    <tr>
+        <td align='left' height="100">
+            <?php echo $Include->image('logo.png', array('alt'=>SITE_NAME)); ?>
+        </td>
+    </tr>
+     <tr>
+        <td align='left' height="50">
+            Hello,
+        </td>
+    </tr>
+    <tr>
+        <td align='left'>
+            <table width="100%" border="0">
+                <tr>
+                    <td align='left' style="padding-bottom: 20px;">
+                        <strong>Contact user information:</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td align='left' style="padding-top: 5px;">
+                        Property link: <?php echo $data['prLink']; ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td align='left' style="padding-top: 5px;">
+                        Name: <?php echo $data['first_name']; ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td align='left' style="padding-top: 5px;">
+                        Email ID: <?php echo $data['email']; ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td align='left' style="padding-top: 5px;">
+                        Phone : <?php echo $data['phone']; ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td align='left' style="padding-top: 5px;">
+                        Message : <pre style="font-size: 12px;"><?php echo $data['message']; ?></pre>
+                    </td>
+                </tr>
+            </table>
+        </td>        
+    </tr>
+    <tr>
+        <td align='left' height="100">
+            --<br/>
+            Thanks <br/>
+            <?php echo SITE_NAME; ?>
+        </td>
+    </tr>
+</table>

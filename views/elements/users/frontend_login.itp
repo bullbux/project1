@@ -1,0 +1,23 @@
+<div id='login'>
+    <?php $session->flash(); ?>
+    <?php echo $Form->create('loginForm', array('action'=>'', 'method'=>'post')); ?>
+    <p>
+        <label for='username'>Username</label>
+        <?php echo $Form->input('username', array('type'=>'text', 'id'=>'username', 'class'=>'mediumfield mandatory', 'title'=>'Username')); ?>
+    </p>
+    <p>
+        <label for='password'>Password</label>
+        <?php echo $Form->input('password', array('type'=>'password', 'id'=>'password', 'class'=>'mediumfield mandatory', 'title'=>'Password')); ?>
+    </p>
+    <p>
+        <?php echo $Form->input('rememberMe', array('type'=>'checkbox', 'class'=>'', 'value'=>'1')); ?> Remember me on this system
+    </p>
+    <hr/>
+    <p>
+        <?php echo $Form->ajaxLink('Forgot your password?', array('class'=>'users', 'method'=>'forgotPassword'), array('class'=>'forgot', 'open'=>array('type'=>'lightbox', 'width'=>500, 'reLoad'=>false, 'lbHeader'=>array('bgColor'=>'#73ADDD', 'textColor'=>'#FFFFFF', 'borderColor'=>'#73addd')))); ?>
+        <?php echo $Form->input('submit', array('type'=>'hidden', 'value'=>'1')); ?>
+        <?php echo $Form->input('userlogin', array('type'=>'submit', 'class'=>'float-right', 'value'=>'Log In')); ?>
+        <br class='clear' />
+    </p>
+    <?php echo $Form->end(); ?>
+</div>

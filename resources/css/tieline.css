@@ -1,0 +1,270 @@
+/* Tieline CSS */
+#canvas{
+    background:none repeat scroll 0 0 #005C85;
+    font-family:arial;
+    font-size:14px;
+    height:420px;
+    margin-left:0;
+    position:relative;
+    width:755px;
+    overflow: hidden;
+    margin-bottom:10px;
+}
+#graph{
+    position: relative;
+    z-index: 999;
+}
+#graph div{
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #000;
+    z-index: 999;
+    padding:0;
+}
+#r-left, #r-right, #r-mid, #l-mid{
+    position: absolute;
+    height: 400px;
+    width: 12px;
+    border: 1px solid #000;
+    z-index: 9999;
+    font-weight: bold;
+    color:#000000;
+}
+
+#r-left{
+    background: #fff;
+    height: 200px;
+    top: 40px;
+    left: 100px;
+}
+
+#r-right{
+    width: 3px;
+    left: 410px;
+    background: red;
+    height: 380px;
+    z-index: 9999;
+}
+
+#r-left-slider, #r-mid-slider, #l-mid-slider{
+    width: 20px;
+    height: 10px;
+    border: 1px solid #000;
+    position: absolute;
+    left: -5px;
+    background: #ccc;
+    overflow: hidden;
+    z-index: 9999;
+    cursor: n-resize;
+    padding:0;
+}
+#r-left-fill{
+    position: absolute;
+    bottom: 0;
+    width:12px;
+    background: #0066ff;
+    left:0px;
+}
+
+#r-mid{
+    height: 104px;
+    left:20px;
+    top: 88px;
+    background: #FFF;
+}
+
+#r-mid-fill{
+    position: absolute;
+    top: 0;
+    width:12px;
+    background: #0066ff;
+    left:0px;
+}
+
+#l-mid{
+    background:none repeat scroll 0 0 #FFFFFF;
+    height:180px;
+    left:120px;
+    top:50px;
+}
+
+#l-mid-fill{
+    position: absolute;
+    bottom: 0;
+    width:12px;
+    background: #FFF;
+}
+
+#r-left-wrapper{
+    position: absolute;
+    left:0px;
+}
+#r-left-wrapper .wrapper{
+    background: url(../images/probability.jpg) repeat-x;
+    height: 315px;
+    width: 230px;
+    position: absolute;
+    left:0px;
+}
+
+#r-left-heading{
+    background:none repeat scroll 0 0 #CFD3D2;
+    color:#02537E;
+    font-size:22px;
+    height:47px;
+    margin-bottom:10px;
+    padding-top:3px;
+    text-align:center;
+    width:230px;
+}
+
+#r-left-heading div{
+    font-size:13px;
+    font-weight:bold;
+}
+
+
+#r-mid-wrapper{
+    position:absolute;
+    left:240px;
+}
+
+#r-mid-wrapper .wrapper{
+    background:url(../images/exposure.jpg) repeat-x scroll 0 0 transparent;
+    height:315px;
+    position:absolute;
+    width:150px;
+    left:0px;
+}
+
+#r-mid-heading{
+    background:none repeat scroll 0 0 #CFD3D2;
+    color:#02537E;
+    font-size:22px;
+    height:47px;
+    margin-bottom:10px;
+    padding-top:3px;
+    text-align:center;
+    width:150px;
+}
+
+#r-mid-heading div{
+    font-size:13px;
+    font-weight:bold;
+}
+
+#l-mid-wrapper{
+    left:430px;
+    position:absolute;
+}
+
+#l-mid-wrapper .wrapper{
+    background:url(../images/result.jpg) repeat-x scroll 0 0 transparent;
+    height:315px;
+    width:240px;
+    position:absolute;
+    left:0px;
+}
+
+#l-mid-heading{
+    background:none repeat scroll 0 0 #CFD3D2;
+    color:#02537E;
+    font-size:20px;
+    height:47px;
+    margin-bottom:10px;
+    padding-top:3px;
+    text-align:center;
+    width:240px;
+}
+
+#l-mid-heading div{
+    font-size:13px;
+    font-weight:bold;
+    background: #005C85;
+    margin-top:3px;
+}
+
+#l-mid-heading div div{
+    background:none repeat scroll 0 0 #D8C791;
+    float:left;
+    padding:4px;
+    width:46%;
+}
+
+#l-mid-heading div div.clear{
+    float: none;
+    clear:both;
+    padding:0;
+    width: auto;
+}
+
+#risk-levels{
+    height:480px;
+    left:675px;
+    position:absolute;
+    width:20px;
+    color:#000000;
+}
+
+#risk-levels div{
+    left: 0px;
+}
+
+#risk-levels span{
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+    display:block;
+    font-size:14px;
+    font-weight:bold;
+    padding-left:10px;
+}
+
+#res{
+    border:2px solid #000;
+    height:410px;
+    left:705px;
+    position:absolute;
+    width:20px;
+    background: #FFF;
+}
+
+#res-fill{
+    height: 410px;
+    width: 20px;
+    background: #0066FF;
+    position:absolute;
+    border-top:2px solid #000;
+    left:0px;
+}
+
+#canvas-header{
+    height: 70px;
+    background:none repeat scroll 0 0 #005C85;
+    width:755px;
+}
+
+#likelyhood-value, #exp-value, #cons-value{
+    margin-top:340px;
+    text-align:center;
+    font-weight: bold;
+    color:#000000;
+}
+
+#risk-level{
+    background:none repeat scroll 0 0 #CFD3D2;
+    color:#02537E;
+    float:right;
+    font-family:arial;
+    font-size:20px;
+    margin-right:5px;
+    margin-top:30px;
+    padding:5px;
+    text-align:center;
+    width:150px;
+}
+
+#tieline-method, #tieline-method div{
+    padding: 0;    
+}

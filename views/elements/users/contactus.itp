@@ -1,0 +1,73 @@
+<?php echo $Form->create('contactUsForm', array('action'=>WWW_ROOT.'/users/contactUs', 'method'=>'POST', 'id'=>'contact-us-form')); ?>
+<ul>
+	<?php  if(!$userId) { ?> 
+    <li>
+        <div class="left_box">
+            <label>First Name</label>
+            <div class="txt_area">
+                <div class="txt_l">
+                    <div class="txt_r">
+                        <div class="txt_m">
+                            <?php echo $Form->input('first_name', array('value'=>$first_name,'type'=>'text', 'class'=>'')); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right_box">
+            <label>Last Name</label>
+            <div class="txt_area">
+                <div class="txt_l">
+                    <div class="txt_r">
+                        <div class="txt_m">
+                            <?php echo $Form->input('last_name', array('value'=>$last_name,'type'=>'text')); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="left_box">
+            <label>Email Address</label>
+            <div class="txt_area">
+                <div class="txt_l">
+                    <div class="txt_r">
+                        <div class="txt_m">
+                            <?php echo $Form->input('email', array('value'=>$email,'type'=>'text', 'class'=>'')); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right_box">
+            <label>Phone</label>
+            <div class="txt_area">
+                <div class="txt_l">
+                    <div class="txt_r">
+                        <div class="txt_m">
+                            <?php echo $Form->input('phone', array('value'=>$phone,'type'=>'text')); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+	<?php } ?>
+    <li>
+        <label>Message</label>
+        <?php echo $Form->textarea('message', array('cols'=>0, 'rows'=>0)); ?>
+    </li>
+    <li>
+        <?php echo $Form->input('slug', array('type'=>'hidden', 'value'=>$property['properties.slug'])); ?>
+        <?php echo $Form->input('contactEmail', array('type'=>'hidden', 'value'=>$property['prContactInfo.contact_email'])); ?>
+        <span class="load-ajax"></span>
+        <a href="javascript: void(0);" class="send"></a>
+    </li>
+</ul>
+<?php echo $Form->end(array('update'=>'contactUsPopup', 'position'=>'INNER')); ?>
+<script type="text/javascript">
+    $('a.send').click(function(){
+        $('form#contact-us-form').submit();
+    });
+</script>

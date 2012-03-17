@@ -1,0 +1,36 @@
+<div id="loginform">
+<?php echo $Form->create('loginForm', array('action'=>array('class'=>'users', 'method'=>'login'), 'method'=>'post')); ?>
+<ul>
+    <li>
+        <label for='username'>User name</label>
+        <?php echo $Form->input('username', array('type'=>'text', 'id'=>'username')); ?>
+    </li>
+    <li>
+        <label for='password'>Password</label>
+        <?php echo $Form->input('password', array('type'=>'password', 'id'=>'password')); ?>
+    </li>
+    <li>
+        <?php echo $Form->input('submit', array('type'=>'hidden', 'value'=>'1')); ?>
+        <?php echo $Form->input('redirect', array('type'=>'hidden', 'value'=>'')); ?>
+        <a class="login" href="javascript: void(0);" onclick="javascript: login();"></a>
+        <span class="load-ajax"></span>
+    </li>
+    <li>
+        <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=<?php echo FACEBOOK_APP_ID; ?>&amp;xfbml=1"></script>
+        <fb:login-button perms="email" on-login="FB.getLoginStatus(function(response) {
+                  if (response.session) {
+                    window.location = '<?php echo WWW_ROOT; ?>/users/loginWithFb/' + response.session.access_token + '?redirect=' + escape(window.location.href);
+                  }
+                });"  show-faces="false" width="200" max-rows="1"></fb:login-button>
+    </li>
+    <li>
+        <?php echo $Form->input('rememberMe', array('type'=>'checkbox', 'class'=>'', 'value'=>'1')); ?>
+        <label>Stay logged in</label>
+    </li>
+    <li>
+        <?php echo $Form->ajaxLink('Forgot your password?', array('class'=>'users', 'method'=>'forgotPassword'), array('class'=>'forgot', 'open'=>array('type'=>'lightbox', 'width'=>500, 'reLoad'=>false, 'lbHeader'=>array('bgColor'=>'#73ADDD', 'textColor'=>'#FFFFFF', 'borderColor'=>'#73addd')))); ?>
+    </li>
+</ul>
+<?php echo $Form->end(array('update'=>'loginform', 'position'=>'REPLACE')); ?>
+
+</div>

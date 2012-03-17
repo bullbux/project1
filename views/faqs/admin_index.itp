@@ -1,0 +1,62 @@
+<h2 class="heading"><span class='float-left'>FAQ Management</span> <?php echo $Form->link('Add FAQ', array('class'=>'faqs', 'method'=>'admin_add'), array('class'=>'float-right button')); ?>
+<div class='clear'></div>
+</h2>
+<div class="data">
+	<?php echo $Form->create("listing",array("method"=>"post", "action"=>"")); ?>
+	<?php if($Content->pages->page['order'] == "desc"){ 
+			$order = "asc";
+		}else{
+			$order = "desc";
+		}
+	?>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="top">
+		<tr class="heading">
+			<td width="1%"><?php echo $Form->input("checkbox",array('type'=>'checkbox','id'=>'checkbox', 'checkAll'=>'check', 'class'=>'check')); ?></td>
+                        <td width="" align='left'><?php echo $Form->link("FAQ",array("class"=>"faqs","method"=>"admin_index",$list['page'],'question',$order)); ?></td>
+			<td width="" align='left'><?php echo $Form->link("Category",array("class"=>"faqs","method"=>"admin_index",$list['page'],'faq_cat_id',$order)); ?></td>
+			<td width="50px" align='center'>Actions</td>
+                        <td width="30px" align='center'>Status</td>
+		 </tr>
+	<?php 
+	if($list['records']){
+		foreach($list['records'] as $key=>$value) { ?>
+			<tr class="rowwhite">
+                            <td width="1%"><?php echo $Form->input("checkboxArray[".$value['faqCategories.id']."]",array('type'=>'checkbox', 'class'=>'check', 'id'=>'checkbox_'.$value['faqCategories.slug'])); ?></td>
+                            <td><?php echo $value['faqs.question']; ?></td>
+                            <td><?php echo $value['faqCategories.category']; ?></td>                            
+                            <td width="50px" align='center'>
+                                <ul>
+                                    <li><?php echo $Form->link($Include->image("admin/edit.png",array('width'=>'16','height'=>'16','alt'=>'Edit','title'=>'Edit')),array("class"=>"faqs", "method"=>"admin_edit", $value['faqs.id'], $list['page'], $list['order_by'], $list['order'])); ?></li>
+                                    <li><?php echo $Form->link($Include->image("admin/delete.png",array('width'=>'16','height'=>'16','alt'=>'Delete','title'=>'Delete')),array("class"=>"faqs", "method"=>"admin_delete", $value['faqs.id'], $list['page'], $list['order_by'], $list['order']), array('confirm'=>'Are you sure to delete?')); ?></li>
+                                </ul>
+                            </td>
+                            <td width="30px" align='center'>
+                                <ul>
+                                    <li>
+                                    <?php
+                                    if($value['faqs.status'])
+                                        echo $Form->ajaxLink($Include->image('admin/active.png',array('width'=>'16','height'=>'16','alt'=>'Active','title'=>'Active')), array('class'=>'faqs', 'method'=>'admin_toggleStatus', $value['faqs.id']), array('id'=>'status_'.$value['faqs.id'], 'update'=>array('status_'.$value['faqs.id'], 'flag'), 'reLoad'=>true));
+                                    else
+                                        echo $Form->ajaxLink($Include->image('admin/inactive.png',array('width'=>'16','height'=>'16','alt'=>'Inactive','title'=>'Inactive')), array('class'=>'faqs', 'method'=>'admin_toggleStatus', $value['faqs.id']), array('id'=>'status_'.$value['faqs.id'], 'update'=>array('status_'.$value['faqs.id'], 'flag'), 'reLoad'=>true));
+                                    ?>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+
+		<?php } ?>
+
+		<?php }else{ ?>
+		<tr><td colspan="8" align="center">No records found</td></tr>
+		<?php } ?>
+	</table>
+        <?php if($list['records']){
+            $Content->element('admin/list_actions');
+            include_once($Content->element);
+        } ?>
+        <?php echo $Form->end(); ?>
+</div>
+<?php
+        $Content->render(array('class'=>'paginate','method'=>'pagination',$list['pages'],$list['page'], array("class"=>"faqs","method"=>"admin_index"),$list['order_by'],$list['order']));
+        include_once($Content->element);
+?> 

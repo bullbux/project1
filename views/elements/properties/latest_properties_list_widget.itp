@@ -1,0 +1,34 @@
+<?php if($list) { ?>
+<div class="featured_box updates_box padding">
+    <div class="feature_bot">
+        <div class="updates_mid1">
+            <div class="head">
+                <div class="h_left">
+                    <div class="h_right">
+                        <div class="h_mid">
+                            NEW LISTINGS
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="news">
+                <ul>
+                    <?php foreach($list as $apartment){ ?>
+                    <li>
+                        <?php echo $Form->link(
+                                    $Include->showImage(WWW_ROOT.'/resources/uploads/properties/gallery/'.$apartment['prGallery.file'], array('dims'=>array('width'=>51, 'height'=>45), 'alt'=>$apartment['properties.title']))."<span class='pop_upn'>
+                                <span class='popup_l'>
+                                    <span class='popup_r'>
+                                        <span class='popup_m'>{$apartment['properties.title']}<br />{$apartment['prUnitInfo.unit_street_address']}, {$apartment['prUnitInfo.city']}, {$apartment['prUnitInfo.state']}, {$apartment['prUnitInfo.zip']}</span>
+                                    </span>
+                                </span>
+                            </span>"
+                            ,array("class"=>"properties", "method"=>'details', $apartment['properties.slug'])); ?>
+                    </li>
+                    <?php } ?>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<?php } ?>

@@ -1,0 +1,78 @@
+<div class="profile_gallery">
+    <div class="gal_bot">
+        <div class="gal_mid">
+            <div class="gallery">
+                <ul>
+                    <li>
+                        <div class='gallery-ajax-loader'>
+                            <?php echo $Include->image('ajax-loader-orange.gif', array('alt'=>'')); ?><br/>
+                            Gallery Loading...
+                        </div>
+                    </li>
+                </ul>
+                <!--<div class="enlarge" style='display: none;'>
+                    <?php echo $Include->image('enlarge.png', array('alt'=>'')); ?>
+                </div>-->
+            </div>
+            <div class="control_box">
+                <div class="control" style='display: none;'>
+                    <a class="previous" href="javascript: void(0);"></a>
+                    <div class="page_n">
+                        Photo 1 of 15
+                    </div>
+                    <?php echo $Form->ajaxLink('View all', array('class'=>'properties', 'method'=>'photos', $property['properties.slug']), array('class'=>'view_btn', 'open'=>array('type'=>'lightbox', 'width'=>722, 'reLoad'=>false, 'scroll'=>false, 'lbHeader'=>array('bgColor'=>'#73ADDD', 'textColor'=>'#FFFFFF', 'borderColor'=>'#73addd')))); ?>
+                    <!--<a href="#" class="view_btn" id="gallery_popup"></a>-->
+                    <a class="next_btn" href="javascript: void(0);"></a>
+                </div>
+                <ul>
+                    <li>
+                        <?php  if(is_array($video1) || is_array($video_youtube1)){
+					 echo $Form->ajaxLink('Video', array('class'=>'properties', 'method'=>'showVideo', $property['properties.slug']), array('open'=>array('type'=>'lightbox', 'width'=>602, 'reLoad'=>false, 'scroll'=>false, 'lbHeader'=>array('bgColor'=>'#73ADDD', 'textColor'=>'#FFFFFF', 'borderColor'=>'#73addd')))); } ?>
+                    </li>
+                    <li> <!--<a href="#" id="floorplan_popup">View Floorplan</a>-->   
+					<?php  if((is_array($floorplan1))){
+					echo $Form->ajaxLink('View Floorplan', array('class'=>'properties', 'method'=>'showplan', $property['properties.slug']), array('open'=>array('type'=>'lightbox', 'width'=>602, 'reLoad'=>false, 'scroll'=>false, 'lbHeader'=>array('bgColor'=>'#73ADDD', 'textColor'=>'#FFFFFF', 'borderColor'=>'#73addd')))); } ?> 
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script type='text/javascript'>
+$.ajax({
+    url: '<?php echo WWW_ROOT; ?>/properties/gallery/<?php echo $property['properties.id']; ?>/1',
+    type: 'GET',
+    success: function(content){
+        if(content.length > 0){
+            var currentIndex = 0;
+            content = eval('('+content+')');
+            for(index in content){
+                $('div.gallery ul').append($('<li style="display: none;"><img src="'+content[index]+'" alt=""/></li>'));
+            }
+            $('div.gallery li:eq(0)').remove();
+            $('div.gallery li:eq(0)').fadeIn();
+            $('.enlarge').show();
+            $('.control .page_n').text('Photo 1 of ' + content.length);
+            $('.control').show();
+            // Slider show previous image event
+            $('.control .previous').click(function(){
+                if(currentIndex > 0){
+                    $('div.gallery ul li').eq(currentIndex).hide();                    
+                    $('div.gallery ul li').eq(--currentIndex).fadeIn('slow');
+                    $('.control .page_n').text('Photo ' + (currentIndex+1) + ' of ' + content.length);
+                }
+            });
+            // Slider show next image event
+            $('.control .next_btn').click(function(){
+                if(currentIndex < (content.length - 1)){
+                    $('div.gallery ul li').eq(currentIndex).hide();                    
+                    $('div.gallery ul li').eq(++currentIndex).fadeIn('slow');
+                    $('.control .page_n').text('Photo ' + (currentIndex+1) + ' of ' + content.length);
+                }
+            });            
+        }else{
+            $('div.gallery li').text('No gallery');
+        }
+    } 
+});
+</script>

@@ -1,0 +1,16 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title><?php echo defined('PROJECT_NAME') ? PROJECT_NAME : ''; ?> | <?php echo $Content->pageTitle; ?></title>
+<?php echo $Include->css('admin/style.css');?>
+<?php echo $Include->css('lightbox/lightbox.css');?>
+<?php echo $Include->js('jquery.js');?>
+<?php echo $Include->js('events.js');?>
+<?php echo $Include->js('validations.js');?>
+</head>
+<body>
+<div class="">
+<h2>Admin Manage Page</h2>
+</div>
+</body>

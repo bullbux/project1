@@ -1,0 +1,339 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Apartments For Rent</title>
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
+        <script src="js/cufon-yui.js" type="text/javascript"></script>
+        <script src="js/Droid_Sans_400-Droid_Sans_700.font.js" type="text/javascript"></script>
+        <script src="js/cufon-replace.js" type="text/javascript"></script>
+        <script src="js/drop_down.js" type="text/javascript"></script>
+        <script src="js/jquery-1.2.6.min.js" type="text/javascript"></script>
+        <script src="js/popup_search.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("#list_container").show();
+                $("#map_container").hide();
+                $("#gallery_container").hide();
+                $("#r_list").click(function(event){
+                    $("#map_container").hide(1000);
+                    $("#gallery_container").hide(1000);
+                    $("#list_container").show(1000);
+                    $(this).addClass('sel');
+                    $("#r_map").removeClass('sel');
+                    $("#r_gallery").removeClass('sel');
+                    event.preventDefault();
+                });
+                $("#r_map").click(function(event){
+                    $("#list_container").hide(1000);
+                    $("#gallery_container").hide(1000);
+                    $("#map_container").show(1000);
+                    $(this).addClass('sel');
+                    $("#r_list").removeClass('sel');
+                    $("#r_gallery").removeClass('sel');
+                    event.preventDefault();
+                });
+                $("#r_gallery").click(function(event){
+                    $("#list_container").hide(1000);
+                    $("#map_container").hide(1000);
+                    $("#gallery_container").show(1000);
+                    $(this).addClass('sel');
+                    $("#r_list").removeClass('sel');
+                    $("#r_map").removeClass('sel');
+                    event.preventDefault();
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div id="mainframe">
+            <div class="frame">
+                <div class="header">
+                    <div class="logo"><a href="index.html"><img src="images/logo.png" alt="" /></a></div>
+                    <div class="navigation">
+                        <ul>
+                            <li><a href="#"><span>SIGN UP WITH</span><img src="images/facebook_icon.png" alt="" /></a></li>
+                            <li><a href="#">ADVERTISE</a></li>
+                            <li><a href="#">LANDLORD</a></li>
+                            <li>
+                                <div class="btn_box">
+                                    <a href="#" class="signup"></a>
+                                    <span>or</span>
+                                    <a href="#" class="login"></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="main_search">
+                    <div class="search_l">
+                        <div class="search_r">
+                            <div class="search_m">
+                                <ul>
+                                    <li>
+                                        <label>Search</label>
+                                        <div class="txt_area">
+                                            <div class="txt_l">
+                                                <div class="txt_r">
+                                                    <div class="txt_m">
+                                                        <input type="text" class="search" value="Search city, zip or keywords" onfocus="if(this.value == 'Search city, zip or keywords') this.value = ''" onblur="if(this.value == '') this.value = 'Search city, zip or keywords'" />
+                                                        <a href="#" class="search"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <label>price range</label>
+                                        <div class="txt_area">
+                                            <div class="price_range_box">
+                                                <span>-</span>
+                                                <div class="txt_l">
+                                                    <div class="txt_r">
+                                                        <div class="txt_m">
+                                                            <input type="text" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <span>+</span>
+                                                <div class="txt_l">
+                                                    <div class="txt_r">
+                                                        <div class="txt_m">
+                                                            <input type="text" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <label>unit features</label>
+                                        <div class="txt_area">
+                                            <div class="unit_feature_box">
+                                                <span class="txt">bed</span>
+                                                <div class="select_box">
+                                                    <select class="styled" name="bed">
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                    </select>
+                                                </div>
+                                                <span class="txt">bath</span>
+                                                <div class="select_box">
+                                                    <select class="styled" name="bath">
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                    </select>
+                                                </div>
+                                                <a href="#"></a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="advance_search">
+                        <div class="advance_l">
+                            <div class="advance_r">
+                                <div class="advance_m">
+                                    <a href="#" id="a_search_popup">ADVANCED SEARCH</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main_container">
+                    <div class="main_left">
+                        <div class="listing_head">
+                            <div class="header">
+                        	45 RESULTS                        </div>
+                            <div class="head_right">
+                                <label>SORT BY: </label>
+                                <select name="sort" class="styled">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                </select>
+                                <a href="#" class="save"></a>                        </div>
+                        </div>                        
+                    </div>
+                    <div class="main_right">
+                        <div class="head">
+                            <div class="h_left">
+                                <div class="h_right">
+                                    <div class="h_mid">
+                                	NARROW YOUR SEARCH                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="featured_box">
+                            <div class="feature_bot">
+                                <div class="feature_mid">
+                                    <h3>Click Features On/off</h3>
+                                    <p>Unit Features</p>
+                                    <ul>
+                                        <li><a href="#"><img src="images/img1.png" alt="" /></a></li>
+                                        <li><a href="#"><img src="images/img2.png" alt="" /></a></li>
+                                        <li><a href="#">
+                                                <img src="images/img3.png" alt="" />
+                                                <span class="popup">
+                                                    <span class="pop_left">
+                                                        <span class="pop_right">
+                                                            <span class="pop_mid">
+                                                     	LAUNDRY
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                            </a>                                </li>
+                                        <li><a href="#"><img src="images/img4.png" alt="" /></a></li>
+                                        <li><a href="#"><img src="images/img5.png" alt="" /></a></li>
+                                        <li><a href="#"><img src="images/img6.png" alt="" /></a></li>
+                                        <li><a href="#"><img src="images/img2.png" alt="" /></a></li>
+                                        <li><a href="#"><img src="images/img8.png" alt="" /></a></li>
+                                        <li><a href="#"><img src="images/img4.png" alt="" /></a></li>
+                                        <li><a href="#"><img src="images/img5.png" alt="" /></a></li>
+                                    </ul>
+                                    <p>Property Features</p>
+                                    <ul>
+                                        <li><a href="#"><img src="images/img6.png" alt="" /></a></li>
+                                        <li><a href="#"><img src="images/img2.png" alt="" /></a></li>
+                                        <li><a href="#">
+                                                <img src="images/img8.png" alt="" />
+
+                                            </a>                                </li>
+                                        <li><a href="#"><img src="images/img4.png" alt="" /></a></li>
+                                        <li><a href="#"><img src="images/img5.png" alt="" /></a></li>
+                                        <li><a href="#"><img src="images/img6.png" alt="" /></a></li>
+                                        <li><a href="#"><img src="images/img2.png" alt="" /></a></li>
+                                        <li><a href="#">
+                                                <img src="images/img8.png" alt="" />
+
+                                            </a>                                </li>
+                                        <li><a href="#"><img src="images/img4.png" alt="" /></a></li>
+                                        <li><a href="#"><img src="images/img5.png" alt="" /></a></li>
+                                    </ul>
+                                    <a class="aply" href="#"></a>                      </div>
+                            </div>
+                        </div>
+
+                        <div class="signup_box">
+                            <div class="signup_top">
+                                <div class="signup_bot">
+                                    <div class="signup_mid">
+                                        <h4>SIGN UP
+                                            TODAY!</h4>
+                                        <div class="image">
+                                            <img src="images/pencil.png" alt="" />                                    </div>
+                                        <ul>
+                                            <li>Create your favorite list</li>
+                                            <li>Share with friends</li>
+                                            <li>Message landlords</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="signup_box">
+                            <div class="advt">
+                                <img src="images/advt.png" alt="" />                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="popup_a_search">
+            <div class="advance_search_main">
+                <div class="pop_search_left">
+                    <div class="pop_search_right">
+                        <div class="pop_search_mid">
+                            <div class="search_container">
+                                <div class="scontain_left">
+                                    <ul>
+                                        <li>
+                                            <label>UNIT TYPE</label>
+                                            <select name="unit_type" class="styled">
+                                                <option>Apartment1</option>
+                                                <option>Apartment2</option>
+                                                <option>Apartment3</option>
+                                            </select>
+                                        </li>
+                                        <li>
+                                            <label>SQUARE FEET</label>
+                                            <div class="cal_box">
+                                                <span><img src="images/minus.png" alt="" /></span>
+                                                <input name="" type="text" />
+                                                <span><img src="images/plus.png" alt="" /></span>
+                                                <input name="" type="text" />
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <label>PROPERTY TYPE</label>
+                                            <select name="prop_type" class="styled">
+                                                <option>Apartment1</option>
+                                                <option>Apartment2</option>
+                                                <option>Apartment3</option>
+                                            </select>
+                                        </li>
+                                        <li>
+                                            <label>LEASE LENGTH</label>
+                                            <select name="lease_leanth" class="styled">
+                                                <option>Apartment1</option>
+                                                <option>Apartment2</option>
+                                                <option>Apartment3</option>
+                                            </select>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="scontain_right">
+                                    <ul>
+                                        <li>UNIT FEATURES</li>
+                                        <li>
+                                            <a href="#"><img src="images/img1.png" alt="" /></a>
+                                            <a href="#"><img src="images/img2.png" alt="" /></a>
+                                            <a href="#"><img src="images/img3.png" alt="" /></a>
+                                            <a href="#"><img src="images/img4.png" alt="" /></a>
+                                            <a href="#"><img src="images/img5.png" alt="" /></a>
+                                            <a href="#"><img src="images/img1.png" alt="" /></a>
+                                            <a href="#"><img src="images/img2.png" alt="" /></a>
+                                            <a href="#"><img src="images/img3.png" alt="" /></a>
+                                            <a href="#"><img src="images/img4.png" alt="" /></a>
+                                            <a href="#"><img src="images/img5.png" alt="" /></a>
+                                        </li>
+                                        <li>PROPERTY FEATURES</li>
+                                        <li>
+                                            <a href="#"><img src="images/img1.png" alt="" /></a>
+                                            <a href="#"><img src="images/img2.png" alt="" /></a>
+                                            <a href="#"><img src="images/img3.png" alt="" /></a>
+                                            <a href="#"><img src="images/img4.png" alt="" /></a>
+                                            <a href="#"><img src="images/img5.png" alt="" /></a>
+                                            <a href="#"><img src="images/img1.png" alt="" /></a>
+                                            <a href="#"><img src="images/img2.png" alt="" /></a>
+                                            <a href="#"><img src="images/img3.png" alt="" /></a>
+                                            <a href="#"><img src="images/img4.png" alt="" /></a>
+                                            <a href="#"><img src="images/img5.png" alt="" /></a>
+                                        </li>
+                                    </ul>
+                                    <div class="clear_search">
+                                        <a href="#">Clear Search</a>
+                                        <a class="search" href="#"></a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="backgroundPopup"></div>
+
+    </body>
+</html>
+

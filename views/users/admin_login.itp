@@ -1,0 +1,6 @@
+<div id="admin-login-panel">
+    <?php
+    $Content->element('users/login');
+    include_once($Content->element);
+    ?>
+</div>

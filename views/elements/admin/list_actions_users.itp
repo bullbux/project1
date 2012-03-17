@@ -1,0 +1,43 @@
+<script type="text/javascript">
+    function checkAll(obj){
+        $(obj).parents('form').find('input.check').each(function(){
+            $(this).attr('checked', 'checked');
+        });
+    }
+    function uncheckAll(obj){
+        $(obj).parents('form').find('input.check').each(function(){
+            $(this).removeAttr('checked', 'checked');
+        });
+    }
+    function takeAction(obj){
+        var checkedFlag = false;
+        $(obj).parents('form').find('input.check').each(function(){
+            if($(this)[0].checked){
+                checkedFlag = true;
+            }
+        });
+        if($(obj).val != '' && checkedFlag){
+            if(confirm('Are you sure to take this action?'))
+                $(obj).parents('form').submit();
+            else
+               $(obj).val('');
+        }else{
+            $(obj).val('');
+        }
+    }
+</script>
+<div class="clearfix" id="table_options">
+    <ul>
+        <li><?php echo $Form->link('Select All', 'javascript: void(0);', array('onclick'=>'javascript: checkAll(this); return false;')); ?></li>
+        <li><?php echo $Form->link('Select None', 'javascript: void(0);', array('onclick'=>'javascript: uncheckAll(this); return false;')); ?></li>
+        <li>
+            <span>Action:</span>
+            <select name="actions" id="actions" onchange="javascript: takeAction(this);">
+                <option value="">Select</option>
+                <option value="Activate">Activate</option>
+                <option value="De-Activate">Deactivate</option>
+            </select>
+        </li>
+    </ul>
+    <div class="clear"></div>
+</div>

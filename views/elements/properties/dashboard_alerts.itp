@@ -1,0 +1,11 @@
+<?php if($alerts){ ?>
+<?php foreach($alerts as $alert){ ?>
+<li>
+    <?php if($alert->days_remain > 0){ ?>
+    <span><?php echo $alert->title; ?> will expire in <?php echo $alert->days_remain; ?> days</span>
+    <?php }else{ ?>
+    <span><?php echo $alert->title; ?> is republished and change expiration date</span>
+    <?php } ?>
+    <?php echo $Form->link('Edit', array('class'=>'properties', 'method'=>'dashboard_edit', $alert->slug), array('title'=>'Edit property', 'class'=>'edit_btn')); ?>
+</li>
+<?php }} ?>

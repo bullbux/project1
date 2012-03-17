@@ -1,0 +1,82 @@
+<script type="text/javascript">
+
+    function checkAll(obj){		
+        $(obj).parents('form').find('input.check').each(function(){			
+            $(this).attr('checked', 'checked');
+        });
+    }
+    function uncheckAll(obj){
+        $(obj).parents('form').find('input.check').each(function(){
+            $(this).removeAttr('checked', 'checked');
+        });
+    }
+    function takeAction(obj){
+        var checkedFlag = false;
+        $(obj).parents('form').find('input.check').each(function(){
+            if($(this)[0].checked){
+                checkedFlag = true;
+            }
+        });
+        if($(obj).val != '' && checkedFlag){
+            if(confirm('Are you sure to take this action?'))
+                $(obj).parents('form').submit();
+            else
+               $(obj).val('');
+        }else{
+            $(obj).val('');
+        }
+    }
+	$(document).ready(function(){
+$('#first_select').change(function() {
+            
+			var select_value = escape($(this).val());
+			
+            $('#second_select').load('/apartments/ajax.php?a=' + select_value);
+			
+        });
+		});
+</script>
+<div class="clearfix" id="table_options">
+    <ul>
+        <li><?php echo $Form->link('Select All', 'javascript: void(0);', array('onclick'=>'javascript: checkAll(this); return false;')); ?></li>
+        <li><?php echo $Form->link('Select None', 'javascript: void(0);', array('onclick'=>'javascript: uncheckAll(this); return false;')); ?></li>
+        <li>
+            <span>Action:</span>
+            <select name="actions" id="actions">
+                <option value="">Select</option>
+                <option value="Activate">Activate</option>
+                <option value="De-Activate">Deactivate</option>
+                <option value="Delete">Delete</option>
+            </select>
+        </li>	
+				<?php if($_SERVER['REQUEST_URI'] == '/apartments/admin/properties/index'){ 
+ 
+    $host = DB_HOST; 
+	$user = DB_USER; 
+	$pass = DB_PASSWORD; 
+	$name = DB_NAME;
+        $link = mysql_connect($host,$user,$pass);
+        mysql_select_db($name,$link); 
+$result = mysql_query('SELECT * FROM city WHERE parent_id=0'); 
+while($data=mysql_fetch_object($result)) {
+                $rows[]=$data;
+            }
+?>
+ <form method="POST" name="cities"	action="city_search">	
+		<li><span>City:</span>
+			<select name="parent_city" id="first_select">
+			<option value="0">Select City</option>
+			<?php foreach($rows as $row){ ?>
+			<option value ="<?php echo $row->name; ?>"><?php echo $row->name; ?> </option>
+			<?php }; ?>
+			</select></li>
+		<li><span>Neighborhood:</span>
+		<select name="city" id="second_select">
+                <option value="0">Select Neighborhood</option>
+            </select> </li>
+			<li><input type="submit" name="Search"></li>
+</form>
+<?php } ?>
+    </ul>
+    <div class="clear"></div>
+</div>

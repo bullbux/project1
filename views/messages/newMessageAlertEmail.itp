@@ -1,0 +1,4 @@
+<?php
+$this->render(array('class'=>'properties', 'method'=>'dashboard_message', $data['messageId'], $data['prId'], 0), 'emails/new_msg_alert_email');
+include($this->element);
+?>

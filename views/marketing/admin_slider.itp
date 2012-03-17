@@ -1,0 +1,78 @@
+<?php echo $Include->js('colors.js'); ?>
+<script type="text/javascript">
+    function highlightRow(id){
+        $('#'+id).css({backgroundColor: 'Yellow'});
+        $('#'+id).animate({backgroundColor: '#F6F6F6'}, 800);
+    }
+</script>
+<h2 class="heading">
+    <span class='float-left'><?php echo $userType == UserTypeConsts::LANDLORD ? 'Landlords' : 'Renters'; ?> Marketing Slider</span> <span class='float-right'><?php echo $Form->link('Upload Slide', array('class'=>'marketing', 'method'=>'admin_uploadSlide', $userType), array('class'=>'float-right button')); ?></span>
+    <div class="clear"></div>
+</h2>
+<div class="data">
+<?php echo $Form->create("listing", array("method"=>"post","action"=>"")); ?>
+    <?php if($list['order'] == "desc") {
+        $order = "asc";
+    }else {
+        $order = "desc";
+    }
+    ?>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="top">
+        <tr class="heading">
+            <th width="2%" class="check"><?php echo $Form->input("checkbox",array('type'=>'checkbox','id'=>'checkbox', 'checkAll'=>'check', 'class'=>'check')); ?></th>
+            <th align='left'><?php echo $Form->link("Thumbnail",array("class"=>"properties","method"=>"admin_index", $list['page'], 'title', $order)); ?></th>
+            <th width="150" align='center'>Actions</th>
+            <th width="50" align='center'>Order</th>
+        </tr>
+    <?php if($list['records']){
+        $count = count($list['records']);
+        $id = $session->getFlash('id');
+        ?>
+        <?php foreach($list['records'] as $key=>$value){ ?>
+        <tr class="rowwhite" id="row<?php echo $key; ?>">
+            <td width="2%" class="check">
+            <?php echo $Form->input("checkboxArray[".$value->id."]",array('type'=>'checkbox','id'=>'checkbox_'.$value->id, 'class'=>'check')); ?>
+            <?php
+            if($value->id == $id){
+                ?>
+                <script type="text/javascript">
+                   highlightRow("row<?php echo $key; ?>");
+                </script>
+                <?php
+            }
+            ?>
+            </td>
+            <td><?php echo $Include->showImage(WWW_ROOT . '/resources/uploads/marketing_sliders/' . $value->filename, array('dims'=>array('width'=>'294', 'height'=>'80'))); ?></td>
+            <td width="150" align='center'>
+                <ul>
+                    <li><?php echo $Form->link($Include->image("admin/delete.png",array('width'=>'16','height'=>'16','alt'=>'Delete','title'=>'Delete')),array("class"=>"marketing", "method"=>"admin_deleteSlide", $userType, $value->id, $list['page'], $list['order_by'], $list['order']), array('confirm'=>'Are you sure to delete?')); ?></li>
+                </ul>
+            </td>
+            <td width="50" align="right">
+                <?php
+                    if($count >= 1 && $count != ($key+1) || $list['page'] < $list['pages'][1] )
+                        echo $Form->link($Include->image("downarrow.png", array('border'=>0, 'alt'=>'Down')), array("class"=>"marketing","method"=>"admin_changeOrder", $userType, $value->id, 'dn', $list['page'], $list['order_by'], $list['order']), array('title'=>'Push Down'));
+                    ?>&nbsp;&nbsp;
+                    <?php
+                    if($count > 1 && $key != 0 || $list['page'] > 1 )
+                        echo $Form->link($Include->image("uparrow.png", array('border'=>0, 'alt'=>'Up')), array("class"=>"marketing","method"=>"admin_changeOrder", $userType, $value->id, 'up', $list['page'], $list['order_by'], $list['order']), array('title'=>'Push Up'));
+                    else
+                        echo '<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>';
+                ?>
+            </td>
+        </tr>
+        <?php } ?>
+    <?php }else{ ?>
+    <tr><td colspan='5' align="center">No slide found...</td></tr>
+    <?php } ?>
+    </table>
+    <?php if($list['records']){
+        $Content->element('admin/list_actions');
+        include_once($Content->element);
+    } ?>
+<?php echo $Form->end(); ?>
+</div>
+<?php
+    $Content->render(array('class'=>'paginate','method'=>'pagination', $list['pages'], $list['page'], array("class"=>"marketing", "method"=>"admin_slider"), $list['order_by'], $list['order']));
+    include_once($Content->element);
+?>

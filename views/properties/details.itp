@@ -1,0 +1,298 @@
+<div class="profile_container">
+    <div class="profile_top">
+        <div class="profile_bot">
+            <?php if($property){ 
+                $property = $property[0];
+            ?>            
+            <div class="profile_mid">
+                <div class="profile_content">
+                    <?php
+                        if($previousLink)
+                            $previousLink = array('class'=>'properties', 'method'=>'details', $previousLink);
+                        else
+                            $previousLink = 'javascript: void(0);';
+                        echo $Form->link('Previous', $previousLink, array('title'=>'Previous', 'class'=>'main_btn prev'));
+                    ?>
+                    <?php
+                        if($nextLink)
+                            $nextLink = array('class'=>'properties', 'method'=>'details', $nextLink);
+                        else
+                            $nextLink = 'javascript: void(0);';
+                        echo $Form->link('Next', $nextLink, array('title'=>'Next', 'class'=>'main_btn nxt'));
+                    ?>
+                    <div class="profile_left">
+                        <div class="profile_head">
+                            <div class="phead_left">
+                                <h1 class="page-heading"><?php echo $property['properties.title']; ?></h1>
+                                <h2>Apartment</h2>
+                                <?php
+                                $location = $property['prUnitInfo.unit_street_address'].', '.$property['prUnitInfo.city'].', '.$property['prUnitInfo.state'].', '.$property['prUnitInfo.zip'];
+								$map_address = $property['prUnitInfo.city'].'+'.$property['prUnitInfo.unit_street_address'];
+								$map_address = str_replace(' ', '+', $map_address);
+                                echo $location;
+                                ?>
+                            </div>                            
+							
+							<script>(function(d, s, id) {
+							  var js, fjs = d.getElementsByTagName(s)[0];
+							  if (d.getElementById(id)) {return;}
+							  js = d.createElement(s); js.id = id;
+							  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+							  fjs.parentNode.insertBefore(js, fjs);
+							}(document, 'script', 'facebook-jssdk'));</script>
+
+							<div class="fb-like" data-send="false" data-layout="button_count"></div>
+                        </div>
+                        <?php
+                            $Content->element('properties/profile_gallery');
+                            include($Content->element);
+                        ?>
+                        <div class="profile_gallery">
+                            <div class="profile_map">
+                                <?php
+                                $Content->render(array('class'=>'properties', 'method'=>'showMap', $location, 302, 249, 15, false, false));
+                                include($Content->element);
+                                ?>
+                            </div>
+                            <a class="view_map" href="javascript: void(0);" id="view_map"></a>
+                        </div>
+                    </div>
+                    <div class="profile_right">
+                        <div class="pheader">
+                            <a class="map" target="_blank" href="http://maps.google.com/maps?q=google+map+<?php echo $map_address;?>">Map</a>
+                            <a class="add_fav" href="#">Add to Favorites</a>
+                            <a class="frnd" href="javascript: void(0);" id="sendmail_popup">Send to a Friend</a>
+                            <a class="flag" href="javascript: void(0);" id="flaglisting_popup">Flag</a>
+
+							 <?php //echo $Form->ajaxLink('Flag', array('class'=>'properties', 'method'=>'flagListing', $property['properties.slug']), array('class'=>'flag', 'open'=>array('type'=>'lightbox', 'width'=>722, 'reLoad'=>false, 'scroll'=>false, 'lbHeader'=>array('bgColor'=>'#73ADDD', 'textColor'=>'#FFFFFF', 'borderColor'=>'#73addd')))); ?>
+							
+
+							<?php echo $Form->Link('Print', array('class'=>'properties', 'method'=>'printListing', $property['properties.slug']), array('class'=>'printListing', 'target'=>'_blank', 'open'=>array('type'=>'thickbox', 'width'=>722, 'reLoad'=>false, 'scroll'=>true, 'lbHeader'=>array('display'=>'#73ADDD', 'textColor'=>'#FFFFFF', 'borderColor'=>'#73addd')))); ?>
+							<?php echo $Form->Link('PrintLarge', array('class'=>'properties', 'method'=>'printListing', $property['properties.slug'], 'images'), array('class'=>'printLarge', 'target'=>'_blank', 'open'=>array('type'=>'thickbox', 'width'=>722, 'reLoad'=>false, 'scroll'=>true, 'lbHeader'=>array('display'=>'#73ADDD', 'textColor'=>'#FFFFFF', 'borderColor'=>'#73addd')))); ?>
+                        </div>
+                        <div class="container_box">
+                            <h6>PROPERTY INFORMATION</h6>
+                            <p><?php echo $property['properties.description']; ?></p>
+                            <h6>UNIT FEATURES</h6>
+                            <?php
+                                $Content->render(array('class'=>'properties', 'method'=>'getUnitFeatures', $property['properties.id']), 'properties/features_new');
+                                include($Content->element);
+                            ?>
+
+                            <h6>BUILDING FEATURES</h6>
+                            <?php
+                                $Content->render(array('class'=>'properties', 'method'=>'getPropertyFeatures', $property['properties.id']), 'properties/features_new');
+                                include($Content->element);
+                            ?>
+                            <h6>CONTACT INFORMATION</h6>
+                            <div class="contact_box">
+				<?php echo $property['prContactInfo.contact_name']; ?><br />
+                                <?php if($property['prContactInfo.phone'] && $property['prContactInfo.phone'] != '--'){
+                                        echo '('. preg_replace('/-/', ') (', $property['prContactInfo.phone']) . ')';
+										if($property['prContactInfo.prefer'] == 'phone') echo ' (prefered)<br />'; else '<br />';
+                                } ?>
+                                <?php //echo $Form->link($property['prContactInfo.contact_email'], 'mailto:'.$property['prContactInfo.contact_email'], array('title'=>'Email')); ?><!--<br />-->
+                                <?php echo $Form->link($property['prContactInfo.website'], $property['prContactInfo.website'], array('title'=>'Visit website', 'target'=>'_blank')); ?>
+                                <div class="contact_btn"><a href="javascript: void(0);" id="contactmail_popup" title="Contact Us"></a></div>
+                            </div>
+
+                            <div class="property_info">
+                                <div class="links">
+                                    <ul>
+                                        <li>
+                                            <a class="sel tabber-tab" href="#">
+                                                <span>PROPERTY INFO</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="tabber-tab" href="#">
+                                                <span>UNIT INFO</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="tabber-tab" href="#">
+                                                <span>LEASE INFO</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="info_box tabber-container">
+                                    <div class="info_top">
+                                        <div class="info_bot">
+                                            <div class="info_mid">
+                                                <div class="midcontainer">
+                                                    <?php
+                                                        $Content->render(array('class'=>'properties', 'method'=>'getPropertyExtraFeatures', $property['properties.id']), 'properties/extra_features');
+                                                        include($Content->element);
+                                                    ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="info_box tabber-container">
+                                    <div class="info_top">
+                                        <div class="info_bot">
+                                            <div class="info_mid">
+                                                <div class="midcontainer">
+                                                    <?php
+                                                        $Content->render(array('class'=>'properties', 'method'=>'getUnitExtraFeatures', $property['properties.id']), 'properties/extra_features');
+                                                        include($Content->element);
+                                                    ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="info_box tabber-container">
+                                    <div class="info_top">
+                                        <div class="info_bot">
+                                            <div class="info_mid">
+                                                <div class="midcontainer">
+                                                    <?php
+                                                        $Content->render(array('class'=>'properties', 'method'=>'getLeaseExtraFeatures', $property['properties.id']), 'properties/lease');
+                                                        include($Content->element);
+                                                    ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="main_bot_gallery">
+                        <h3>OTHER LISTINGS YOU MIGHT LIKE</h3>
+                        <div class="gallery_box">
+                            <div class='gallery-ajax-loader'>
+                                <?php echo $Include->image('ajax-loader-orange.gif', array('alt'=>'')); ?><br/>
+                                Other Listing Loading...
+                            </div>
+                        </div>
+                    </div>
+                                   
+                    <div id="message_box" class="main_bot_gallery">
+						<h3>Property Comments on Facebook </h3>
+                        <div class="message_container" id="messages_list">
+                        <?php
+                            //$Content->render(array('class'=>'messages', 'method'=>'latestMessagesList', $property['properties.id']), 'messages/latest_messages_list');
+                            //include($Content->element);
+                        ?>
+                        </div>
+                        <?php
+                            $Content->element('messages/message_box');
+                            include($Content->element); 
+                        ?>                        
+                    </div>
+                </div>
+            </div>
+            <?php }else{ ?>
+            <div class="not-found">Apartment not found.</div>
+            <?php } ?>
+        </div> 
+    </div>
+</div>
+<span class="float-left ajax-loader_black" style="display: none; padding:4px;">
+    <?php echo $Include->image('ajax-loader_black.gif', array('alt'=>'Loading...')); ?>
+</span>
+<script type='text/javascript'>
+// Add to favorite
+$('a.add_fav').click(function(){
+    $.ajax({
+        url: '<?php echo WWW_ROOT; ?>/properties/addToFavorite/<?php echo $property['properties.id']; ?>',
+        type: 'POST',
+        beforeSend: function(content){
+            $('span.ajax-loader_black').insertBefore('a.add_fav');
+            $('.pheader span.ajax-loader_black').show();
+        },
+        success: function(content){
+            content = eval('(' + content + ')');
+            if(content){
+                $('span.ajax-loader_black').hide();
+                switch(content.status){
+                    case 'unauthenticated':
+                        Event.flash("<div class='flash-msg'><div class='flash-error'>Please login before add to favorites.</div></div>");
+                        $('html, body').animate({scrollTop: 0}, 1000, '', function(){
+                            $('div.drop_box').show();
+                            $('div.drop_box input[type=text]:eq(0)').focus();
+                        });
+                        break;
+                    case 'already_favorite':
+                        Event.flash("<div class='flash-msg'><div class='flash-error'>You have already favorited this list.</div></div>");
+                        break;
+                    case 'success':
+                        Event.flash("<div class='flash-msg'><div class='flash-success'>List has been added in your favorites successfully.</div></div>");
+                        break;
+                    default:
+                        alert('Oops! Error, please try again.');
+                }
+            }
+        },
+        error: function(err, x, y){
+            $('span.ajax-loader_black').hide();
+            alert('Oops! Error, please try again.');
+        }
+    });
+
+    return false;
+})
+// Fetch other property listings 
+$.ajax({
+    url: '<?php echo WWW_ROOT; ?>/properties/getOtherListing/<?php echo $property['properties.id']; ?>',
+    type: 'GET',
+    success: function(content){
+        if(content.length > 0){
+            $('div.gallery_box').html(content);
+        }else{
+            $('div.main_bot_gallery:eq(0)').remove();
+        }
+    }
+});
+var mapTypeControl = new GMapTypeControl();
+var smallMapControll = new GSmallMapControl();
+if($('a.view_map').length > 0){
+    $('a.view_map').click(function(){
+        $('div#map_canvas').animate({width: '600px', height: '500px'}, 1500, '', function(){                        
+            var topRight = new GControlPosition(G_ANCHOR_TOP_RIGHT, new GSize(10,10));
+            map.addControl(mapTypeControl, topRight);
+            // Add Map Controls
+            map.addControl(smallMapControll);
+            map.setCenter(centerPoint, 17);
+        });
+    });
+    // Remove autocomplete box on click anywhere in the document
+    $(document).mouseup(function(e){
+        var targ;
+        if (!e) var e = window.event;
+        if (e.target) targ = e.target;
+        else if (e.srcElement) targ = e.srcElement;
+        if(targ.id != 'view_map')
+            restoreMap(targ);
+    });
+}
+// Remove autocomplete box on click anywhere in the document
+function restoreMap(targ){    
+    var evt = true;
+    if (targ.nodeType == 3) // defeat Safari bug
+            targ = targ.parentNode;
+    while(targ.parentNode){
+            if(targ.id != 'map_canvas'){
+                    targ = targ.parentNode;
+            }
+            else{
+                    evt = false;
+                    break;
+            }
+    }
+    if(evt){
+        $('div#map_canvas').animate({width: '302px', height: '249px'}, 1500, '', function(){
+            map.removeControl(mapTypeControl);
+            map.removeControl(smallMapControll);
+            map.setCenter(centerPoint, 15);
+        });
+    }
+}
+
+</script>

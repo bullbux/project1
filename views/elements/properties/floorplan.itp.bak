@@ -1,0 +1,16 @@
+<h2 class="lb-heading">
+    <?php 
+	if($floorplan){echo $floorplan->title;} ?> Floor plan
+</h2>
+<?php
+if($floorplan){
+
+echo $Include->showImage(WWW_ROOT . '/resources/uploads/properties/gallery/' . $floorplan->file, array('alt' => 'Photo', 'dims'=>array('width'=>'580', 'height'=>'400')));
+
+}else{
+    echo 'No floorplan upload yet.';
+}
+?>
+<div>
+<?php echo $Form->link('download plan',array('class'=>'properties','method'=>'downloadplan',base64_encode(WWW_ROOT . '/resources/uploads/properties/gallery/' . $floorplan->file)));?>
+</div>

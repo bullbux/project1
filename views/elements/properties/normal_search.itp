@@ -1,0 +1,66 @@
+<div class="main_search">
+  <div class="search_m">
+    <ul class='lft'>
+      <li>
+        <div class="">
+              <div class="">                                        
+                <?php echo $Form->create('normalSearchForm1', array('action'=>$searchFormAction, 'method'=>'GET')); ?>
+                <div  id="main_search_input" class="search_form_cont">
+                  <div class="perspective"></div>
+                  <?php echo $Form->input('s', array('type'=>'text', 'class'=>'search {default:"Your search terms here.."}', 'value'=>'Your search terms here..')); ?>
+                </div>
+                <?php //echo $Form->end(); ?>                                                                                
+              </div>  
+        </div>
+      </li>
+      <li>
+        <div class="fl form_part">
+        <label>Price Range</label>
+          <div class="price_range_box">
+          <div class="search_form_cont fl">
+                <div class="search_form_input">
+                  <span class="to-droid">$</span>
+                  <?php echo $Form->input('from', array('type'=>'text')); ?>
+                </div>
+                </div>
+          <div class="fl to-droid form_search_text">to</div>
+          <div class="search_form_cont fl">
+                <div class="search_form_input">
+                  <span class="to-droid">$</span>
+                  <?php echo $Form->input('to', array('type'=>'text')); ?>
+                </div>
+          </div>
+          </div>
+        </div>
+        <div class="fl form_part" style="margin-left:60px;">
+        <label>Beds</label>
+          <div class="unit_feature_box">
+            <div class="select_box">
+              <?php echo $Form->number('bed', array(0, UnitInfoConsts::MAX_BED), null, array('class'=>'styled')); ?>
+            </div>
+          </div>
+        </div>
+        <div class="fl form_part" style="margin-left:49px;">
+        <label>Baths</label>
+          <div class="unit_feature_box">
+            <div class="select_box">
+              <?php echo $Form->float_number('bath', array(0, UnitInfoConsts::MAX_BATH), null, array('class'=>'styled')); ?>
+            </div>
+          </div>
+        </div>
+      </li>
+      <?php echo $Form->end(); ?>    
+      </ul>
+      <?php //echo $Form->create('normalSearchForm2', array('action'=>$searchFormAction, 'method'=>'GET', 'id'=>'normal-search-form2')); ?>
+    <div class="fr find-btn-cont">
+      <a href="javascript: void(0);" class="find-btn search" title='Search' onclick="javascript: document.normalSearchForm1.submit(); return false;"></a>
+    </div>
+    <div class="clr"></div>
+  </div>
+    <div class="advance_search">
+    <div class="advance_m">
+      <a href="#" id="a_search_popup">Advanced Search</a>
+    </div>
+    </div>
+  <div class="clrl"></div>
+</div>

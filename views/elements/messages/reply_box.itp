@@ -1,0 +1,40 @@
+<!-- Only logged in users can send messages -->
+<div class="float-left">
+    <?php echo $Form->create('replyForm', array('action'=>array('class'=>'messages', 'method'=>'send', $properties[0]['properties.id'],$is_private), 'method'=>'post')); ?>
+    <div class="txtarea_box">
+        <div class="txt_l">
+            <div class="txt_r">
+                <div class="txt_m">
+                    <?php echo $Form->textarea('message', array('class'=>'{default: "Leave reply here..."}')); ?>
+                    <?php echo $Form->input('root', array('type'=>'hidden', 'value'=>$messageId)); ?>
+                </div>
+            </div>
+        </div>
+        <?php echo $Form->link('Reply', '#', array('class'=>'reply')); ?>
+        <span class="load-ajax"></span>
+        <br class="clear"/>
+    </div>
+    <?php echo $Form->end(array('update'=>'messages_list', 'position'=>'AFTER', 'onComplete'=>'triggerMe()')); ?>
+</div>
+<script type="text/javascript">
+    $('a.reply').click(function(){
+        $('span.load-ajax').text('Sending message...');
+        $('form[name=replyForm]').submit();
+        return false;
+    });
+    function triggerMe(){
+        $('span.load-ajax').text('');
+        if($('#messages_list div.error-msg').length >0){
+            $('#messages_list div.error-msg').fadeOut(3000);
+        }
+        $('textarea[name=message]').val('').focus();
+    }
+</script>
+<script type='text/javascript'>
+// Scroll down to reply box
+if(window.location.hash == '#reply'){
+    $('html, body').animate({scrollTop: $(document).height()}, 1000, '', function(){
+        $('textarea[name=message]').focus();
+    });
+}
+</script>

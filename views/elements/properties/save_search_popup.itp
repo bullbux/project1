@@ -1,0 +1,41 @@
+<div id="save-search">
+<?php echo $Include->js('validations.js'); ?>
+<script type="text/javascript" language="javascript">
+$(document).ready(function(){
+    $('#link-title').focus();
+});
+</script>
+<h2 class="lb-heading">Save Search</h2>
+<div class="notice"><span>Note: </span>Please enter search link title to find search link more easily.</div>
+<?php
+$msg = $session->getFlash();
+if($msg){
+?>
+<div class="flash-success"><?php echo $msg; ?></div>
+<?php
+}else{
+?>
+<?php echo $Form->create('saveSearchForm', array('method'=>'post', 'action'=>WWW_ROOT.'/properties/saveSearch')); ?><!-- Form -->
+<div class="txt_area">
+    <div class="txt_l">
+        <div class="txt_r">
+            <div class="txt_m">                
+                <?php echo $Form->input('title',array('type'=>'text','class'=>'mediumfield {default: "Enter link title here"}', 'id'=>'link-title'));?>
+            </div>
+        </div>
+    </div>
+</div>
+<span class="load-ajax"></span>
+<a href="javascript: void(0);" class="submit_btn">Save</a>
+<?php echo $Form->input('save',array('type'=>'hidden', 'value'=>'1'));?>
+<?php echo $Form->input('link',array('type'=>'hidden', 'value'=>''));?>
+<div class='clear'></div>
+<?php echo $Form->end(array('update'=>'save-search', 'position'=>'REPLACE')); ?><!-- /Form -->
+<?php } ?>
+<script type="text/javascript">
+    $('form[name=saveSearchForm] a.submit_btn').click(function(){
+        $('form[name=saveSearchForm] input[name=link]').val(window.location.href);
+        $('form[name=saveSearchForm]').submit();
+    });
+</script>
+</div>

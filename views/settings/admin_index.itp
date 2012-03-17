@@ -1,0 +1,30 @@
+<h2 class="heading settings-ico">System Settings</h2>
+<div class="data"> <!-- Box begins here -->
+    <?php if(!empty($Content->settings->records)) { ?>
+        <?php echo $Form->create('settings', array('method'=>'post', 'action'=>'')); ?>
+
+            <?php foreach($Content->settings->records as $key=>$value) { ?>
+        <div>
+            <label for="b"><?php echo $value->title; ?></label>
+
+                    <?php
+                    if($value->type == 1)
+                        echo $Form->textarea($value->name, array('value'=>$value->value, 'cols'=>48, 'rows'=>10));
+                    elseif($value->type == 2)
+                        echo $Form->input($value->name, array('value'=>$value->value,'class'=>'bigfield','type'=>'password'));
+                    else
+                        echo $Form->input($value->name, array('value'=>$value->value,'class'=>'bigfield','type'=>'text'));
+                    ?>
+
+        </div>
+            <?php } ?>
+        <div>
+            <label for="b">&nbsp;</label>
+                <?php echo $Form->input('update', array('type'=>'submit', 'value'=>'Update')); ?>&nbsp;
+                <?php echo $Form->input('reset', array('type'=>'reset', 'value'=>'Reset')); ?>
+            </td>
+        </div>
+        <?php echo $Form->end(); ?>
+    <?php } ?>
+</div> <!-- END Box-->
+<div class="clear"></div>

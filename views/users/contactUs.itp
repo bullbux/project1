@@ -1,0 +1,92 @@
+<div class="page-outer">
+<div class="page-inner">
+
+<div class="listing-heading">
+    Contact Us
+</div>
+
+    <div class="contactmain">
+
+
+<div class="contactleft">
+<strong>Head Office (Brisbane)</strong><br/>
+Ground Floor 'Murrayfield'<br/>
+57 Wharf Street<br/>
+Chelmer, Qld 4068<br/>
+Australia<br/>
+
+<br/>
+<strong>Postal Address</strong><br/>
+PO Box 257<br/>
+Sherwood, Qld 4075<br/>
+Australia<br/>
+
+<br/>
+<strong>Gold Coast Branch Office</strong><br/>
+Third Floor 'Sandown'<br/>
+12/158 Hedges Avenue<br/>
+Mermaid Beach, Qld 4218<br/>
+Australia<br/>
+</div>
+
+
+
+
+
+
+        <div  class="contactright">
+    <?php echo $Form->create('contactUs', array('action'=>'', 'method'=>'post')); ?>
+    <div>
+        <label for='name'><strong>Name</strong> <span class="required">*</span></label>
+        <div class='float-left'>
+            <?php echo $Form->input('name', array('type'=>'text', 'class'=>'formfield bigfield mandatory', 'title'=>'Name', 'id'=>'name')); ?>
+        </div>
+        <div class='clear'></div>
+    </div>
+    <div>
+        <label for='name'><strong>Email</strong> <span class="required">*</span></label>
+        <div class='float-left'>
+            <?php echo $Form->input('email', array('type'=>'text', 'class'=>'formfield bigfield mandatory email', 'title'=>'Email-Id')); ?>
+        </div>
+        <div class='clear'></div>
+    </div>
+    <div>
+        <label for='name'><strong>Company</strong></label>
+        <div class='float-left'>
+            <?php echo $Form->input('company', array('type'=>'text', 'class'=>'formfield bigfield', 'title'=>'Company')); ?>
+        </div>
+        <div class='clear'></div>
+    </div>
+    <div>
+        <label for='name'><strong>Message</strong> <span class="required">*</span></label>
+        <div class='float-left'>
+            <?php echo $Form->textarea('message', array('type'=>'text', 'class'=>'bigfield mandatory', 'title'=>'Message', 'rows'=>7)); ?>
+        </div>
+        <div class='clear'></div>
+    </div>
+    <div>
+        <label for='name'>&nbsp;</label>
+        <div class='float-left'>
+            <h4 class='red'>Please enter the text from the image below.<br/> The letters are not case-sensitive.</h4>
+            <?php echo $Form->recaptcha(); ?>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div>
+        <label for='name'>&nbsp;</label>
+        <div class='float-left'>
+            <?php echo $Form->input('send', array('type'=>'hidden', 'value'=>'1')); ?>
+            <?php echo $Form->input('Submit', array('type'=>'submit', 'value'=>'Send Us Email')); ?>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <?php echo $Form->end(); ?>
+</div>
+
+    </div>
+
+
+<div class='clear'></div>
+</div>
+
+</div>

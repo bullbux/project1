@@ -1,0 +1,147 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#username').blur(function(){
+            if($(this).val()){
+                $('#check-availability').html("<?php echo $Include->image('ajax-loader.gif'); ?>");
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo WWW_ROOT.'/users/checkAvailability'; ?>/" + $(this).val(),
+                    success: function(content){
+                        $('#check-availability').html($(content));
+                        if(content.indexOf('is available') <= 0){
+                            $('#username').focus();
+                            $('#username').select();
+                        }
+                    }
+                });
+            }
+        });
+    });
+</script>
+<div class="page-outer">
+    <div class="page-inner">
+        <div class="listing-heading">User Profile</div>
+        <div id="register-form">
+            <?php echo $Form->create('profile', array('action'=>'', 'method'=>'post')); ?>
+            <div class="">
+                <h3 class="title">Account Details</h3>
+                <div>
+                    <label for="username">User Name : </label>
+                    <div class='float-left'>
+                        <?php echo $Form->input('username', array('type'=>'text', 'id'=>'username', 'maxlength'=>15, 'class'=>'bigfield', 'title'=>'Username')); ?>
+                        <span id="check-availability"></span>
+                        <span class="subtext">Maximum characters 6 to 15</span>
+                    </div>
+                    <div class="clear"></div>
+                    <label for="" class="err-label">&nbsp;</label>
+                    <?php echo $Form->input('usernameErr', array('type'=>'hidden')); ?>
+                    <div class="clear"></div>
+                </div>
+                <div>
+                    <label for="password">Change Password : </label>
+                    <div class='float-left'>
+                        <?php echo $Form->input('password', array('type'=>'password', 'id'=>'password', 'maxlength'=>15, 'class'=>'bigfield', 'title'=>'Password')); ?>
+                        <span class="subtext">Maximum characters 6 to 15</span>
+                    </div>
+                    <div class="clear"></div>
+                    <label for="" class="err-label">&nbsp;</label>
+                    <?php echo $Form->input('passwordErr', array('type'=>'hidden')); ?>
+                    <div class="clear"></div>
+                </div>
+                <div>
+                    <label for="cpassword">Confirm Password : </label>
+                    <div class='float-left'>
+                        <?php echo $Form->input('cpassword', array('type'=>'password', 'id'=>'cpassword', 'maxlength'=>15, 'class'=>'bigfield', 'title'=>'Confirm password')); ?>
+                        <span class="subtext">Maximum characters 6 to 15</span>
+                    </div>
+                    <div class="clear"></div>
+                    <label for="" class="err-label">&nbsp;</label>
+                    <?php echo $Form->input('cpasswordErr', array('type'=>'hidden')); ?>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="">
+                <h3 class="title">Personal Details</h3>
+                <div>
+                    <label for="firstname">First Name <span class="required">*</span>: </label>
+                    <div class='float-left'>
+                        <?php echo $Form->input('firstname', array('type'=>'text', 'id'=>'firstname', 'class'=>'bigfield mandatory', 'title'=>'First name')); ?>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div>
+                    <label for="middlename">Middle Name : </label>
+                    <div class='float-left'>
+                        <?php echo $Form->input('middlename', array('type'=>'text', 'id'=>'middlename', 'class'=>'bigfield')); ?>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div>
+                    <label for="lastname">Last Name : </label>
+                    <div class='float-left'>
+                        <?php echo $Form->input('lastname', array('type'=>'text', 'id'=>'lastname', 'class'=>'bigfield')); ?>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div>
+                    <label for="email">Email <span class="required">*</span>: </label>
+                    <div class='float-left'>
+                        <?php echo $Form->input('email', array('type'=>'text', 'id'=>'email', 'class'=>'bigfield email mandatory', 'title'=>'Email')); ?>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <?php if($session->checkUserSession($session, PAIDUSER)): ?>
+                <div>
+                    <label for='skype'>Skype :</label>
+                    <div class='float-left'>
+                        <?php echo $Form->input('skype', array('type'=>'text', 'class'=>'bigfield', 'id'=>'skype')); ?>
+                    </div>
+                    <div class='clear'></div>
+                </div>
+                <?php endif; ?>
+                <div>
+                    <label for="contactno">Contact No. : </label>
+                    <div class='float-left'>
+                        <?php echo $Form->input('contactno', array('type'=>'text', 'id'=>'contactno', 'class'=>'bigfield')); ?>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div>
+                    <label for="company">Company : </label>
+                    <div class='float-left'>
+                        <?php echo $Form->input('company', array('type'=>'text', 'id'=>'company', 'class'=>'bigfield')); ?>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div>
+                    <label for="address">Address : </label>
+                    <div class='float-left'>
+                        <?php echo $Form->textarea('address', array('cols'=>'40', 'rows'=>'4', 'id'=>'address', 'class'=>'bigfield')); ?>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div>
+                    <label for="timezone">Time Zone <span class="required">*</span>: </label>
+                    <div class='float-left'>
+                        <?php echo $Form->select('timezone', $timezones, array(), array('id'=>'timezone', 'class'=>'bigfield mandatory', 'title'=>'Time zone'), '--Time zone--', 0); ?>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div>
+                    <label for="pincode">Post Code : </label>
+                    <div class='float-left'>
+                        <?php echo $Form->input('pincode', array('type'=>'text', 'id'=>'pincode', 'class'=>'bigfield')); ?>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div>
+                    <label for="">&nbsp;</label>
+                    <?php echo $Form->input('submit', array('type'=>'hidden', 'value'=>'1')); ?>
+                    <?php echo $Form->input('update', array('type'=>'submit', 'value'=>'Update Profile')); ?>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <?php echo $Form->end(); ?>
+        </div>
+    </div>
+</div>

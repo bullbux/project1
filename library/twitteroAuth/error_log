@@ -1,0 +1,721 @@
+[07-Aug-2010 05:51:34] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message 'Failed to validate oauth signature and token' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:249
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(228): EpiOAuthException::raise('Failed to valid...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(25): EpiOAuthResponse->__get('oauth_token')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/start.php(9): EpiOAuth->getAuthenticateUrl()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 249
+[07-Aug-2010 05:58:32] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message 'Failed to validate oauth signature and token' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:249
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(228): EpiOAuthException::raise('Failed to valid...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(25): EpiOAuthResponse->__get('oauth_token')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/start.php(9): EpiOAuth->getAuthenticateUrl()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 249
+[07-Aug-2010 06:08:13] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message 'Failed to validate oauth signature and token' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:249
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(228): EpiOAuthException::raise('Failed to valid...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(25): EpiOAuthResponse->__get('oauth_token')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/start.php(9): EpiOAuth->getAuthenticateUrl()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 249
+[07-Aug-2010 06:08:42] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message 'Failed to validate oauth signature and token' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:249
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(228): EpiOAuthException::raise('Failed to valid...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(25): EpiOAuthResponse->__get('oauth_token')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/start.php(9): EpiOAuth->getAuthenticateUrl()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 249
+[07-Aug-2010 06:09:39] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message 'Failed to validate oauth signature and token' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:249
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(228): EpiOAuthException::raise('Failed to valid...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(25): EpiOAuthResponse->__get('oauth_token')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/start.php(9): EpiOAuth->getAuthenticateUrl()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 249
+[07-Aug-2010 06:09:56] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message 'Failed to validate oauth signature and token' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:249
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(228): EpiOAuthException::raise('Failed to valid...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(25): EpiOAuthResponse->__get('oauth_token')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/start.php(9): EpiOAuth->getAuthenticateUrl()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 249
+[07-Aug-2010 06:24:58] PHP Warning:  http_build_query() [<a href='function.http-build-query'>function.http-build-query</a>]: Parameter 1 expected to be Array or Object.  Incorrect value given in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 140
+[07-Aug-2010 06:24:58] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message 'Failed to validate oauth signature and token' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:249
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(228): EpiOAuthException::raise('Failed to valid...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(25): EpiOAuthResponse->__get('oauth_token')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/start.php(9): EpiOAuth->getAuthenticateUrl()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 249
+[07-Aug-2010 06:26:32] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message 'Failed to validate oauth signature and token' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:249
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(228): EpiOAuthException::raise('Failed to valid...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(25): EpiOAuthResponse->__get('oauth_token')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/start.php(9): EpiOAuth->getAuthenticateUrl()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 249
+[07-Aug-2010 06:27:25] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message 'Failed to validate oauth signature and token' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:249
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(228): EpiOAuthException::raise('Failed to valid...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(25): EpiOAuthResponse->__get('oauth_token')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/start.php(9): EpiOAuth->getAuthenticateUrl()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 249
+[07-Aug-2010 06:32:24] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message 'Failed to validate oauth signature and token' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:249
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(228): EpiOAuthException::raise('Failed to valid...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(25): EpiOAuthResponse->__get('oauth_token')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/start.php(9): EpiOAuth->getAuthenticateUrl()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 249
+[07-Aug-2010 06:43:13] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message 'Failed to validate oauth signature and token' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:250
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(229): EpiOAuthException::raise('Failed to valid...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(25): EpiOAuthResponse->__get('oauth_token')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/start.php(9): EpiOAuth->getAuthenticateUrl()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 250
+[07-Aug-2010 06:45:40] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message 'Failed to validate oauth signature and token' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:249
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(228): EpiOAuthException::raise('Failed to valid...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(25): EpiOAuthResponse->__get('oauth_token')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/start.php(9): EpiOAuth->getAuthenticateUrl()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 249
+[07-Aug-2010 06:46:29] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message 'Failed to validate oauth signature and token' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:249
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(228): EpiOAuthException::raise('Failed to valid...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(25): EpiOAuthResponse->__get('oauth_token')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/start.php(9): EpiOAuth->getAuthenticateUrl()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 249
+[07-Aug-2010 06:47:15] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message 'Failed to validate oauth signature and token' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:252
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(231): EpiOAuthException::raise('Failed to valid...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(25): EpiOAuthResponse->__get('oauth_token')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/start.php(9): EpiOAuth->getAuthenticateUrl()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 252
+[07-Aug-2010 06:50:05] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message 'Failed to validate oauth signature and token' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:250
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(229): EpiOAuthException::raise('Failed to valid...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(25): EpiOAuthResponse->__get('oauth_token')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/start.php(9): EpiOAuth->getAuthenticateUrl()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 250
+[07-Aug-2010 06:50:55] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message 'Failed to validate oauth signature and token' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:250
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(229): EpiOAuthException::raise('Failed to valid...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(25): EpiOAuthResponse->__get('oauth_token')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/start.php(9): EpiOAuth->getAuthenticateUrl()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 250
+[07-Aug-2010 07:19:13] PHP Warning:  Invalid argument supplied for foreach() in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 121
+[07-Aug-2010 07:19:13] PHP Warning:  Invalid argument supplied for foreach() in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 76
+[07-Aug-2010 07:19:13] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message '{"request":"/statuses/update.json","error":"Could not authenticate with OAuth."}' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:252
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(101): EpiOAuthException::raise('{"request":"/st...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(11): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 252
+[07-Aug-2010 07:20:15] PHP Warning:  Invalid argument supplied for foreach() in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 121
+[07-Aug-2010 07:20:15] PHP Warning:  Invalid argument supplied for foreach() in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 76
+[07-Aug-2010 07:20:15] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message '{"request":"/statuses/update.json","error":"Could not authenticate with OAuth."}' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:252
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(101): EpiOAuthException::raise('{"request":"/st...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(11): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 252
+[07-Aug-2010 07:24:24] PHP Warning:  Invalid argument supplied for foreach() in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 121
+[07-Aug-2010 07:24:24] PHP Warning:  Invalid argument supplied for foreach() in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 76
+[07-Aug-2010 07:24:24] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message '{"request":"/statuses/update.json","error":"Could not authenticate with OAuth."}' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:252
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(101): EpiOAuthException::raise('{"request":"/st...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(11): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 252
+[07-Aug-2010 07:26:59] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message '{"request":"/statuses/update.json?0=test","error":"Incorrect signature"}' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:252
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(101): EpiOAuthException::raise('{"request":"/st...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(11): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 252
+[07-Aug-2010 07:28:18] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message '{"request":"/statuses/update.json?0=test","error":"Incorrect signature"}' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:252
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(101): EpiOAuthException::raise('{"request":"/st...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(11): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 252
+[07-Aug-2010 07:28:57] PHP Fatal error:  Uncaught exception 'EpiOAuthBadRequestException' with message '{"request":"/statuses/update.json","error":"This method requires a POST."}' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:250
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(101): EpiOAuthException::raise('{"request":"/st...', 400)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(11): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 250
+[07-Aug-2010 07:35:44] PHP Fatal error:  Uncaught exception 'EpiOAuthBadRequestException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/statuses/update.xml</request>
+  <error>This method requires a POST.</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:250
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(101): EpiOAuthException::raise('<?xml version="...', 400)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(11): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 250
+[07-Aug-2010 07:36:22] PHP Warning:  http_build_query() [<a href='function.http-build-query'>function.http-build-query</a>]: Parameter 1 expected to be Array or Object.  Incorrect value given in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 140
+[07-Aug-2010 07:36:22] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/statuses/update.xml</request>
+  <error>Read-only application cannot POST</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:252
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(101): EpiOAuthException::raise('<?xml version="...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(11): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 252
+[07-Aug-2010 07:36:43] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/statuses/update.xml</request>
+  <error>Incorrect signature</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:252
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(101): EpiOAuthException::raise('<?xml version="...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(11): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 252
+[07-Aug-2010 07:38:06] PHP Warning:  Invalid argument supplied for foreach() in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 106
+[07-Aug-2010 07:38:06] PHP Warning:  Invalid argument supplied for foreach() in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 106
+[07-Aug-2010 07:38:09] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/statuses/update.xml</request>
+  <error>Incorrect signature</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:252
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(101): EpiOAuthException::raise('<?xml version="...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(11): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 252
+[07-Aug-2010 07:39:20] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/statuses/update.xml</request>
+  <error>Read-only application cannot POST</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:252
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(101): EpiOAuthException::raise('<?xml version="...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(11): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 252
+[07-Aug-2010 07:41:07] PHP Warning:  Invalid argument supplied for foreach() in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 106
+[07-Aug-2010 07:41:07] PHP Warning:  Invalid argument supplied for foreach() in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 106
+[07-Aug-2010 07:41:08] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/oauth/access_token</request>
+  <error>Invalid / expired Token</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:252
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(231): EpiOAuthException::raise('<?xml version="...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/confirm.php(11): EpiOAuthResponse->__get('oauth_token')
+#2 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 252
+[07-Aug-2010 07:41:11] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/statuses/update.xml</request>
+  <error>Read-only application cannot POST</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:252
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(101): EpiOAuthException::raise('<?xml version="...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(11): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 252
+[07-Aug-2010 07:46:56] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/statuses/update.xml</request>
+  <error>Could not authenticate with OAuth.</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:252
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(101): EpiOAuthException::raise('<?xml version="...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(11): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 252
+[07-Aug-2010 07:47:50] PHP Warning:  Invalid argument supplied for foreach() in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 106
+[07-Aug-2010 07:47:50] PHP Warning:  Invalid argument supplied for foreach() in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 106
+[07-Aug-2010 07:47:52] PHP Warning:  Invalid argument supplied for foreach() in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 106
+[07-Aug-2010 07:47:52] PHP Fatal error:  Uncaught exception 'InvalidArgumentException' with message 'Passed variable is not an array or object, using empty array instead' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php:64
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): ArrayIterator->__construct(NULL)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(11): EpiTwitterJson->getIterator()
+#2 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 64
+[07-Aug-2010 07:51:52] PHP Warning:  Invalid argument supplied for foreach() in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 106
+[07-Aug-2010 07:51:52] PHP Warning:  Invalid argument supplied for foreach() in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 106
+[07-Aug-2010 07:51:53] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/oauth/access_token</request>
+  <error>Invalid / expired Token</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:252
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(231): EpiOAuthException::raise('<?xml version="...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/confirm.php(11): EpiOAuthResponse->__get('oauth_token')
+#2 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 252
+[07-Aug-2010 07:52:50] PHP Fatal error:  Uncaught exception 'EpiOAuthException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/statuses/update.xml</request>
+  <error>Status is a duplicate.</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:254
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(101): EpiOAuthException::raise('<?xml version="...', 403)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(11): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 254
+[07-Aug-2010 07:53:01] PHP Fatal error:  Uncaught exception 'EpiOAuthException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/statuses/update.xml</request>
+  <error>Status is a duplicate.</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:254
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(101): EpiOAuthException::raise('<?xml version="...', 403)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(11): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 254
+[07-Aug-2010 07:53:26] PHP Warning:  Invalid argument supplied for foreach() in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 106
+[07-Aug-2010 07:53:26] PHP Fatal error:  Uncaught exception 'InvalidArgumentException' with message 'Passed variable is not an array or object, using empty array instead' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php:64
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): ArrayIterator->__construct(NULL)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(11): EpiTwitterJson->getIterator()
+#2 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 64
+[07-Aug-2010 07:53:51] PHP Warning:  Invalid argument supplied for foreach() in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 106
+[07-Aug-2010 07:53:51] PHP Fatal error:  Uncaught exception 'InvalidArgumentException' with message 'Passed variable is not an array or object, using empty array instead' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php:64
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): ArrayIterator->__construct(NULL)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(11): EpiTwitterJson->getIterator()
+#2 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 64
+[07-Aug-2010 07:55:06] PHP Warning:  Invalid argument supplied for foreach() in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 106
+[07-Aug-2010 07:55:06] PHP Fatal error:  Uncaught exception 'InvalidArgumentException' with message 'Passed variable is not an array or object, using empty array instead' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php:64
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): ArrayIterator->__construct(NULL)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(11): EpiTwitterJson->getIterator()
+#2 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 64
+[07-Aug-2010 08:08:57] PHP Fatal error:  Uncaught exception 'EpiOAuthException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/statuses/update.xml</request>
+  <error>Status is a duplicate.</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:254
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(101): EpiOAuthException::raise('<?xml version="...', 403)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(12): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 254
+[07-Aug-2010 08:09:58] PHP Warning:  Invalid argument supplied for foreach() in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 106
+[07-Aug-2010 08:09:58] PHP Fatal error:  Uncaught exception 'InvalidArgumentException' with message 'Passed variable is not an array or object, using empty array instead' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php:64
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): ArrayIterator->__construct(NULL)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(12): EpiTwitterJson->getIterator()
+#2 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 64
+[07-Aug-2010 08:20:03] PHP Fatal error:  Call to undefined function  print_() in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 102
+[07-Aug-2010 08:22:07] PHP Warning:  Invalid argument supplied for foreach() in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 106
+[07-Aug-2010 08:22:07] PHP Warning:  Invalid argument supplied for foreach() in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 106
+[07-Aug-2010 08:22:07] PHP Fatal error:  Uncaught exception 'InvalidArgumentException' with message 'Passed variable is not an array or object, using empty array instead' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php:64
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): ArrayIterator->__construct(NULL)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(10): EpiTwitterJson->getIterator()
+#2 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 64
+[07-Aug-2010 08:24:01] PHP Fatal error:  Uncaught exception 'InvalidArgumentException' with message 'Passed variable is not an array or object, using empty array instead' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php:64
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): ArrayIterator->__construct(NULL)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(10): EpiTwitterJson->getIterator()
+#2 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 64
+[08-Aug-2010 23:25:56] PHP Fatal error:  Uncaught exception 'InvalidArgumentException' with message 'Passed variable is not an array or object, using empty array instead' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php:64
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): ArrayIterator->__construct(NULL)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(10): EpiTwitterJson->getIterator()
+#2 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 64
+[27-Aug-2010 00:43:05] PHP Fatal error:  Uncaught exception 'InvalidArgumentException' with message 'Passed variable is not an array or object, using empty array instead' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php:64
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): ArrayIterator->__construct(NULL)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(10): EpiTwitterJson->getIterator()
+#2 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 64
+[27-Aug-2010 00:58:26] PHP Fatal error:  Uncaught exception 'EpiOAuthException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/statuses/update.xml</request>
+  <error>Status is a duplicate.</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:254
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(101): EpiOAuthException::raise('<?xml version="...', 403)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(10): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 254
+[27-Aug-2010 00:58:43] PHP Fatal error:  Uncaught exception 'EpiOAuthException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/statuses/update.xml</request>
+  <error>Status is a duplicate.</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:254
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(101): EpiOAuthException::raise('<?xml version="...', 403)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(10): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 254
+[27-Aug-2010 00:59:09] PHP Fatal error:  Uncaught exception 'EpiOAuthException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/statuses/update.xml</request>
+  <error>Status is a duplicate.</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:254
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(101): EpiOAuthException::raise('<?xml version="...', 403)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(10): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 254
+[27-Aug-2010 00:59:17] PHP Fatal error:  Uncaught exception 'EpiOAuthException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/statuses/update.xml</request>
+  <error>Status is a duplicate.</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:254
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(101): EpiOAuthException::raise('<?xml version="...', 403)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(10): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 254
+[27-Aug-2010 01:00:18] PHP Fatal error:  Uncaught exception 'InvalidArgumentException' with message 'Passed variable is not an array or object, using empty array instead' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php:64
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): ArrayIterator->__construct(NULL)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(10): EpiTwitterJson->getIterator()
+#2 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 64
+[27-Aug-2010 01:00:37] PHP Fatal error:  Uncaught exception 'InvalidArgumentException' with message 'Passed variable is not an array or object, using empty array instead' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php:64
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): ArrayIterator->__construct(NULL)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(10): EpiTwitterJson->getIterator()
+#2 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 64
+[27-Aug-2010 01:15:03] PHP Fatal error:  Uncaught exception 'InvalidArgumentException' with message 'Passed variable is not an array or object, using empty array instead' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php:64
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): ArrayIterator->__construct(NULL)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(11): EpiTwitterJson->getIterator()
+#2 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 64
+[27-Aug-2010 01:21:25] PHP Fatal error:  Uncaught exception 'InvalidArgumentException' with message 'Passed variable is not an array or object, using empty array instead' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php:65
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(65): ArrayIterator->__construct(NULL)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(11): EpiTwitterJson->getIterator()
+#2 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 65
+[27-Aug-2010 01:21:58] PHP Fatal error:  Uncaught exception 'EpiOAuthException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/statuses/update.xml</request>
+  <error>Status is a duplicate.</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:254
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(104): EpiOAuthException::raise('<?xml version="...', 403)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(67): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(11): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 254
+[27-Aug-2010 01:27:09] PHP Fatal error:  Uncaught exception 'EpiOAuthException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/statuses/update.xml</request>
+  <error>Status is a duplicate.</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:254
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(107): EpiOAuthException::raise('<?xml version="...', 403)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(67): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(11): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 254
+[27-Aug-2010 01:29:56] PHP Fatal error:  Uncaught exception 'EpiOAuthException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/statuses/update.xml</request>
+  <error>Status is a duplicate.</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:254
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(104): EpiOAuthException::raise('<?xml version="...', 403)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(67): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(11): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 254
+[27-Aug-2010 01:30:42] PHP Fatal error:  Uncaught exception 'EpiOAuthException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/statuses/update.xml</request>
+  <error>Status is a duplicate.</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:254
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(101): EpiOAuthException::raise('<?xml version="...', 403)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(64): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(11): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 254
+[27-Aug-2010 01:31:18] PHP Fatal error:  Uncaught exception 'EpiOAuthException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/statuses/update.xml</request>
+  <error>Status is a duplicate.</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:254
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(102): EpiOAuthException::raise('<?xml version="...', 403)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(65): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(11): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 254
+[27-Aug-2010 01:31:58] PHP Fatal error:  Uncaught exception 'EpiOAuthException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/statuses/update.xml</request>
+  <error>Status is a duplicate.</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:254
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(104): EpiOAuthException::raise('<?xml version="...', 403)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(67): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(11): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 254
+[27-Aug-2010 01:42:27] PHP Fatal error:  Uncaught exception 'InvalidArgumentException' with message 'Passed variable is not an array or object, using empty array instead' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php:63
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(63): ArrayIterator->__construct(NULL)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(19): EpiTwitterJson->getIterator()
+#2 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 63
+[27-Aug-2010 01:44:42] PHP Fatal error:  Uncaught exception 'Exception' with message 'Objects returned by EpiTwitterJson::getIterator() must be traversable or implement interface Iterator' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php:19
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(19): unknown()
+#1 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php on line 19
+[27-Aug-2010 01:46:03] PHP Fatal error:  Uncaught exception 'EpiOAuthException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/statuses/update.xml</request>
+  <error>Status is a duplicate.</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:254
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(101): EpiOAuthException::raise('<?xml version="...', 403)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(63): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(19): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 254
+[27-Aug-2010 01:46:27] PHP Fatal error:  Uncaught exception 'Exception' with message 'Objects returned by EpiTwitterJson::getIterator() must be traversable or implement interface Iterator' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php:19
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(19): unknown()
+#1 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php on line 19
+[27-Aug-2010 01:54:35] PHP Fatal error:  Uncaught exception 'EpiOAuthException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/statuses/update.xml</request>
+  <error>Status is a duplicate.</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:254
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(104): EpiOAuthException::raise('<?xml version="...', 403)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(63): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(19): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 254
+[27-Aug-2010 01:55:03] PHP Fatal error:  Uncaught exception 'InvalidArgumentException' with message 'Passed variable is not an array or object, using empty array instead' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php:66
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(66): ArrayIterator->__construct(NULL)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(19): EpiTwitterJson->getIterator()
+#2 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 66
+[27-Aug-2010 01:59:06] PHP Fatal error:  Class 'EpiTwitterException' not found in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 118
+[27-Aug-2010 01:59:26] PHP Fatal error:  Uncaught exception 'EpiOAuthException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/statuses/update.xml</request>
+  <error>Status is a duplicate.</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:254
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(104): EpiOAuthException::raise('<?xml version="...', 403)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(63): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(19): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 254
+[27-Aug-2010 01:59:44] PHP Fatal error:  Uncaught exception 'InvalidArgumentException' with message 'Passed variable is not an array or object, using empty array instead' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php:66
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(66): ArrayIterator->__construct(NULL)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(19): EpiTwitterJson->getIterator()
+#2 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php on line 66
+[27-Aug-2010 02:01:24] PHP Fatal error:  Uncaught exception 'EpiOAuthException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/statuses/update.xml</request>
+  <error>Status is a duplicate.</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:254
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(104): EpiOAuthException::raise('<?xml version="...', 403)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(63): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(19): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 254
+[27-Aug-2010 02:47:57] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/statuses/update.xml</request>
+  <error>Invalid / expired Token</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:252
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(104): EpiOAuthException::raise('<?xml version="...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(63): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(10): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 252
+[27-Aug-2010 02:48:36] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/statuses/update.xml</request>
+  <error>Invalid / expired Token</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:252
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(104): EpiOAuthException::raise('<?xml version="...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(63): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(10): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 252
+[27-Aug-2010 02:48:47] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/statuses/update.xml</request>
+  <error>Invalid / expired Token</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:252
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(104): EpiOAuthException::raise('<?xml version="...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(63): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(10): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 252
+[27-Aug-2010 03:08:07] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/statuses/update.xml</request>
+  <error>Invalid / expired Token</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:252
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(104): EpiOAuthException::raise('<?xml version="...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(63): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(12): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 252
+[27-Aug-2010 03:09:44] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/statuses/update.xml</request>
+  <error>Invalid / expired Token</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:252
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(104): EpiOAuthException::raise('<?xml version="...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(63): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(12): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 252
+[27-Aug-2010 03:54:57] PHP Fatal error:  Uncaught exception 'EpiOAuthException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/statuses/update.xml</request>
+  <error>Status is a duplicate.</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:254
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(104): EpiOAuthException::raise('<?xml version="...', 403)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(63): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(12): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 254
+[27-Aug-2010 04:05:29] PHP Fatal error:  Uncaught exception 'EpiOAuthException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/statuses/update.xml</request>
+  <error>Client must provide a 'status' parameter with a value.</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:254
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(104): EpiOAuthException::raise('<?xml version="...', 403)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiTwitter.php(63): EpiTwitterJson->__get('__obj')
+#2 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/random.php(13): EpiTwitterJson->getIterator()
+#3 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 254
+[02-Sep-2010 04:49:01] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/oauth/access_token</request>
+  <error>Invalid / expired Token</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:252
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(231): EpiOAuthException::raise('<?xml version="...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/confirm.php(11): EpiOAuthResponse->__get('oauth_token')
+#2 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 252
+[03-Sep-2010 00:04:57] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/oauth/access_token</request>
+  <error>Invalid / expired Token</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:252
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(231): EpiOAuthException::raise('<?xml version="...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/confirm.php(11): EpiOAuthResponse->__get('oauth_token')
+#2 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 252
+[04-Oct-2010 04:03:28] PHP Fatal error:  Cannot use object of type EpiOAuthResponse as array in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/start.php on line 16
+[04-Oct-2010 04:04:36] PHP Fatal error:  Call to undefined function  pr() in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/start.php on line 14
+[04-Oct-2010 04:04:52] PHP Fatal error:  Cannot use object of type EpiOAuthResponse as array in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/start.php on line 16
+[08-Oct-2010 10:22:58] PHP Fatal error:  Call to undefined function  pr() in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/start.php on line 10
+[08-Oct-2010 10:23:54] PHP Catchable fatal error:  Object of class EpiTwitterJson could not be converted to string in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/start.php on line 10
+[08-Oct-2010 10:29:50] PHP Fatal error:  Uncaught exception 'EpiOAuthUnauthorizedException' with message '<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/oauth/access_token</request>
+  <error>Invalid / expired Token</error>
+</hash>
+' in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php:252
+Stack trace:
+#0 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php(231): EpiOAuthException::raise('<?xml version="...', 401)
+#1 /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/confirm.php(11): EpiOAuthResponse->__get('oauth_token')
+#2 {main}
+  thrown in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/EpiOAuth.php on line 252
+[08-Oct-2010 10:38:16] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/confirm.php:14) in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/confirm.php on line 15
+[08-Oct-2010 10:38:16] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/confirm.php:14) in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/confirm.php on line 16
+[08-Oct-2010 10:39:18] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/confirm.php:14) in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/confirm.php on line 15
+[08-Oct-2010 10:39:18] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/confirm.php:14) in /home/illuminz/public_html/dev/hazardhunters/sign_in_with_twitter/confirm.php on line 16

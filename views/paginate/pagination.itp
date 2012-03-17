@@ -1,0 +1,33 @@
+<ul class='paginator' style="text-align:right">
+    <li style="float: left; text-align: left; font-size:11px;"><strong>You're at page <?php echo $Content->paginate->pagecounter['page']; ?> of <?php echo count($Content->paginate->pagecounter['pages']); ?></strong></li>
+    <?php
+    if($Content->paginate->pagecounter['page'] > 1) {?>     
+    <li><?php echo $Form->link("Previous",$Content->paginate->pagecounter['previousLink']);?></li>
+    <?php }
+    else { ?>
+    <li><a href='javascript:void(0);' style='cursor:default'>Previous</a></li>
+    <?php }
+    if(is_array($Content->paginate->pagecounter['pages']) && count($Content->paginate->pagecounter['pages'])>0) {
+        foreach($Content->paginate->pagecounter['pages'] as $key=>$value) {
+            $Content->paginate->pagecounter['link']['param'] = $value;
+            if($Content->paginate->pagecounter['orderby'] != "") {
+                $Content->paginate->pagecounter['link']['orderby'] = $Content->paginate->pagecounter['orderby'];
+                $Content->paginate->pagecounter['link']['order'] = $Content->paginate->pagecounter['order'];
+            }
+            $Content->paginate->pagecounter['link']['qsa'] = $qsa;
+            if($Content->paginate->pagecounter['page'] == $value) {
+                $class = " class='current' ";
+            }else {
+                $class = "";
+            }
+            ?><li <?php echo $class;?>><?php echo $Form->link($value,$Content->paginate->pagecounter['link']); ?></li>
+        <?php }
+    }
+    if($Content->paginate->pagecounter['page'] < $Content->paginate->pagecounter['totalpages']) {
+        ?><li><?php echo $Form->link("Next",$Content->paginate->pagecounter['nextLink']);?></li><?php
+    }else {
+        ?><li><a href='javascript:void(0);' style='cursor:default'>Next</a></li><?php
+    }
+    ?>
+</ul>
+<div class="clear"></div>

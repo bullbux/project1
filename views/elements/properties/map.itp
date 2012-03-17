@@ -1,0 +1,69 @@
+<?php if($data) { ?>
+<div class="map" id="map_canvas">
+</div>
+<script type="text/javascript">
+    var centerPoint = null;
+    var centerMarker = null;
+    var locations = <?php echo json_encode($data); ?>;
+    var width = <?php echo $width; ?>;
+    var height = <?php echo $height; ?>;
+    var zoom = <?php echo $zoom; ?>;
+    (function(locations, width, height, zoom, markerIcon) {
+        if (GBrowserIsCompatible()) {
+            map = new GMap2(document.getElementById("map_canvas"),{
+                size: new GSize(width, height)
+            } );
+            <?php if($controls){ ?>
+                //var mapTypeControl = new GMapTypeControl();
+                //var topRight = new GControlPosition(G_ANCHOR_TOP_RIGHT, new GSize(10,10));
+                //map.addControl(mapTypeControl, topRight);
+                // Add Map Controls
+                map.addControl(new GLargeMapControl3D());
+            <?php } ?>
+            geocoder = new GClientGeocoder();
+            if (geocoder) {
+                var index = 0;
+                for(i = 0; i < locations.length; i++ ){
+                    geocoder.getLatLng(
+                    locations[i].loc,
+                    function(point){
+                        if (point) {
+                            centerPoint = point;
+                            map.setCenter(point, zoom);
+                            var marker = new GMarker(point); 
+                            <?php if($tooltip){ ?>
+                                var content = '<span class="pop_up"><span class="popupl"><span class="popupr"><span class="popupm">'+locations[index].prop_title+'<br/>'+locations[index].loc+'<br/>'+locations[index].rent+'</span></span></span></span>';
+                                index++;
+                                marker.tooltip = new Tooltip(marker,content,5);
+                                marker.isInfoWindowOpen = false;
+                                var ttmover = GEvent.callbackArgs(marker,tooltipMouseover);
+                                var ttmout = GEvent.callbackArgs(marker,tooltipMouseout);
+
+                                GEvent.addListener(marker,'mouseover',ttmover);
+                                GEvent.addListener(marker,'mouseout',ttmout);
+                                map.addOverlay(marker.tooltip);
+                            <?php } ?>
+                            map.addOverlay(marker);
+                            centerMarker = marker;
+                        }
+                    }
+                );
+                }
+            }
+        }
+    })(locations, width, height, zoom);
+
+    //makrer,sidebar mouseover handler
+    function tooltipMouseover(){
+        if(!(this.isInfoWindowOpen) && !(this.isHidden())){
+            this.tooltip.show();
+        }
+    }
+
+    //marker,sidebar mouseout handler
+    function tooltipMouseout(){
+        this.tooltip.hide();
+    }
+
+</script>
+<?php } ?>

@@ -1,0 +1,12 @@
+<h2 class="heading">
+    <span class="float-left">ADD A NEW CITY</span>
+    <span class="float-right" id="auto-save-status"></span>
+    <br class="clear"/>
+</h2>
+<div id="main_container">
+    <?php
+    $Content->element('properties/city');
+    include($Content->element);
+    ?>
+    <div class="clear"></div>
+</div>

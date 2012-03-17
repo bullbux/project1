@@ -1,0 +1,71 @@
+<?php echo $Include->js('validations.js'); ?>
+<?php echo $Form->create('sendToFriendForm', array('action'=>WWW_ROOT.'/properties/sendToFriend', 'method'=>'POST', 'id'=>'send-to-friend-form')); ?>
+<ul>
+    <li>
+        <div class="left_box">
+            <label>First Name</label>
+            <div class="txt_area">
+                <div class="txt_l">
+                    <div class="txt_r">
+                        <div class="txt_m">
+                            <?php echo $Form->input('first_name', array('type'=>'text', 'class'=>'')); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right_box">
+            <label>Last Name</label>
+            <div class="txt_area">
+                <div class="txt_l">
+                    <div class="txt_r">
+                        <div class="txt_m">
+                            <?php echo $Form->input('last_name', array('type'=>'text')); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="left_box">
+            <label>Email Address</label>
+            <div class="txt_area">
+                <div class="txt_l">
+                    <div class="txt_r">
+                        <div class="txt_m">
+                            <?php echo $Form->input('email', array('type'=>'text', 'class'=>'')); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right_box" style="display:none">
+            <label>Phone</label>
+            <div class="txt_area">
+                <div class="txt_l">
+                    <div class="txt_r">
+                        <div class="txt_m" style="display:none">
+                            <?php echo $Form->input('phone', array('type'=>'text')); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <label>Message</label>
+        <?php echo $Form->textarea('message', array('cols'=>0, 'rows'=>0)); ?>
+    </li>
+    <li>
+        <?php echo $Form->input('slug', array('type'=>'hidden', 'value'=>$property['properties.slug'])); ?>
+        <span class="load-ajax"></span>
+        <a href="javascript: void(0);" class="send"></a>
+    </li>
+</ul>
+<?php echo $Form->end(array('update'=>'sendtofriend', 'position'=>'INNER')); ?>
+<script type="text/javascript">
+    $('a.send').click(function(){
+        $('form#send-to-friend-form').submit();
+    });
+</script>

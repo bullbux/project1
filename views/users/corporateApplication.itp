@@ -1,0 +1,122 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#salutation').change(function(){
+            if($(this).val() == 'Other'){                
+                $('#salutation-other').show().addClass('mandatory');
+            }else{
+                $('#salutation-other').val('').hide().removeClass('mandatory');
+            }
+        });
+    });
+</script>
+<div class='page-outer'>
+<div class='page-inner'>
+<div class="listing-heading">
+    Fill The Corporate Application Form
+</div>
+<div id='corporate-application' class='float-left'>
+    <?php echo $Form->create('corporateApplicationForm', array('action'=>'', 'method'=>'post')); ?>
+    <div>
+        <label for='name'>Name <span class="required">*</span></label>
+        <div class='float-left'>
+            <?php echo $Form->select('salutation[]', array('Mr.'=>'Mr.', 'Mrs.'=>'Mrs.', 'Miss'=>'Miss', 'Ms.'=>'Ms.', 'Dr.'=>'Dr.', 'Prof.'=>'Prof.', 'Rev.'=>'Rev.', 'Other'=>'Other'), array(), array('id'=>'salutation')); ?>
+            <?php echo $Form->input('salutation[]', array('type'=>'text', 'class'=>'hide smallfield', 'title'=>'Salutation', 'id'=>'salutation-other')); ?>
+            <?php echo $Form->input('name', array('type'=>'text', 'class'=>'smallfield mandatory default=Name', 'title'=>'Name', 'id'=>'name')); ?>
+            <?php echo $Form->input('surname', array('type'=>'text', 'class'=>'smallfield default=Surname', 'title'=>'Surname', 'id'=>'surname')); ?>
+        </div>
+        <div class='clear'></div>
+    </div>
+    <div>
+        <label for='position'>Position <span class="required">*</span></label>
+        <div class='float-left'>
+            <?php echo $Form->input('position', array('type'=>'text', 'class'=>'bigfield mandatory', 'title'=>'Position')); ?>
+        </div>
+        <div class='clear'></div>
+    </div>
+    <div>
+        <label for='name'>Company <span class="required">*</span></label>
+        <div class='float-left'>
+            <?php echo $Form->input('company', array('type'=>'text', 'class'=>'bigfield mandatory', 'title'=>'Company')); ?>
+        </div>
+        <div class='clear'></div>
+    </div>
+    <div>
+        <label for='phone'>Phone <span class="required">*</span></label>
+        <div class='float-left'>
+            <?php echo $Form->input('phone', array('type'=>'text', 'class'=>'bigfield mandatory', 'title'=>'Phone')); ?>
+            <br/><span class='subtext'>Please, Include international and local prefixes.</span>
+        </div>
+        <div class='clear'></div>
+    </div>
+    <div>
+        <label for='name'>Address <span class="required">*</span></label>
+        <div class='float-left'>
+            <?php echo $Form->textarea('address', array('type'=>'text', 'class'=>'bigfield mandatory', 'title'=>'Address', 'rows'=>3)); ?>
+        </div>
+        <div class='clear'></div>
+    </div>
+    <div>
+        <label for='city'>City <span class="required">*</span></label>
+        <div class='float-left'>
+            <?php echo $Form->input('city', array('type'=>'text', 'class'=>'bigfield mandatory', 'title'=>'City')); ?>
+        </div>
+        <div class='clear'></div>
+    </div>
+    <div>
+        <label for='state'>State <span class="required">*</span></label>
+        <div class='float-left'>
+            <?php echo $Form->input('state', array('type'=>'text', 'class'=>'bigfield mandatory', 'title'=>'State')); ?>
+        </div>
+        <div class='clear'></div>
+    </div>
+    <div>
+        <label for='postcode'>Post Code <span class="required">*</span></label>
+        <div class='float-left'>
+            <?php echo $Form->input('postcode', array('type'=>'text', 'class'=>'bigfield mandatory', 'title'=>'Post Code')); ?>
+        </div>
+        <div class='clear'></div>
+    </div>
+    <div>
+        <label for='email'>Email <span class="required">*</span></label>
+        <div class='float-left'>
+            <?php echo $Form->input('email', array('type'=>'text', 'class'=>'bigfield mandatory email', 'title'=>'Email-Id', 'id'=>'email')); ?>
+        </div>
+        <div class='clear'></div>
+    </div>
+    <div>
+        <label for='skype'>Skype</label>
+        <div class='float-left'>
+            <?php echo $Form->input('skype', array('type'=>'text', 'class'=>'bigfield', 'id'=>'skype')); ?>
+        </div>
+        <div class='clear'></div>
+    </div>
+    <div>
+        <label for='message'>Additional Notes </label>
+        <div class='float-left'>
+            <?php echo $Form->textarea('message', array('type'=>'text', 'class'=>'bigfield', 'rows'=>7, 'id'=>'message')); ?>
+        </div>
+        <div class='clear'></div>
+    </div>
+    <div>
+        <label for=''>&nbsp;</label>
+        <div class='float-left'>
+            <h4 class='red'>Please enter the text from the image below.<br/> The letters are not case-sensitive.</h4>
+            <?php echo $Form->recaptcha(); ?>
+        </div>
+        <div class="clear"></div>
+    </div>    
+    <div>
+        <div class='float-left'>
+            <?php echo $Form->input('send', array('type'=>'hidden', 'value'=>'1')); ?>
+            <?php echo $Form->input('Submit', array('type'=>'submit', 'value'=>'Send Us Email')); ?>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <?php echo $Form->end(); ?>
+</div>
+<div id='intro-text' class='float-left'>
+<?php echo CORPAPP_INTRO; ?>
+</div>
+<div class='clear'></div>
+</div>
+</div>

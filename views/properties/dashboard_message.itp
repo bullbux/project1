@@ -1,0 +1,72 @@
+<div class="main_left">
+        <div class="profile_listing">
+        <div class="sorting_top_box">
+                <h1>MY MESSAGES</h1>
+            <div class="msg_w_links">
+                <?php echo $Form->link('View All', array('class'=>'messages', 'method'=>$Content->params['prefix'] . '_inbox'), array('title'=>'View all messages')); ?>
+            </div>
+            <div class="sort_right">
+                <label>SORT BY:</label>
+                <div class="select_box"><select class="styled" name="sort_type" ><option>Most recent</option><option>Most recent2</option></select></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="profile_container">
+        <div class="profile_top">
+        <div class="profile_bot">
+                <div class="profile_mid">
+                <div class="profile_content">
+                    <div class="message_container">
+                        <?php if($properties){ ?>
+                        <div class="list_box">
+                            <div class="img_box">
+                                <?php
+                                $statusTag = '';
+                                if($properties[0]['properties.status'] == PropertyStatusConsts::DRAFT)
+                                    $statusTag = '<div class="draft_hover"></div>';
+                                else{
+                                    if($properties[0]['properties.status'] == PropertyStatusConsts::SOLD)
+                                        $statusTag = '<div class="sold_hover"></div>';
+                                    elseif($properties[0]['properties.status'] == PropertyStatusConsts::EXPIRED)
+                                        $statusTag = '<div class="expired_hover"></div>';
+                                }
+                                ?>
+                                <?php echo $Form->link($Include->showImage(WWW_ROOT.'/resources/uploads/properties/gallery/'.$properties[0]['prGallery.file'], array('dims'=>array('width'=>146, 'height'=>120), 'alt'=>'Photo')).$statusTag); ?>
+                            </div>
+                            <div class="img_box">
+                                <h1><?php echo  SiteConsts::CURRENCY . numberToCurrency($properties[0]['prUnitInfo.rent']); ?></h1>
+                                <ul>
+                                    <li><a href="#">Bed</a> <a href="#"><?php echo $properties[0]['prUnitInfo.bed']; ?></a> </li>
+                                    <li><a href="#">Bath</a> <a href="#"><?php echo $properties[0]['prUnitInfo.bath']; ?></a> </li>
+                              </ul>
+                            </div>
+                            <div class="content_box">
+                                <h2><?php echo $properties[0]['properties.title']; ?></h2>
+                                <p><?php echo $properties[0]['prUnitInfo.unit_street_address'].', '.$properties[0]['prUnitInfo.city'].', '.$properties[0]['prUnitInfo.state'].', '.$properties[0]['prUnitInfo.zip']; ?></p>
+                                <p><?php echo $properties[0]['properties.description']; ?></p>
+                                <p>Unit Features</p>
+                                <?php
+                                $Content->render(array('class'=>'properties', 'method'=>'getUnitFeatures', $properties[0]['properties.id']), 'properties/features_new');
+                                include($Content->element);
+                                ?>
+                            </div>
+                         </div>
+                         <?php } ?>
+                         <div class='clear'></div>
+                         <div id="messages_list">
+                         <?php
+                            $Content->render(array('class'=>'messages', 'method'=>'getMessageThread', $messageId), 'messages/latest_messages_list');
+                            include($Content->element);
+                         ?>
+                         </div>
+                        <?php
+                            $Content->element('messages/reply_box');
+                            include($Content->element);
+                        ?>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

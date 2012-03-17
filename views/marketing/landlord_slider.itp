@@ -1,0 +1,33 @@
+<?php if($slides){ ?>
+<script>
+    $(function(){
+            $('#slides').slides({
+                    preload: true,
+                    preloadImage: 'img/loading.gif',
+                    play: 5000,
+                    pause: 2500,
+                    hoverPause: true,
+                    prependCount:true,
+                    prependCountText: 'Manage Your Listings',
+                    preloadImage: '<?php echo WWW_ROOT . '/resources/images/loading.gif'; ?>'
+            });
+    });
+</script>
+<h1 class="page-heading">Rent <?php echo $Content->params['prefix'] == 'renter' ? 'an' : 'your'; ?> apartment with us today. It's quick, easy, and free.</h1>
+<div class="profile_container marketing-slider">
+<div id="slides">
+    <div class="slides_container">        
+        <?php foreach($slides as $slide){ ?>
+            <a href="#" title="" target="_blank"><?php echo $Include->showImage(WWW_ROOT . '/resources/uploads/marketing_sliders/' . $slide->filename, array('dims'=>array('width'=>'941', 'height'=>'274'))); ?></a>
+            <?php } ?>
+    </div>
+    <a href="#" class="main_btn prev"><img src="img/arrow-prev.png" width="24" height="43" alt="Arrow Prev"></a>
+    <a href="#" class="main_btn nxt next"><img src="img/arrow-next.png" width="24" height="43" alt="Arrow Next"></a>
+<?php 
+$method = $Content->params['prefix'] == 'renter' ? 'renter_signup' : 'landlord_signup';
+echo $Form->link('signup', array('class'=>'users', 'method'=>$method), array('class'=>'signup-btn'));
+?>
+</div>
+<div class='clear'></div>
+</div>
+<?php } ?>

@@ -1,0 +1,49 @@
+<?php global $properties, $messageId; ?>
+<table width='100%' border='0' style='color:#929497; font-size:12px;'>
+    <tr>
+        <td colspan='3' align='left' height="100">
+            <?php echo $Include->image('logo.png', array('alt'=>SITE_NAME)); ?>
+        </td>
+    </tr>
+    <tr>
+        <td align='left'>
+            <?php echo $Include->showImage(WWW_ROOT.'/resources/uploads/properties/gallery/'.$properties[0]['prGallery.file'], array('dims'=>array('width'=>146, 'height'=>120), 'alt'=>'Photo', 'border'=>'0')); ?>
+        </td>
+        <td align='left'>
+            <table border='0'>
+                 <tr>
+                    <td align='left'><h1 style='color:#408AD2; font-size:18px; font-weight:bold;'><?php echo  SiteConsts::CURRENCY . numberToCurrency($properties[0]['prUnitInfo.rent']); ?></h1></td>
+                 </tr>
+                 <tr>
+                    <td align='left'>
+                        <table border='0'>
+                             <tr>
+                                <td align='left'>Bed <?php echo $properties[0]['prUnitInfo.bed']; ?></td>
+                             </tr>
+                             <tr>
+                                <td align='left'>Bath <?php echo $properties[0]['prUnitInfo.bath']; ?></td>
+                             </tr>
+                        </table>
+                    </td>
+                 </tr>
+            </table>
+        </td>
+        <td align='left'>
+            <table border='0'>
+                 <tr>
+                    <td align='left'><h2 style='color:#408AD2; font-size:14px; font-weight:bold;'><?php echo $properties[0]['properties.title']; ?></h2></td>
+                 </tr>
+                 <tr>
+                    <td align='left'><?php echo $properties[0]['prUnitInfo.unit_street_address'].', '.$properties[0]['prUnitInfo.city'].', '.$properties[0]['prUnitInfo.state'].', '.$properties[0]['prUnitInfo.zip']; ?></td>
+                 </tr>
+                 <tr>
+                    <td align='left'><?php echo $properties[0]['properties.description']; ?></td>
+                 </tr>
+            </table>
+        </td>
+    </tr>
+    <?php
+        $this->render(array('class'=>'messages', 'method'=>'getMessageThread', $messageId, 0), 'emails/latest_messages_list_email');
+        include($this->element);
+     ?>
+</table>

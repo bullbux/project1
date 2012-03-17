@@ -1,0 +1,17 @@
+<div id="header-top">&nbsp;</div>
+<div id="header-wrapper">
+    <div id="header">
+        <div id="left" class="float-left">
+            <div id="logo"><?php echo $Include->image('admin/apartments_small.png', array('alt'=>'Apartments', 'title'=>'Apartments')); ?></div>
+        </div>
+        <div id="right" class="float-right">
+            <div id="welcome-user" class="float-right">
+                <?php echo $Include->image('avatar.jpg', array('class'=>'float-left', 'id'=>'avatar')); ?>
+                <p>Welcome <strong><?php echo $Form->link($session->read('User.username'), array('class'=>'users', 'method'=>'admin_profile'), array('title'=>'Update your profile')); ?></strong>. <?php echo $Form->link('Log out?', array('class'=>'users', 'method'=>'admin_logout'), array('title'=>'Log out')); ?></p>
+                <p class="last_login">Last login: <?php echo $session->read('User.last_login_time'); ?></p>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<h2 class="heading"><?php echo $userType == UserTypeConsts::LANDLORD ? 'Landlords' : 'Renters'; ?> Marketing Slider [Upload Slide]</h2>
+<div class="data">
+    <?php echo $Form->create("uploadImageForm",array("method"=>"post","action"=>"", 'enctype'=>'multipart/form-data')); ?>
+    <div>
+        <label>Upload Slide/Image <span class='required'>*</span></label>
+        <?php echo $Form->input("filename",array('type'=>'file', "class"=>"mandatory {title: 'Upload image'}")); ?>
+    </div>
+    <div>
+        <?php echo $Form->input('upload', array('type'=>'submit', 'value'=>'Upload')); ?>
+    </div>
+    <?php echo $Form->end(); ?>
+</div>

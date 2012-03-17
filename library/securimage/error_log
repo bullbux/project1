@@ -1,0 +1,36 @@
+[11-Apr-2010 12:15:11] PHP Warning:  fopen(./audio/7.wav) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: No such file or directory in /home/illuzcom/public_html/projects/carmart/library/securimage/securimage.php on line 868
+[11-Apr-2010 12:15:11] PHP Warning:  filesize() [<a href='function.filesize'>function.filesize</a>]: stat failed for ./audio/7.wav in /home/illuzcom/public_html/projects/carmart/library/securimage/securimage.php on line 872
+[11-Apr-2010 12:15:11] PHP Warning:  fread(): supplied argument is not a valid stream resource in /home/illuzcom/public_html/projects/carmart/library/securimage/securimage.php on line 872
+[11-Apr-2010 12:15:11] PHP Warning:  unpack() [<a href='function.unpack'>function.unpack</a>]: Type N: not enough input, need 4, have 0 in /home/illuzcom/public_html/projects/carmart/library/securimage/securimage.php on line 878
+[11-Apr-2010 12:15:11] PHP Warning:  fclose(): supplied argument is not a valid stream resource in /home/illuzcom/public_html/projects/carmart/library/securimage/securimage.php on line 903
+[11-Apr-2010 12:15:11] PHP Warning:  fopen(./audio/9.wav) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: No such file or directory in /home/illuzcom/public_html/projects/carmart/library/securimage/securimage.php on line 868
+[11-Apr-2010 12:15:11] PHP Warning:  filesize() [<a href='function.filesize'>function.filesize</a>]: stat failed for ./audio/9.wav in /home/illuzcom/public_html/projects/carmart/library/securimage/securimage.php on line 872
+[11-Apr-2010 12:15:11] PHP Warning:  fread(): supplied argument is not a valid stream resource in /home/illuzcom/public_html/projects/carmart/library/securimage/securimage.php on line 872
+[11-Apr-2010 12:15:11] PHP Warning:  unpack() [<a href='function.unpack'>function.unpack</a>]: Type N: not enough input, need 4, have 0 in /home/illuzcom/public_html/projects/carmart/library/securimage/securimage.php on line 878
+[11-Apr-2010 12:15:11] PHP Warning:  fclose(): supplied argument is not a valid stream resource in /home/illuzcom/public_html/projects/carmart/library/securimage/securimage.php on line 903
+[11-Apr-2010 12:15:11] PHP Warning:  fopen(./audio/Y.wav) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: No such file or directory in /home/illuzcom/public_html/projects/carmart/library/securimage/securimage.php on line 868
+[11-Apr-2010 12:15:11] PHP Warning:  filesize() [<a href='function.filesize'>function.filesize</a>]: stat failed for ./audio/Y.wav in /home/illuzcom/public_html/projects/carmart/library/securimage/securimage.php on line 872
+[11-Apr-2010 12:15:11] PHP Warning:  fread(): supplied argument is not a valid stream resource in /home/illuzcom/public_html/projects/carmart/library/securimage/securimage.php on line 872
+[11-Apr-2010 12:15:11] PHP Warning:  unpack() [<a href='function.unpack'>function.unpack</a>]: Type N: not enough input, need 4, have 0 in /home/illuzcom/public_html/projects/carmart/library/securimage/securimage.php on line 878
+[11-Apr-2010 12:15:11] PHP Warning:  fclose(): supplied argument is not a valid stream resource in /home/illuzcom/public_html/projects/carmart/library/securimage/securimage.php on line 903
+[11-Apr-2010 12:15:11] PHP Warning:  fopen(./audio/D.wav) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: No such file or directory in /home/illuzcom/public_html/projects/carmart/library/securimage/securimage.php on line 868
+[11-Apr-2010 12:15:11] PHP Warning:  filesize() [<a href='function.filesize'>function.filesize</a>]: stat failed for ./audio/D.wav in /home/illuzcom/public_html/projects/carmart/library/securimage/securimage.php on line 872
+[11-Apr-2010 12:15:11] PHP Warning:  fread(): supplied argument is not a valid stream resource in /home/illuzcom/public_html/projects/carmart/library/securimage/securimage.php on line 872
+[11-Apr-2010 12:15:11] PHP Warning:  unpack() [<a href='function.unpack'>function.unpack</a>]: Type N: not enough input, need 4, have 0 in /home/illuzcom/public_html/projects/carmart/library/securimage/securimage.php on line 878
+[11-Apr-2010 12:15:11] PHP Warning:  fclose(): supplied argument is not a valid stream resource in /home/illuzcom/public_html/projects/carmart/library/securimage/securimage.php on line 903
+[24-Mar-2011 12:43:27] PHP Warning:  Module 'ffmpeg' already loaded in Unknown on line 0
+[24-Mar-2011 12:47:10] PHP Warning:  Module 'ffmpeg' already loaded in Unknown on line 0
+[24-Mar-2011 15:29:18] PHP Warning:  Module 'ffmpeg' already loaded in Unknown on line 0
+[24-Mar-2011 17:49:42] PHP Warning:  Module 'ffmpeg' already loaded in Unknown on line 0
+[24-Mar-2011 17:50:59] PHP Warning:  Module 'ffmpeg' already loaded in Unknown on line 0
+[24-Mar-2011 17:51:18] PHP Warning:  Module 'ffmpeg' already loaded in Unknown on line 0
+[24-Mar-2011 17:55:43] PHP Warning:  Module 'ffmpeg' already loaded in Unknown on line 0
+[24-Mar-2011 17:56:50] PHP Warning:  Module 'ffmpeg' already loaded in Unknown on line 0
+[24-Mar-2011 17:57:15] PHP Warning:  Module 'ffmpeg' already loaded in Unknown on line 0
+[25-Mar-2011 09:43:47] PHP Warning:  Module 'ffmpeg' already loaded in Unknown on line 0
+[25-Mar-2011 10:01:31] PHP Warning:  Module 'ffmpeg' already loaded in Unknown on line 0
+[25-Mar-2011 10:11:05] PHP Warning:  Module 'ffmpeg' already loaded in Unknown on line 0
+[25-Mar-2011 10:12:59] PHP Warning:  Module 'ffmpeg' already loaded in Unknown on line 0
+[25-Mar-2011 11:10:43] PHP Warning:  Module 'ffmpeg' already loaded in Unknown on line 0
+[25-Mar-2011 11:14:45] PHP Warning:  Module 'ffmpeg' already loaded in Unknown on line 0
+[25-Mar-2011 11:14:56] PHP Warning:  Module 'ffmpeg' already loaded in Unknown on line 0

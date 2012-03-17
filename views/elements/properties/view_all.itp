@@ -1,0 +1,88 @@
+<h2 class="lb-heading">
+    Photo Gallery
+</h2>
+<?php if($files){ ?>
+<div id="popup_gallery" style="position:relative; display: block;">
+    <div class="pop_box_t">
+        <div class="pop_box_b">
+            <div class="pop_box_m">
+                <div class="gallery_area">                    
+                    <div class="large_img">
+                        <?php foreach($files as $photo){ ?>                      
+                        <?php echo $Include->showImage(WWW_ROOT.'/resources/uploads/properties/gallery/'.$photo['file'], array('dims'=>array('width'=>582, 'height'=>389), 'alt'=>'Loading...')); ?>
+                        <?php } ?>
+                    </div>
+                    <div class="img_info">
+                            PHOTO <span class='current-image'></span> of <span class='total-images'></span>
+                    </div>
+                    <div class="gal_thumb_box">
+                        <div class='gal_thumb_box2'>
+                            <ul>
+                                <?php foreach($files as $photo){ ?>
+                                <li>
+                                <?php echo $Form->link($Include->showImage(WWW_ROOT.'/resources/uploads/properties/gallery/'.$photo['file'], array('dims'=>array('width'=>83, 'height'=>56), 'alt'=>'Photo')), '#'); ?>
+                                </li>
+                                <?php } ?>
+                            </ul>
+                        </div>
+                        <a class="btn prev" href="javascript: void(0);"></a>
+                        <a class="btn nxt" href="javascript: void(0);"></a>
+                    </div>
+                </div>
+                <div class="blue_info_bar"><?php echo $title; ?></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class='clear'></div>
+<script type='text/javascript'>
+var showNumItems = 5;
+var innerWidthOfElem = $('.gal_thumb_box2 li:eq(0)').innerWidth();
+var totalWidth = innerWidthOfElem * showNumItems;
+var currentPage = 1;
+var totalItems = <?php echo count($files); ?>;
+var totalPages = Math.ceil(totalItems/showNumItems);
+
+//Image counter
+$('div.img_info span.current-image').text(currentPage);
+$('div.img_info span.total-images').text(totalItems);
+
+//Main image
+$('div.large_img img:eq(0)').css('opacity', '1');
+$('.gal_thumb_box2 li a img:eq(0)').addClass('active-slide');
+
+$('.gal_thumb_box2 li a').click(function(e){
+    var imgIndex = $('.gal_thumb_box2 li a').index(this);
+    $('.gal_thumb_box2 li a img').removeClass('active-slide');
+    $('.gal_thumb_box2 li a img').eq(imgIndex).addClass('active-slide');
+    $('div.large_img img').css({zIndex: 1});
+    $('div.large_img img').eq(imgIndex).css({zIndex: 2}).animate({opacity: 1, filter: 'alpha(opacity=100)'}, 600, '', function(){
+        $('div.large_img img').not(this).css({opacity: '0', filter: 'alpha(opacity=0)'});
+    });
+    $('div.img_info span.current-image').text(imgIndex+1);
+    return false;
+});
+
+$('.gal_thumb_box2 ul').css('width', (totalItems * innerWidthOfElem) + 'px');
+// Slider show previous image event
+$('.gal_thumb_box .prev').click(function(){
+    if(currentPage > 1){
+         $('.gal_thumb_box2 ul').animate({
+            left: (parseInt($('.gal_thumb_box2 ul').css('left')) + totalWidth) + 'px'
+        }, 1500);
+        currentPage--;
+    }
+});
+// Slider show next image event
+$('.gal_thumb_box .nxt').click(function(){
+    if(currentPage < totalPages){
+        $('.gal_thumb_box2 ul').animate({
+            left: (parseInt($('.gal_thumb_box2 ul').css('left')) - totalWidth) + 'px'
+        }, 1500);
+        currentPage++;
+    }
+});
+</script>
+<?php }else{ ?>
+No photos uploaded yet.
+<?php } ?>

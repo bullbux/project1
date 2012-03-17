@@ -1,0 +1,12 @@
+<div class="go-back">
+<?php
+if($Content->params['prefix'])
+    $Content->params['prefix'] .= '_';
+echo $Form->ajaxLink('&laquo; Gallery', array('class'=>'properties', 'method'=>$Content->params['prefix'].'gallery', $propertyId), array('open'=>array('type'=>'lightbox', 'width'=>600, 'reLoad'=>true, 'scroll'=>false, 'lbHeader'=>array('bgColor'=>'#73ADDD', 'textColor'=>'#FFFFFF', 'borderColor'=>'#73addd'))));
+?>
+</div>
+<?php
+if($file){
+    echo $Include->showImage(WWW_ROOT . '/resources/uploads/properties/gallery/' . $file, array('alt' => 'Photo', 'dims'=>array('width'=>'600', 'height'=>'600')));
+}
+?>

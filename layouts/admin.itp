@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title><?php echo $Content->pageTitle; ?> &laquo; Admin Panel &laquo; <?php echo defined('PROJECT_NAME') ? PROJECT_NAME : ''; ?> </title>
+        <?php echo $Include->css('admin/style.css');?>
+        <?php echo $Include->css("lightbox/lightbox.css"); ?>
+        <?php echo $Include->css("tooltip/tooltip-generic.css"); ?>
+        <style type="text/css">
+            .tooltip {
+                background-color:#4780AE;
+                color:#FFFFFF;
+            }
+        </style>
+        <?php echo $Include->js('jquery.js');?>
+        <?php echo $Include->js('validations.js');?>
+        <?php echo $Include->js('events.js');?>
+        <script type="text/javascript" language="javascript">
+            // Jquery Accordion
+            $(document).ready(function(){
+                $('#accordion a.item').click(function(e){
+                    e.preventDefault();
+                    if($(this).next('ul').css('display') == 'none'){
+                        $('#accordion ul').slideUp();
+                        $(this).next('ul').slideDown();
+                        $('#accordion a.active').removeClass('active');
+                        $(this).addClass('active');
+                    }
+                });
+            });
+        </script>
+        <?php echo $Include->js("tooltip/jquery.tools.min.js"); ?>
+    </head>
+
+    <body>
+        <?php
+        $Content->element('admin/header');
+        include_once($Content->element);
+        ?>
+        <div id="contents-wrapper">
+            <div id="menu">
+                <ul class="float-left">
+                    <li><?php echo $Form->link('Settings', array('class'=>'settings', 'method'=>'admin_index')); ?></li>
+                    <li><?php echo $Form->link('Pages', array('class'=>'pages', 'method'=>'admin_manage')); ?></li>
+                </ul>
+                <?php echo $Form->link('Visit site', WWW_ROOT, array('class'=>'right', 'id'=>'visit')); ?>
+                <div class="clear"></div>
+            </div>
+            <div id="contents">
+                <?php
+                $Content->element('admin/sidebar');
+                include_once($Content->element);
+                ?>
+                <div id="contents-body" class="float-right contents-body">
+                    <div id="flag"><?php $session->flash(); ?></div>
+                    <?php
+                    include_once($Content->view);
+                    ?>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </body>
+</html>

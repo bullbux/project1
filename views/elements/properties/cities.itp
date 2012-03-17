@@ -1,0 +1,49 @@
+<h2 class="heading">
+    Cities Management
+</h2>
+<div class="data">
+<?php echo $Form->create("listing", array("method"=>"post","action"=>"")); ?>
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="top">
+        <tr class="heading">
+            <th width="2%" class="check"><?php echo $Form->input("checkbox",array('type'=>'checkbox','id'=>'checkbox', 'checkAll'=>'check', 'class'=>'check')); ?></th>
+            <th align='left'><?php echo $Form->link("Title",array("class"=>"properties","method"=>"admin_index", $list['page'], 'title', $order)); ?></th>
+            <th align='left'><?php echo $Form->link("Parent City",array("class"=>"properties","method"=>"admin_index", $list['page'], 'modified', $order)); ?></th>
+            <th width="150" align='center'>Actions</th>
+        </tr>
+    <?php 
+	$host = DB_HOST; 
+	$user = DB_USER; 
+	$pass = DB_PASSWORD; 
+	$name = DB_NAME;
+        $link = mysql_connect($host,$user,$pass);
+        mysql_select_db($name,$link);
+$result = mysql_query('SELECT c.name, c.id, n.name as neigh FROM city c left join city n on c.parent_id=n.id'); 
+while($data=mysql_fetch_object($result)) {
+                $rows[]=$data;
+            }	
+			//var_dump($rows); exit;
+	if($rows){ ?>
+        <?php foreach($rows as $value){ ?>
+        <tr class="rowwhite">
+            <td width="2%" class="check"><?php echo $Form->input("checkboxArray[".$row->id."]",array('type'=>'checkbox','id'=>'checkbox_'.$value->id, 'class'=>'check')); ?></td>
+            <td><?php echo $value->name ? $value->name : '(no title)'; ?></td>
+            <td><?php echo $value->neigh ? $value->neigh : '(no title)'; ?></td>
+            <td width="150" align='center'>
+                <ul>
+                    <li><?php echo $Form->link($Include->image("admin/edit.png",array('width'=>'16','height'=>'16','alt'=>'Edit','title'=>'Edit')),array("class"=>"properties", "method"=>"admin_editcity", $value->id)); ?></li>
+                    <li><?php echo $Form->link($Include->image("admin/delete.png",array('width'=>'16','height'=>'16','alt'=>'Delete','title'=>'Delete')),array("class"=>"properties", "method"=>"admin_deletecity", $value->id), array('confirm'=>'Are you sure to delete?')); ?></li>
+                </ul>
+            </td>
+        </tr>
+        <?php } ?>
+    <?php }else{ ?>
+    <tr><td colspan='5' align="center">No City found...</td></tr>
+    <?php } ?>
+    </table>
+<?php echo $Form->end(); ?>
+</div>
+<?php
+    $Content->render(array('class'=>'paginate','method'=>'pagination', $list['pages'], $list['page'], array("class"=>"properties", "method"=>"admin_index"), $list['order_by'], $list['order']));
+    include_once($Content->element);
+?>

@@ -1,0 +1,25 @@
+<div class="featured_box updates_box">
+    <div class="feature_bot">
+        <div class="updates_mid">
+            <div class="head">
+                <div class="h_left">
+                    <div class="h_right">
+                        <div class="h_mid">
+                                UPDATES
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul>
+                <?php
+                    $Content->render(array('class'=>'messages', 'method'=>'dashboard_alerts'));
+                    include($Content->element);
+                ?>
+                <?php
+                    $Content->render(array('class'=>'properties', 'method'=>'dashboard_alerts'));
+                    include($Content->element);
+                ?>
+            </ul>
+       </div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+<?php 
+$pages = $Content->page->pages;?><li><?php
+echo $Form->link('Home',array('class'=>DEFAULT_CLASS,'method'=>DEFAULT_METHOD));
+?></li>
+<?php 
+foreach($pages as $page){?>
+<li>|</li><li><?php echo $Form->link($page->pageTitle,array('class'=>'page','method'=>'slug',$page->slug));?></li><?php
+}
+?>

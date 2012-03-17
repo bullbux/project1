@@ -1,0 +1,28 @@
+<?php
+if($faqs) {
+    ?>
+<ol>
+        <?php
+        foreach($faqs as $key=>$faq) {
+            ?>
+    <li>
+                <?php
+                echo $Form->link($faq['question'], '#', array('class'=>'question'));
+                ?>
+        <div class="answer">
+                    <?php echo $faq['answer']; ?>
+        </div>
+    </li>
+        <?php
+        }
+        ?>
+</ol>
+<script type="text/javascript">
+    $('a.question').click(function(){
+        $(this).next('.answer').slideToggle('slow');
+        return false;
+    });
+</script>
+<?php
+}
+?>

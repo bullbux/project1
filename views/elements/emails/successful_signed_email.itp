@@ -1,0 +1,35 @@
+<table width='100%' border='0' style='color:#929497; font-size:12px;'>
+    <tr>
+        <td align='left' height="100">
+            <?php echo $Include->image('logo.png', array('alt'=>SITE_NAME)); ?>
+        </td>
+    </tr>
+    <tr>
+        <td align='left'>
+            <table width="100%" border="0">
+                <tr>
+                    <td align='left' style="padding-bottom: 20px;">
+                        You have been signed up successfully. And your login credentials are:
+                    </td>
+                </tr>
+                <tr>
+                    <td align='left' style="padding-top: 5px;">
+                        Username: <?php echo $data['username']; ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td align='left' style="padding-top: 5px;">
+                        Password: <?php echo $data['password']; ?>
+                    </td>
+                </tr>
+            </table>
+        </td>        
+    </tr>
+    <tr>
+        <td align='left' height="100">
+            --<br/>
+            Thanks <br/>
+            <?php echo SITE_NAME; ?>
+        </td>
+    </tr>
+</table>

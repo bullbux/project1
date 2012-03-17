@@ -1,0 +1,1 @@
+var room_types = ["Standard","Superior","Deluxe","Super Deluxe","Luxury","Deluxe Sweet","Honeymoon Sweet","Cottage"];

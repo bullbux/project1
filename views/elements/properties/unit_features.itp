@@ -1,0 +1,35 @@
+<?php if($features){ ?>
+<ul> 
+    <?php foreach($features as $feature){ ?>
+    <li>
+        <a href="#" class="pr-feature" title="<?php echo $feature['propertyFeatures.feature']; ?>">
+        <?php
+        $style = '';
+        if(isset($Content->properties->Request->request['pr_unit_feature_id'][$feature['propertyFeatures.id']]))
+            $style = "border: medium solid #CCCCCC";
+        echo $Include->image(WWW_ROOT.'/resources/uploads/property_features/'.$feature['propertyFeatures.off_image'], array('alt'=>$feature['propertyFeatures.feature'], 'style'=>$style))
+        ?>
+        <?php echo $Form->input("pr_unit_feature_id[".$feature['propertyFeatures.id']."]", array('type'=>'checkbox', 'value'=>$feature['propertyFeatures.id'], 'class'=>'pr_feature_hide')); ?>
+        </a>
+    </li>
+    <?php } ?>
+</ul>
+    <script type="text/javascript">
+        $().ready(function(){
+            // Select property features
+            $('li.feature_mid a').click(function(e){
+                var e = e ? e : window.event;
+                e.preventDefault();
+                var chkbox = $(this).find('input:eq(0)');
+                var fimg = $(this).find('img:eq(0)');
+                if(chkbox[0].checked){
+                    fimg.css('border', '0');
+                    chkbox.removeAttr('checked');
+                }else{
+                    fimg.css('border', 'medium solid #CCCCCC');
+                    chkbox.attr('checked', 'checked');
+                }
+            });
+        });
+    </script>
+<?php } ?>

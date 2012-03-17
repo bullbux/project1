@@ -1,0 +1,42 @@
+<h2 class="lb-heading">
+    PROPERTY GALLERY
+</h2>
+<?php
+if($files){
+    foreach($files as $key => $file){
+        $path_parts = pathinfo($file['file']); 
+        ?>
+<div class="gallery-item" id="gi<?php echo $key; ?>">
+    <?php
+    if(in_array($path_parts['extension'], array('flv'))){
+        ?>
+        <embed width="150" height="140" type="application/x-shockwave-flash" src="<?php echo WWW_ROOT . '/resources'; ?>/flv-embed/flvplayer.swf" style="" id="player1" name="player1" quality="high" wmode="opaque" allowscriptaccess="always" allowfullscreen="true" flashvars="width=150&amp;height=140&amp;file=<?php echo WWW_ROOT . '/resources/uploads/properties/gallery/' . $file['file']; ?>&amp;backcolor=0xcbe7f6&amp;autostart=false">
+        <?php
+    }else{
+        $underscore = '';
+        if($Content->params['prefix'])
+            $underscore = '_';
+	$extension = end(explode('.', $file['file']));
+	if(strtolower($extension)=='pdf') {
+		echo $Form->link('<br/><br/>PDF DOWNLOAD<br/><br/>',WWW_ROOT.'/resources/uploads/properties/gallery/'.$file['file'],array('target'=>"_blank"));
+	}else{
+        echo $Form->ajaxLink($Include->showImage(WWW_ROOT . '/resources/uploads/properties/gallery/' . $file['file'], array('alt' => 'Photo', 'dims'=>array('width'=>'150', 'height'=>'130'))), array('class'=>'properties', 'method'=>$Content->params['prefix'].$underscore.'showMedia', $file['pr_id'], $file['file']), array('open'=>array('type'=>'lightbox', 'width'=>622, 'reLoad'=>true, 'scroll'=>false, 'lbHeader'=>array('bgColor'=>'#73ADDD', 'textColor'=>'#FFFFFF', 'borderColor'=>'#73addd'))));
+    } } ?>
+    <?php
+    if(in_array($Content->params['prefix'], array('admin', 'dashboard'))){
+        echo $Form->ajaxLink('Remove', array('class'=>'properties', 'method'=>'removeMedia', $file['id']), array('update'=>array('gi'.$key), 'reLoad'=>true, 'confirm'=>'Are you sure to delete?', 'position'=>'REPLACE'));?>
+		<input id="mainpicture" type="radio" name="mainimage" value="<?php echo $file['id'];?>" <?php if($file['id']==$checked) { ?> checked <?php } ?> >
+    <?php  echo $Form->ajaxLink('Main', array('class'=>'properties', 'method'=>'mainimage', $file['id'])); ?>
+	<!--<input id="floorplan" type="radio" name="floorplan" value="<?php echo $file['id'];?>" <?php if($file['id']==$plan) { ?> checked <?php } ?> >
+	 <?php echo $Form->ajaxLink('Floorplan', array('class'=>'properties', 'method'=>'floorplan', $file['id']));
+	}?>	-->
+</div>
+        <?php
+    }
+    ?>
+<div class="clear"></div>
+<?php
+}else{
+    echo 'No photo uploaded yet.';
+}
+?>

@@ -1,0 +1,25 @@
+<div class="profile_listing">
+    <div class="sorting_top_box">
+        <h1><?php echo $Content->pageTitle; ?></h1>
+        <div class="sort_right">
+            <?php echo $Form->create('sortForm', array('method'=>'get')); ?>
+            <label>SORT BY:</label>
+            <div class="select_box">
+                <?php echo $Form->select('sort_type', array('most_recent'=>'Most recent', 'most_old'=>'Most old'), null, array('class'=>'styled')); ?>
+            </div>
+            <?php echo $Form->end(); ?>
+        </div>
+        <div class="sort_right">
+            <?php echo $Form->link('Add New Listing', array('class'=>'properties', 'method'=>'dashboard_add'), array('title'=>'Add New Listing')); ?>
+            <div class="row">
+                <?php
+                if($Content->params['method'] == 'dashboard_archives') {
+                    echo $Form->link('View listing', array('class'=>'properties', 'method'=>'dashboard_index'), array('title'=>'View listing'));
+                }else {
+                    echo $Form->link('View listing archives', array('class'=>'properties', 'method'=>'dashboard_archives'), array('title'=>'View listing archives'));
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+</div>

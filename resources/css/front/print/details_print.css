@@ -1,0 +1,80 @@
+body {
+	width:650px;
+	margin:0
+}
+#details_print .page {
+	width:650px;
+	text-align:left
+}
+#details_print #header {
+	border-bottom:1px solid #CCCCCC;
+	margin-bottom:10px;
+	margin-top:10px;
+	font-size:16px;
+	font-weight:bold
+}
+#details_print #header .mls_id {
+	font-size:12px;
+	color:#666
+}
+#details_print #overview {
+	font-size:16px;
+	font-weight:bold;
+	margin-bottom:5px
+}
+#details_print #overview #property_overview {
+	width:650px;
+	float:left
+}
+#details_print #overview #property_overview img {
+	float:left;
+	margin-right:10px
+}
+#details_print #property_description {
+	font-size:12px;
+	margin-top:10px
+}
+#details_print #overview #provider_details {
+	float:right;
+	width:300px;
+	height:120px
+}
+#details_print #overview #provider_details #agent_details {
+	font-size:12px
+}
+#details_print #overview #provider_details #broker_details {
+	margin-top:20px;
+	font-size:12px
+}
+#details_print .details_print_section_header {
+	color:#fff;
+	border-bottom:1px solid #c7e3ac
+}
+#details_print .static_map {
+	border-bottom:1px solid #c7e3ac;
+	border-left:1px solid #c7e3ac;
+	border-right:1px solid #c7e3ac
+}
+#details_print #my_note {
+	margin-top:10px
+}
+#details_print #my_note .container {
+	background-color:#fff;
+	border:1px solid #ccc;
+	margin-top:5px
+}
+#details_print #my_note .note_text {
+	padding:4px;
+	margin:2px;
+	background-color:#f3f9e6
+}
+#details_print #overview #open_homes {
+	border-top:1px dotted #ccc;
+	margin-top:5px;
+	font-size:10px;
+	padding-top:2px
+}
+#details_print #overview #open_homes h4 {
+	font-size:12px;
+	font-weight:bold
+}

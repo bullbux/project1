@@ -1,0 +1,73 @@
+<div class="main_left">
+    <div class="profile_listing">
+        <div class="sorting_top_box">
+            <h1><?php echo $Content->pageTitle; ?></h1>
+            <div class="sort_right">                
+                <?php echo $Form->create('sortForm', array('method'=>'get')); ?>
+                <label>SORT BY:</label>
+                <div class="select_box">
+                    <?php echo $Form->select('sort_type', array('most_recent'=>'Most recent', 'most_old'=>'Most old'), null, array('class'=>'styled')); ?>
+                </div>
+                <?php echo $Form->end(); ?>
+            </div>
+            <?php if($session->checkUserSession($session, array(UserTypeConsts::LANDLORD))){ 
+                $pfx = 'dashboard';
+            ?>
+            <div class="sort_right">
+                <?php echo $Form->link('Add New Listing', array('class'=>'properties', 'method'=>'dashboard_add'), array('title'=>'Add New Listing')); ?>
+                <div class="row">
+                    <?php
+                    if($Content->params['method'] == 'dashboard_archives'){
+                        echo $Form->link('View listing', array('class'=>'properties', 'method'=>'dashboard_index'), array('title'=>'View listing'));
+                    }else{
+                        echo $Form->link('View listing archives', array('class'=>'properties', 'method'=>'dashboard_archives'), array('title'=>'View listing archives'));
+                    }
+                    ?>
+                </div>
+            </div>
+            <?php }else{
+                $pfx = 'member';
+            } ?>
+        </div>
+    </div>
+    <div class="list_container">        
+        <div id="list_container"  class='search-links-list'>
+            <?php if($list) { ?>
+                <div id='message-flag'></div>
+                <?php                
+                foreach($list as $key=>$link) {
+                ?>            
+            <div class="list_box" id="list<?php echo $key; ?>">
+                <div class="box_top">
+                    <div class="box_bot">
+                        <div class="box_bg">
+                            <h2>
+                                <?php echo $Form->link($link->title, $link->link); ?>
+                                <?php echo $Form->ajaxLink('Delete', array('class'=>'properties', 'method'=>$pfx . '_deleteSearchLink', $link->id), array('title'=>'Delete link', 'class'=>'delete_btn float-right', 'update'=>array('list'.$key), 'confirm'=>'Are you sure to delete this link?', 'position'=>'REPLACE')); ?>
+                            </h2>
+                            <p class='link-saved-on'>
+                                Saved on <?php echo dateformat($link->created, 'm/d/Y'); ?>
+                            </p>
+                            <p class='link'>
+                            <?php echo $Form->link($link->link, $link->link); ?>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php }}else {
+                ?>
+            <div class="list_box">
+                <div class="box_top">
+                    <div class="box_bot">
+                        <div class="box_bg">
+                            No link found...
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php
+            } ?>
+        </div>
+    </div>
+</div>

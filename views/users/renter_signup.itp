@@ -1,0 +1,71 @@
+<h1 class="page-heading">Rent <?php echo $Content->params['prefix'] == 'renter' ? 'an' : 'your'; ?> apartment with us today. It's quick, easy, and free.</h1>
+<?php echo $Form->create('addPropertyForm', array('action'=>'', 'method'=>'post', 'enctype'=>'multipart/form-data')); ?>
+<div class="profile_container" id="signup-form">
+    <div class="profile_top">
+        <div class="profile_bot">
+            <div class="property_mid">
+                <label>First Name</label>
+                <div class="input_box signup-field">
+                    <div class="input_left1">
+                        <div class="input_right1">
+                            <div class="input_mid1">
+                                <?php echo $Form->input('firstname', array('type'=>'text', 'class'=>'mandatory {title: "Firstname"}')); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <label>Last Name</label>
+                <div class="input_box signup-field">
+                    <div class="input_left1">
+                        <div class="input_right1">
+                            <div class="input_mid1">
+                                <?php echo $Form->input('lastname', array('type'=>'text')); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <label>Desired Username</label>
+                <div class="input_box signup-field">
+                    <div class="input_left1">
+                        <div class="input_right1">
+                            <div class="input_mid1">
+                                <?php echo $Form->input('username', array('type'=>'text', 'class'=>'mandatory {title: "Username"}')); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <label>Email Address</label>
+                <div class="input_box signup-field">
+                    <div class="input_left1">
+                        <div class="input_right1">
+                            <div class="input_mid1">
+                                <?php echo $Form->input('email', array('type'=>'text', 'class'=>'mandatory {title: "Email address"}')); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <label>Zipcode</label>
+                <div class="input_box signup-field">
+                    <div class="input_left1">
+                        <div class="input_right1">
+                            <div class="input_mid1">
+                                <?php echo $Form->input('zipcode', array('type'=>'text')); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="check_box">
+                    <?php echo $Form->input('newsletter_subscrib', array('type'=>'checkbox')); ?> &nbsp;&nbsp;&nbsp;<span>Subscribe to the <?php echo WEBSITE_NAME; ?> newsletter.</span>
+                </div>
+                <div class="check_box">
+                    <?php echo $Form->input('is_agree', array('type'=>'checkbox', 'class'=>'mandatory {title: "Site agreement"}')); ?> &nbsp;&nbsp;&nbsp;<span>I agree to the <?php echo WEBSITE_NAME; ?> terms and conditions and privacy policy.</span>
+                    <div><?php echo $Form->input('is_agree_temp', array('type'=>'hidden')); ?></div>
+                </div>
+                <div class="button_box">
+                    <?php echo $Form->input('signup', array('type'=>'submit', 'class'=>'signup-btn', 'value'=>'1')); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php echo $Form->end(); ?>

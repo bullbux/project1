@@ -1,0 +1,142 @@
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=<?php echo GOOGLE_MAP_KEY; ?>" type="text/javascript"></script>
+<?php echo $Include->js("googleMaps.js"); ?>
+<?php echo $Include->js('validations.js'); ?>
+<script type="text/javascript">
+<?php
+$geo = importClass('geolocation');
+$lat = $geo->geoLatitude();
+$lng = $geo->geoLongitude();
+?>
+    var setLat = <?php echo $lat; ?>;
+    var setLon = <?php echo $lng; ?>;
+    var geoLocation = 'Your current location is : <br/>' + '<strong><?php echo $geo->reverseGeoCodingAddress($lat, $lng); ?></strong>';
+    $(document).ready(function(){
+        var personIcon = getIcon('<?php echo WWW_ROOT; ?>');
+        showDraggableMarkerLongLat(setLon, setLat, 600, 450, true, geoLocation, personIcon);
+        // Change Google map yellow man location
+        $('#submitbtn').click(function(e){
+            var e = e ? e : window.event;
+            e.preventDefault();
+            changeMapLocation($('#hazard-location').val(), 'Enter hazard location', '<?php echo WWW_ROOT; ?>');
+        });
+    });    
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#username').blur(function(){
+            if($(this).val()){
+                $('#check-availability').html("<?php echo $Include->image('ajax-loader.gif'); ?>");
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo WWW_ROOT.'/users/checkAvailability'; ?>/" + $(this).val(),
+                    success: function(content){
+                        $('#check-availability').html($(content));
+                        if(content.indexOf('is available') <= 0){
+                            $('#username').focus();
+                            $('#username').select();
+                        }
+                    }
+                });
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    function getSubCategory(obj){
+        var cat = $(obj).val();
+        $('#subcat option').eq(0).text('Loading...');
+        $.ajax({
+            url: '<?php echo WWW_ROOT; ?>/categories/multiSubcategoriesList/' + cat,
+            type: 'GET',
+            success: function(content){
+                $('#subcat').replaceWith(content);
+            }
+        });
+    }
+</script>
+<h2 class="heading">Private Feed Accounts [New]</h2>
+<div id="data">    
+    <?php echo $Form->create('Registration', array('action'=>'', 'method'=>'post')); ?>
+    <fieldset class="outer-box">
+        <legend class="outer-box-legend">Category</legend>
+        <div>
+            <label for="feed-cat">Feed Category <span class="required">*</span>: </label>
+            <?php echo $Form->select('cat_id', $categories, array(), array('title'=>'Feed Category', 'id'=>'feed-cat', 'class'=>'bigfield mandatory', 'onchange'=>'javascript: getSubCategory(this);'), '-- Select --'); ?>
+            <div class="clear"></div>
+        </div>
+        <div>
+            <label for="feed-cat">Feed Sub-Category : </label>
+            <?php echo $Form->select('subcat_id[]', $subcategories, array(), array('title'=>'Sub Category', 'id'=>'subcat', 'class'=>'bigfield', 'multiple'=>'multiple', 'size'=>'5'), '-- Select --'); ?>
+            <div class="clear"></div>
+        </div>
+    </fieldset>
+    <fieldset class="outer-box">
+        <legend class="outer-box-legend">Feed Location</legend>
+        <div>
+            <label for="hazard-location">Location <span class="required">*</span>: </label>
+            <div>
+                <?php echo $Form->input('location', array('type'=>'text', 'class'=>'bigfield ac_input default=Enter hazard location', 'id'=>'hazard-location', 'value'=>'Enter hazard location')); ?>
+                <?php echo $Form->input('changeLocation', array('type'=>'submit', 'value'=>'Go', 'id'=>'submitbtn')); ?>
+            </div>
+            <div id="map_canvas"></div>
+            <?php echo $Form->input('longitude', array('type'=>'hidden', 'id'=>'frmLon')); ?>
+            <?php echo $Form->input('latitude', array('type'=>'hidden', 'id'=>'frmLat')); ?>
+            <div class="clear"></div>
+        </div>
+        <div>
+            <label for="radius">Location Radius (Kms): </label>
+            <?php echo $Form->input('radius', array('type'=>'text', 'id'=>'radius', 'class'=>'bigfield')); ?>
+            <div class="clear"></div>
+        </div>
+    </fieldset>
+    <fieldset class="outer-box">
+        <legend class="outer-box-legend">User Profile</legend>
+        <div>
+            <label for="company">Company : </label>
+            <?php echo $Form->input('company', array('type'=>'text', 'id'=>'company', 'class'=>'bigfield', 'title'=>'')); ?>
+            <div class="clear"></div>
+        </div>
+        <div>
+            <label for="position">Position : </label>
+            <?php echo $Form->input('position', array('type'=>'text', 'id'=>'position', 'class'=>'bigfield', 'title'=>'')); ?>
+            <div class="clear"></div>
+        </div>
+        <div>
+            <label for="email">Email <span class="required">*</span>: </label>
+            <?php echo $Form->input('email', array('type'=>'text', 'id'=>'email', 'class'=>'email bigfield mandatory', 'title'=>'Email')); ?>
+            <div class="clear"></div>
+        </div>
+        <div>
+            <label for="contactno">Contact No. : </label>
+            <?php echo $Form->input('contactno', array('type'=>'text', 'id'=>'contactno', 'class'=>'bigfield')); ?>
+            <div class="clear"></div>
+        </div>
+        <div>
+            <label for="address">Address : </label>
+            <?php echo $Form->textarea('address', array('cols'=>'40', 'rows'=>'4', 'id'=>'address', 'class'=>'bigfield')); ?>
+            <div class="clear"></div>
+        </div>
+        <div>
+            <label for="city_id">City : </label>
+            <?php echo $Form->input('city_id', array('type'=>'text', 'id'=>'city_id', 'class'=>'bigfield')); ?>
+            <div class="clear"></div>
+        </div>
+        <div>
+            <label for="state_id">State : </label>
+            <?php echo $Form->input('state_id', array('type'=>'text', 'id'=>'state_id', 'class'=>'bigfield')); ?>
+            <div class="clear"></div>
+        </div>
+        <div>
+            <label for="pincode">Post Code : </label>
+            <?php echo $Form->input('pincode', array('type'=>'text', 'id'=>'pincode', 'class'=>'bigfield')); ?>
+            <div class="clear"></div>
+        </div>
+    </fieldset>
+    <div>
+        <label for="">&nbsp;</label>
+        <?php echo $Form->input('submit', array('type'=>'hidden', 'value'=>'1')); ?>
+        <?php echo $Form->input('register', array('type'=>'submit', 'value'=>'Create Account')); ?>
+        <div class="clear"></div>
+    </div>
+    <?php echo $Form->end(); ?>
+</div>

@@ -1,0 +1,82 @@
+<h2 class="heading adduser-ico">User Details 
+</h2>
+<div class='data' id="user-details">
+    <?php if($details){
+    $details = $details[0];
+    ?>
+    <h2 class='lb-heading'>User Details</h2>
+    <div class="clear"></div>
+    <table width='100%' border=0 cellpadding=0 cellspacing=0>
+        <tr>
+            <td bgcolor='#F1F1F1' width='35%' valign='top'>Name</td>
+            <td valign='top'><?php echo $details['usersProfiles.name']; ?></td>
+        </tr>
+        <tr>
+            <td bgcolor='#F1F1F1' valign='top'>Email</td>
+            <td valign='top'><?php echo $Form->link($details['users.email'], 'mailto:'.$details['users.email'], array('class'=>'email')); ?></td>
+        </tr>
+        <?php if($details['usersProfiles.phone']){ ?>
+        <tr>
+            <td bgcolor='#F1F1F1' valign='top'>Contact No</td>
+            <td valign='top'><?php echo $details['usersProfiles.phone']; ?></td>
+        </tr>
+        <?php } ?>
+        <?php if($details['usersProfiles.website']){ ?>
+        <tr>
+            <td bgcolor='#F1F1F1' valign='top'>Website</td>
+            <td valign='top'><?php echo $details['usersProfiles.website']; ?></td>
+        </tr>
+        <?php } ?>
+	<?php if($details['users.user_type']){ ?>
+        <tr>
+            <td bgcolor='#F1F1F1' valign='top'>User Type</td>
+            <td valign='top'><?php if($details['users.user_type']=='1'){ echo 'ADMIN';} if($details['users.user_type']=='2'){ echo 'LANDLORD';}if($details['users.user_type']=='3'){ echo 'MEMBER';} ?></td>
+        </tr>
+        <?php } ?> 
+        <?php if($details['hhUsersProfiles.address']){ ?>
+        <tr>
+            <td bgcolor='#F1F1F1' valign='top'>Address</td>
+            <td valign='top'><?php echo $details['hhUsersProfiles.address']; ?></td>
+        </tr>
+        <?php } ?>
+        <?php if($details['usersProfiles.zipcode']){ ?>
+        <tr>
+            <td bgcolor='#F1F1F1' valign='top'>Zip Code</td>
+            <td valign='top'><?php echo $details['usersProfiles.zipcode']; ?></td>
+        </tr>
+        <?php } ?>
+        <tr>
+            <td bgcolor='#F1F1F1' valign='top'>Created On</td>
+            <td valign='top'><?php echo dateformat($details['usersProfiles.created'], 'd/M/Y'); ?></td>
+        </tr>
+    </table>
+    <?php } ?>
+</div>
+<?php if($details['hhGroups.id']){ ?>
+<h2 class="heading clients-ico" style='margin-top: 10px;'>Group Details</h2>
+<div class='data' id="user-details">    
+    <div class="clear"></div>
+    <table width='100%' border=0 cellpadding=0 cellspacing=0>
+        <tr>
+            <td bgcolor='#F1F1F1' width='35%' valign='top'>Group Name</td>
+            <td valign='top'><?php echo $details['hhGroups.group_name']; ?></td>
+        </tr>
+        <tr>
+            <td bgcolor='#F1F1F1' valign='top'>Total iPhones With Access</td>
+            <td valign='top'><?php echo $details['hhGroups.num_iphones']; ?></td>
+        </tr>        
+        <tr>
+            <td bgcolor='#F1F1F1' valign='top'>Total Members</td>
+            <td valign='top'><?php echo $details['hhGroups.num_members']; ?></td>
+        </tr>
+	<tr>
+            <td bgcolor='#F1F1F1' valign='top'>Total No. of Central Locations</td>
+            <td valign='top'><?php echo $details['hhGroups.num_locations']; ?></td>
+        </tr>        
+        <tr>
+            <td bgcolor='#F1F1F1' valign='top'>Max. Geo Locaiton boundary radius (Kms)</td>
+            <td valign='top'><?php echo $details['hhGroups.radius']; ?></td>
+        </tr>
+    </table>    
+</div>
+<?php } ?>

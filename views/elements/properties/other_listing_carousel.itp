@@ -1,0 +1,46 @@
+<?php if($list){ ?>
+<div class="gallery_box">
+<ul>
+<?php foreach($list as $l){ ?>
+    <li>
+        <?php echo $Form->link($Include->showImage(WWW_ROOT.'/resources/uploads/properties/gallery/'.$l['prGallery.file'], array('dims'=>array('width'=>94, 'height'=>62), 'alt'=>'Photo'))."<span class='pop_up'>
+                <span class='popupl'>
+                    <span class='popupr'>
+                        <span class='popupm'>{$l['properties.title']}<br>{$l['prUnitInfo.unit_street_address']}, {$l['prUnitInfo.city']}, {$l['prUnitInfo.state']}, {$l['prUnitInfo.zip']}/span>
+                    </span>
+                </span>
+            </span>", array('class'=>'properties', 'method'=>'details', $l['properties.slug'])); ?>
+    </li>
+<?php } ?>
+</ul>
+</div>
+<a class="btn prev" href="javascript: void(0);"></a>
+<a class="btn nxt" href="javascript: void(0);"></a>
+<script type='text/javascript'>
+var showNumItems = 7;
+var innerWidthOfElem = $('.gallery_box li:eq(0)').innerWidth();
+var totalWidth = innerWidthOfElem * showNumItems;
+var currentPage = 1;
+var totalItems = <?php echo count($list); ?>;
+var totalPages = Math.ceil(totalItems/showNumItems);
+$('.gallery_box ul').css('width', (totalItems * innerWidthOfElem) + 'px');
+// Slider show previous image event
+$('.gallery_box .prev').click(function(){ 
+    if(currentPage > 1){
+         $('.gallery_box ul').animate({
+            left: (parseInt($('.gallery_box ul').css('left')) + totalWidth) + 'px'
+        }, 1500);
+        currentPage--;
+    }
+});
+// Slider show next image event
+$('.gallery_box .nxt').click(function(){
+    if(currentPage < totalPages){
+        $('.gallery_box ul').animate({
+            left: (parseInt($('.gallery_box ul').css('left')) - totalWidth) + 'px'
+        }, 1500);
+        currentPage++;
+    }
+});   
+</script>
+<?php } ?>

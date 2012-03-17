@@ -1,0 +1,19 @@
+<h2 class="lb-heading">
+    <?php 
+	if($video){echo $video->title;} else{echo $video_youtube->title;} ?> Video
+</h2>
+<?php
+if($video_youtube->youtube_id){
+?>
+<iframe width="580" height="400" src="http://www.youtube.com/embed/<?php echo $video_youtube->youtube_id;?>" frameborder="0" allowfullscreen></iframe>
+<?php
+}
+
+else if($video){
+    ?>
+    <embed width="580" height="400" type="application/x-shockwave-flash" src="<?php echo WWW_ROOT . '/resources'; ?>/flv-embed/flvplayer.swf" style="" id="player1" name="player1" quality="high" wmode="opaque" allowscriptaccess="always"  flashvars="width=580&amp;height=400&amp;file=<?php echo WWW_ROOT . '/resources/uploads/properties/gallery/' . $video->file; ?>&amp;backcolor=0xcbe7f6&amp;autostart=true">
+    <?php
+}else{
+    echo 'No video upload yet.';
+}
+?>

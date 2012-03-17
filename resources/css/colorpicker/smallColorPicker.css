@@ -1,0 +1,9 @@
+.smallColorPicker_button_back{width:32px;height:21px;background:url(../../images/picker_back.jpg);cursor:pointer;border:solid 1px #4A4A4A;position:relative; padding: 0;}
+.smallColorPicker_button_color{width:17px;height:4px;margin:16px 0 0 2px;position:absolute;overflow:hidden;}            
+.smallColorPicker_button_back_popup{border-bottom:none;z-index:2;height:22px;}      
+.picker_panel{position:absolute;background-color:#fff;margin-top:-1px;border:solid 1px #4A4A4A;z-index:100;display:none;width:178px;}
+.clear{clear:both;}
+.color_parent{height:20px; width:18px;padding:2px;float:left;display:inline;overflow:hidden;}
+.color_parent a{padding:2px;display:block;}
+.color_parent a:hover{border:solid 1px #1b253e;}
+.color_parent a div{height:10px; width:11px;border:solid 1px #808080;overflow:hidden;}

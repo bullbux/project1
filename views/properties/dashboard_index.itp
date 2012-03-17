@@ -1,0 +1,157 @@
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#list_container").show();
+	$("#map_container").hide();
+	$("#gallery_container").hide();
+	$("#r_list").click(function(event){
+		$("#map_container").hide(1000);
+		$("#gallery_container").hide(1000);
+		$("#list_container").show(1000);
+		$(this).addClass('sel');
+		$("#r_map").removeClass('sel');
+		$("#r_gallery").removeClass('sel');
+		event.preventDefault();
+	});
+	$("#r_map").click(function(event){
+		$("#list_container").hide(1000);
+		$("#gallery_container").hide(1000);
+		$("#map_container").show(1000);
+		$(this).addClass('sel');
+		$("#r_list").removeClass('sel');
+		$("#r_gallery").removeClass('sel');
+		event.preventDefault();
+	});
+        $('form[name=sortForm] select').change(function(){
+            $('form[name=sortForm]').submit();
+        });
+});
+</script>
+<div class="main_left">
+    <?php
+        $Content->element('properties/dashboard_listing_head');
+        include_once($Content->element);
+    ?>
+    <div class="list_container">
+        <div class="linkbox">
+            <ul>
+                <li class="sel" id="r_list"><a href="#"><span class="sel">LIST</span></a></li>
+                <li id="r_map"><a href="#"><span>MAP</span></a></li>
+            </ul>
+        </div>
+        <div id="list_container">
+            <?php if($list['records']) { ?>
+                <div id='message-flag'></div>
+                <?php
+                $loggedInId = $session->read('User.id');
+                $locations = array();
+                foreach($list['records'] as $key=>$apartment) {
+                    $locations[$key]['prop_title'] = $apartment['properties.title'];
+                    $locations[$key]['rent'] = SiteConsts::CURRENCY . numberToCurrency($apartment['prUnitInfo.rent']);
+                    $locations[$key]['loc'] = $apartment['prUnitInfo.unit_street_address'].', '.$apartment['prUnitInfo.city'].', '.$apartment['prUnitInfo.state'].', '.$apartment['prUnitInfo.zip'];
+                ?>            
+            <div class="list_box" id="list<?php echo $key; ?>">
+                <div class="box_top">
+                    <div class="box_bot">
+                        <div class="box_bg">
+                            <div class="img_box">
+                                <?php
+                                $statusTag = '';
+                                $favTag = '';
+                                if($apartment['properties.status'] == PropertyStatusConsts::DRAFT)
+                                    $statusTag = '<div class="draft_hover"></div>';
+                                else{
+                                    if($apartment['properties.status'] == PropertyStatusConsts::SOLD)
+                                        $statusTag = '<div class="sold_hover"></div>';
+                                    elseif($apartment['properties.status'] == PropertyStatusConsts::EXPIRED)
+                                        $statusTag = '<div class="expired_hover"></div>';
+                                }
+                                if(isset($apartment['userPropertyFavorites.id']) && $apartment['userPropertyFavorites.id'])
+                                    $favTag = '<div class="fav_hover"></div>';
+                                ?>
+                                <?php echo $Form->link($Include->showImage(WWW_ROOT.'/resources/uploads/properties/gallery/'.$apartment['prGallery.file'], array('dims'=>array('width'=>146, 'height'=>120), 'alt'=>'Photo')).$favTag.$statusTag, array('class'=>'properties', 'method'=>'dashboard_details', $apartment['properties.slug']), array('title'=>'Click here to see the full details')); ?>
+                            </div>
+                            <div class="mylist_detail_box">
+                                <ul>
+                                    <li>
+                                        <div class="l_box"><?php echo $locations[$key]['rent']; ?></div>
+                                        <div class="r_box"><?php echo dateformat($apartment['properties.move_in_date'], 'd/m/Y'); ?></div>
+                                    </li>
+                                    <li>
+                                        <div class="l_box">Bed&nbsp;&nbsp;<?php echo $apartment['prUnitInfo.bed']; ?></div>
+                                        <div class="r_box">Bath&nbsp;&nbsp;<?php echo $Form->bath_numtovalue($apartment['prUnitInfo.bath']); ?></div>
+                                    </li>
+                                    <li>
+                                        <?php if($Content->params['method'] == 'dashboard_index'){ 
+                                            $updateElem = array('list'.$key.' .draft_hover');
+                                        ?>
+                                        <div class="l_box"><?php echo $Form->ajaxLink('Sold', array('class'=>'properties', 'method'=>'dashboard_sold', $apartment['properties.slug']), array('title'=>'Sold property', 'class'=>'sold_btn', 'update'=>array('list'.$key), 'confirm'=>'Are you sure you sold this property?', 'position'=>'REPLACE')); ?></div>
+                                        <?php }else{
+                                            $updateElem = array('list'.$key);
+                                        } ?>
+                                        <?php if($apartment['properties.user_id'] == $loggedInId){ ?>
+                                            <div class="r_box"><?php echo $Form->ajaxLink('Republish', array('class'=>'properties', 'method'=>'dashboard_republish', $apartment['properties.slug']), array('title'=>'Republish property', 'class'=>'republish_btn', 'update'=>$updateElem, 'confirm'=>'Are you sure to republish this property?', 'position'=>'REPLACE')); ?></div>
+                                            <div class="l_box"><?php echo $Form->link('Edit', array('class'=>'properties', 'method'=>'dashboard_edit', $apartment['properties.slug'], $list['page'], $list['order_by'], $list['order']), array('title'=>'Edit property', 'class'=>'edit_btn')); ?></div>
+                                            <div class="r_box"><?php echo $Form->link('Duplicate', array('class'=>'properties', 'method'=>'dashboard_duplicate', $apartment['properties.slug'], $list['page'], $list['order_by'], $list['order']), array('title'=>'Duplicate property', 'class'=>'duplicate_btn', 'confirm'=>'Are you sure to duplicate this property?')); ?></div>
+                                        <?php } ?>
+                                    </li>
+                                    <?php if($favTag){ ?>
+                                    <li>
+                                        <?php echo $Form->ajaxLink('Unfavorite', array('class'=>'properties', 'method'=>'dashboard_unfavorite', $apartment['userPropertyFavorites.id']), array('title'=>'Unfavorite this property', 'class'=>'unfavorite_btn', 'update'=>array('list'.$key), 'confirm'=>'Are you sure to unfavorite this property?', 'position'=>'REPLACE')); ?>
+                                    </li>
+                                    <?php } ?>
+                                </ul>
+                            </div>
+                            <div class="content_box">
+                                <h2><?php echo $Form->link($locations[$key]['prop_title'], array('class'=>'properties', 'method'=>'dashboard_details', $apartment['properties.slug']), array('title'=>'Click here to see the full details')); ?></h2>
+                                <p><?php echo $locations[$key]['loc']; ?></p>
+                                <p><?php echo sstr($apartment['properties.description'], 0, 200); ?></p>
+                                <p>Unit Features</p>
+                                <?php
+                                $Content->render(array('class'=>'properties', 'method'=>'getUnitFeatures', $apartment['properties.id']), 'properties/features_new');
+                                include($Content->element);
+                                ?>
+                            </div>
+                            <?php if($apartment['properties.user_id'] == $loggedInId){ ?>
+                            <div class='action_box'>
+                                <?php echo $Form->ajaxLink('Delete', array('class'=>'properties', 'method'=>'dashboard_delete', $apartment['properties.slug']), array('title'=>'Delete property', 'class'=>'delete_btn', 'update'=>array('list'.$key), 'confirm'=>'Are you sure to delete this property?', 'position'=>'REPLACE')); ?>
+                            </div>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php }}else {
+                ?>
+            <div class="list_box">
+                <div class="box_top">
+                    <div class="box_bot">
+                        <div class="box_bg">
+                            No record found...
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php
+            } ?>
+        </div>
+        <div id="map_container">
+            <div class="list_box">
+                <div class="box_top">
+                    <div class="box_bot">
+                        <div class="box_bg">
+                            <?php
+                            $Content->render(array('class'=>'properties', 'method'=>'showMap', $locations));
+                            include($Content->element);
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <?php
+        $Content->render(array('class'=>'paginate','method'=>'pagination', $list['pages'], $list['page'], array("class"=>"properties", "method"=>"advancedListing"), $list['order_by'], $list['order']), 'pagination/frontend_pagination');
+        include_once($Content->element);
+        ?>
+    </div>
+</div>

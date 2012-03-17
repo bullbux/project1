@@ -1,0 +1,18 @@
+<div class="listing_head">
+    <div class="header">
+    <?php echo $totalrecords; ?> RESULTS
+    </div>
+    <div class="head_right">
+        <?php echo $Form->create('sortForm', array('method'=>'get')); ?>
+        <label>SORT BY: </label>
+        <?php echo $Form->select('sort_by', array('price_low_to_high'=>'Price Low to High', 'price_high_to_low'=>'Price High to Low', 'newest'=>'Newest Listing', 'most_viewed'=>'Most Viewed'), null, array('class'=>'styled')); ?>
+        <?php echo $Form->ajaxLink('Save Search', array('class'=>'properties', 'method'=>'saveSearch'), array('class'=>'save', 'open'=>array('type'=>'lightbox', 'width'=>500, 'reLoad'=>false, 'lbHeader'=>array('bgColor'=>'#73ADDD', 'textColor'=>'#FFFFFF', 'borderColor'=>'#73addd')))); ?>
+        <!--<a href="javascript: void(0);" class="save" onclick="javascript: createBookmarkLink();"></a>-->
+        <?php echo $Form->end(); ?>        
+    </div>
+</div>
+<script language="JavaScript1.2" type="text/javascript">
+    $('form[name=sortForm] select').change(function(){
+        $('form[name=sortForm]').submit();
+    });
+</script>

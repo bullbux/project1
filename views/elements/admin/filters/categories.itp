@@ -1,0 +1,7 @@
+<?php echo $Form->create('filter', array('action'=>'', 'method'=>'post')); ?>
+<p>
+<span><strong>Category :&nbsp;</strong></span><?php echo $Form->select('parent_id', $categories, array(), array('class'=>'mediumfield'), '-- All --'); ?>&nbsp;&nbsp;
+<span><strong>Subcategory :&nbsp;</strong></span><?php echo $Form->input('categoryName',array('type'=>'text')); ?>&nbsp;&nbsp;
+<?php echo $Form->input('filter', array('type'=>'submit','value'=>'Filter')); ?>
+</p>
+<?php echo $Form->end(); ?>

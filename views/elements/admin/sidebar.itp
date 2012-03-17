@@ -1,0 +1,81 @@
+<div id="sidebar" class="float-left">
+    <h2 class="heading">DASHBOARD</h2>
+    <div id="accordion">
+        <?php
+        if($Content->clas == 'users' && ($Content->method == 'admin_manage'
+            || $Content->method == 'admin_manageUserTypes'
+            || $Content->method == 'admin_addUserType'
+            || $Content->method == 'admin_editUserType'
+            || $Content->method == 'admin_setUsertypeAccessLevels')
+        ) {
+            $classManageUsers = " active";
+        }
+        ?>
+        <a href="" class="item clients-ico <?php echo $classManageUsers; ?>">User Management</a>
+        <ul class="<?php echo $classManageUsers; ?>">
+            <li><?php echo $Form->link('Manage Users', array('class'=>'users', 'method'=>'admin_manage')); ?></li>
+            <li><?php echo $Form->link('Manage User Types', array('class'=>'users', 'method'=>'admin_manageUserTypes')); ?></li>
+        </ul>
+        <?php
+        if($Content->clas == 'pages' && ($Content->method == 'admin_manage'
+            || $Content->method == 'admin_add'
+            || $Content->method == 'admin_edit')
+        ) {
+            $classManagePages = " active";
+        }
+        ?>
+        <a href="" class="item clients-ico <?php echo $classManagePages; ?>">Static Page Management</a>
+        <ul class="<?php echo $classManagePages; ?>">
+            <li><?php echo $Form->link('Manage Pages', array('class'=>'pages', 'method'=>'admin_manage')); ?></li>
+        </ul>
+        <?php
+        if($Content->clas == 'emailTemplates') {
+            $emailClass = 'active';
+        }else {
+            $emailClass = '';
+        }
+        ?>
+        <a href="" class="item email-ico <?php echo $emailClass; ?>">Email Templates</a>
+        <ul class="<?php echo $emailClass; ?>">
+            <li><?php echo $Form->link('Manage', array('class'=>'emailTemplates', 'method'=>'admin_index')); ?></li>
+        </ul>
+        <?php
+        if($Content->clas == 'marketing') {
+            $marketingClass = 'active';
+        }else {
+            $marketingClass = '';
+        }
+        ?>
+        <a href="" class="item marketing-ico <?php echo $marketingClass; ?>">Marketing Pages</a>
+        <ul class="<?php echo $marketingClass; ?>">
+            <li><?php echo $Form->link('Landlords Slider', array('class'=>'marketing', 'method'=>'admin_slider', UserTypeConsts::LANDLORD)); ?></li>
+            <li><?php echo $Form->link('Renters Slider', array('class'=>'marketing', 'method'=>'admin_slider', UserTypeConsts::MEMBER)); ?></li>
+        </ul>
+        <?php
+        if($Content->clas == 'properties') {
+            $propClass = 'active';
+        }else {
+            $propClass = '';
+        }
+        ?>
+        <a href="" class="item property-ico <?php echo $propClass; ?>">Properties</a>
+        <ul class="<?php echo $propClass; ?>">
+            <li><?php echo $Form->link('Add Property', array('class'=>'properties', 'method'=>'admin_add')); ?></li>
+            <li><?php echo $Form->link('Properties List', array('class'=>'properties', 'method'=>'admin_index')); ?></li>
+			<li><?php echo $Form->link('Add City', array('class'=>'properties', 'method'=>'admin_city')); ?></li>
+			<li><?php echo $Form->link('Cities List', array('class'=>'properties', 'method'=>'admin_cities')); ?></li>
+        </ul>
+        <?php
+        if($Content->clas == 'faqs') {
+            $faqsClass = 'active';
+        }else {
+            $faqsClass = '';
+        }
+        ?>
+        <a href="" class="item faq-ico <?php echo $faqsClass; ?>">FAQs</a>
+        <ul class="<?php echo $faqsClass; ?>">
+            <li><?php echo $Form->link('Manage Categories', array('class'=>'faqs', 'method'=>'admin_categories')); ?></li>
+            <li><?php echo $Form->link('Manage FAQs', array('class'=>'faqs', 'method'=>'admin_index')); ?></li>
+        </ul>
+    </div>
+</div>

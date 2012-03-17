@@ -1,0 +1,14 @@
+<div class="page-outer">
+    <div class="page-inner">
+        <div class="listing-heading">Dashboard Settings</div>
+        <div class="page-body"> <!-- Box begins here -->
+            <div class="setting-section">
+                <?php
+                $Content->render(array('class'=>'settings', 'method'=>'geoTracking'));
+                include_once($Content->element);
+                ?>
+            </div>
+        </div> <!-- END Box-->
+    </div>
+</div>
+<div class="clear"></div>

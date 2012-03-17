@@ -1,0 +1,11 @@
+<div>
+<form action="/apartments/admin/users/roles" method="post">
+  <p><b>Select User role</b><Br>
+   <input type="radio" name="role" value="1"<?php if($list ==1) {?> checked=true <?php }; ?>>Admin<Br>
+   <input type="radio" name="role" value="2"<?php if($list ==2) {?> checked=true <?php }; ?>>Landlord<Br>
+   <input type="radio" name="role" value="3"<?php if($list ==3) {?> checked=true <?php }; ?>>Member<Br>
+  </p>
+  <input type="hidden" name="user_id" value="<?php echo $id; ?>"> 
+    <p><input type="submit" value="Save roles"></p>
+	</form>
+</div>

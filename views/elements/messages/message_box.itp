@@ -1,0 +1,62 @@
+<!-- Only logged in users can send messages -->
+<?php //if($session->checkSession($session)){ ?>
+<!--<div class="float-left">
+    <?php //echo $Form->create('messageForm', array('action'=>array('class'=>'messages', 'method'=>'send', $property['properties.id']), 'method'=>'post')); ?>
+    <div class="txtarea_box">
+        <div class="txt_l">
+            <div class="txt_r">
+                <div class="txt_m">
+                    <?php //echo $Form->textarea('message', array('class'=>'{default: "Leave message here..."}')); ?>
+                </div>
+            </div>
+        </div>
+        <?php //echo $Form->link('Send', '#', array('class'=>'send-message')); ?>
+        <span class="load-ajax"></span>
+        <br class="clear"/>
+    </div>
+    <?php //echo $Form->end(array('update'=>'messages_list', 'position'=>'AFTER', 'onComplete'=>'triggerMe()')); ?>
+</div>-->
+<script type="text/javascript">
+    /*$('a.send-message').click(function(){
+        $('span.load-ajax').text('Sending message...');
+        $('form[name=messageForm]').submit();
+        return false;
+    });
+    function triggerMe(){
+        $('span.load-ajax').text('');
+        if($('#messages_list div.error-msg').length >0){
+            $('#messages_list div.error-msg').fadeOut(3000);
+        }
+        $('textarea[name=message]').val('').focus();
+    }*/
+</script>
+<?php //}else{ ?>
+<!--<p class="float-left msg-login">
+	Want to view more comments? Want to make a comment?
+    Please <?php //echo $Form->link('login', array('class'=>'users', 'method'=>'login'), array('title'=>'click here to login', 'class'=>'login-link')); ?> to send message. 
+	Don't have an account?  <?php //echo $Form->link('Sign up', array('class'=>'users', 'method'=>'renter_signup'), array('title'=>'click here to Sign up', 'class'=>'signup')); ?> today to get started!
+</p>-->
+<?php 
+$kemp = explode('?',$_SERVER['REQUEST_URI']);
+?>
+<fb:comments href="<?php echo 'http://'.$_SERVER['HTTP_HOST'].$kemp[0]; ?>" num_posts="15" width="862"></fb:comments>
+<script type='text/javascript'>
+// Scroll down to message box
+$('a.login-link').click(function(){
+    $('html, body').animate({scrollTop: 0}, 1000, '', function(){
+        $('div.drop_box').show();
+        $('div.drop_box input[type=text]:eq(0)').focus();
+    });
+
+    return false;
+});
+</script>
+<?php //} ?>
+<script type='text/javascript'>
+// Scroll down to message box
+if(window.location.hash == '#message'){
+    $('html, body').animate({scrollTop: $(document).height()}, 1000, '', function(){
+        $('textarea[name=message]').focus();
+    });
+}
+</script>

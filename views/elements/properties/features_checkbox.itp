@@ -1,0 +1,17 @@
+<?php if ($features) { ?>
+<div class="clear"></div>
+<div class="check_features_bocks">
+	<ul class="features_list_ul">
+		<li><label><input class="any_checkbox" type="checkbox" value="0" />Any</label></li>
+		<?php foreach($features as $feature){ ?>
+		<li>
+			<label>
+				<?php echo $Form->input("{$fieldName}[".$feature['propertyFeatures.id']."]", array('type'=>'checkbox', 'value'=>$feature['propertyFeatures.id'], 'class'=>'other_checkbox')); ?>
+				<?php echo $feature['propertyFeatures.feature']; ?>
+			</label>
+		</li>
+		<?php } ?>
+	</ul>
+</div>
+<div class="clear"></div>
+<?php } ?>

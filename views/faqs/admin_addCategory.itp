@@ -1,0 +1,12 @@
+<h2 class="heading">FAQ Categories Management [<?php echo $action; ?>]</h2>
+<div class="data">
+    <?php echo $Form->create("addCategoryForm",array("method"=>"post","action"=>"")); ?>
+    <div>
+        <label>Category Name <span class='required'>*</span></label>
+        <?php echo $Form->input("category",array('type'=>'input', "class"=>"bigfield mandatory {title: 'Category name'}")); ?>
+    </div>
+    <div>
+        <?php echo $Form->input('save', array('type'=>'submit', 'value'=>'Save')); ?>
+    </div>
+    <?php echo $Form->end(); ?>
+</div>

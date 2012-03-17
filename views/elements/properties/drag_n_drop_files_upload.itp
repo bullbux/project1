@@ -1,0 +1,122 @@
+<?php echo $Include->css('jquery.fileupload-ui.css'); ?>
+<?php echo $Include->js('file_uploader/jquery.fileupload.js'); ?>
+<?php echo $Include->js('file_uploader/jquery.fileupload-ui.js'); ?>
+<div class="property_content property_content1">
+    <div class="left_container">
+        <h3>Add some photos for this property.</h3>
+		<span>To add photos simply drag and drop your photos in the grey box below.  
+If that does not work with your</br> browser add your photos by selecting the orange button below.</span>
+        <div class="description_box">
+<div class="drop_box_main">
+    <div class="drop_box">
+        <div class="drop_left">
+            <div class="drop_right">
+                <div class="drop_mid">
+                    <div class="item_container">
+                        <form id="file_upload_empty"></form>
+                        <form id="file_upload" action="<?php echo WWW_ROOT . '/properties/uploadPropertyMedia'; ?>" method="post" enctype="multipart/form-data">
+                            <input type="file" name="pmedia" multiple />
+                            <button>Upload</button>
+                            <div>DRAG AND DROP</div>
+                        </form>                        
+                        <script language="JavaScript" type="text/javascript">
+                        jQuery(function () {
+                            jQuery("#file_upload").fileUploadUI({
+                                uploadTable: jQuery("#files"),
+                                downloadTable: jQuery("#files"),
+                                buildUploadRow: function (files, index) {
+                                    jQuery('input[type=submit]').attr('disabled', 'disabled');
+                                    return jQuery("<tr><td>" + files[index].name + "<\/td>" +
+                                            "<td class=\"file_upload_progress\"><div><\/div><\/td>" +
+                                            "<td class=\"file_upload_cancel\">" +
+                                            "<a href=\"javascript: void(0);\" class=\"ui-state-default ui-corner-all\" title=\"Cancel\">" +
+                                            "<span class=\"ui-icon ui-icon-cancel\">Cancel<\/span>" +
+                                            "<\/a><\/td><\/tr>");
+                                },
+                                onComplete: function (event, files, index, xhr, handler) {
+                                    jQuery('input[type=submit]').removeAttr('disabled');
+                                }
+                            });
+                        });
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id='uploadmessage'></div>
+<div class="property-photo-gallery" style="color:#929497;text-align:left">
+	Do you want to view the images in your listing? <?php echo $Form->ajaxLink(' Click here',array("class"=>"properties", "method"=>$Content->params['prefix'].'_gallery', $Content->properties->Request->request['auto_saved_id']), array('open'=>array('type'=>'lightbox', 'width'=>600, 'reLoad'=>true, 'scroll'=>false, 'lbHeader'=>array('bgColor'=>'#f1f1f1', 'textColor'=>'#333', 'borderColor'=>'#555')))); ?> to view your gallery.
+</div>
+<table id="files" style="float: left"></table>
+<!--<label>Upload Floor plan photo bellow.</label>-->
+<div class="link" style='position: relative;'>
+    <div style='position: absolute; top:0; z-index:10;'>
+    <?php echo $Form->ajaxFileUpload('pmedia[]', array('multiple'=>'multiple', 'style'=>'cursor:pointer;margin-left:5px;margin-top:17px;opacity:0;filter:alpha(opacity=0);padding:10px;float:left;')); ?>    
+    </div>
+    <a href="#"></a>
+</div>
+        </div>
+    </div>
+
+
+    <div class="right_container">
+        <div class="tips">
+            <div class="tips_top">
+                <div class="tips_left">
+                    <div class="tips_right">
+                        <div class="tips_mid">
+                            TIPS
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tips_contain">
+                <div class="tips_bot">
+                    <div class="tips_mid">
+                        Pictures could be worth 1000 renter requests.  Think about showing off different rooms, angles, rooftops, exterior etc...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>    
+<div class="property_content property_content1">
+    <div class="left_container">
+<h3>Have a Floorplan? Upload that here.</h3>
+<div class="description_box">
+<div class="property-photo-gallery" style="color:#929497;text-align:left">
+	Do you want to view the floor plans in your listing? <?php echo $Form->ajaxLink(' Click here',array("class"=>"properties", "method"=>$Content->params['prefix'].'_gallery', $Content->properties->Request->request['auto_saved_id'],'2'), array('open'=>array('type'=>'lightbox', 'width'=>600, 'reLoad'=>true, 'scroll'=>false, 'lbHeader'=>array('bgColor'=>'#f1f1f1', 'textColor'=>'#333', 'borderColor'=>'#555')))); ?> to view your gallery.
+</div>
+<table id="files" style="float: left"></table>
+<!--<label>Upload Floor plan photo bellow.</label>-->
+<div class="link" style='position: relative;'>
+    <div style='position: absolute; top:0; z-index:10;'>
+    <?php echo $Form->ajaxFileUpload('pmedia2[]', array('multiple'=>'multiple', 'style'=>'cursor:pointer;margin-left:5px;margin-top:17px;opacity:0;filter:alpha(opacity=0);padding:10px;float:left;')); ?>    
+    </div>
+    <a href="#"></a>
+</div>
+</div>
+</div>
+<div class="right_container">
+        <div class="tips">
+            <div class="tips_top">
+                <div class="tips_left">
+                    <div class="tips_right">
+                        <div class="tips_mid">
+                            TIPS
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tips_contain">
+                <div class="tips_bot">
+                    <div class="tips_mid">
+                        If you have a floorplan show off your space.  This helps renters figure out placment of furniture and other belongings.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

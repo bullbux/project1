@@ -1,0 +1,28 @@
+<?php echo $Form->create('flagListingForm', array('action'=>WWW_ROOT.'/properties/flagListing', 'method'=>'POST', 'id'=>'flag-listing-form')); ?>
+<ul>
+    <li>
+	<h3> You have chosen to flag this listing. Please tell us the reason for flagging this listing</h3>
+          
+    </li>
+	<li>
+
+        <div class="left_box">
+            <label>Please Describe, Why You Flag This?</label>
+            
+      						 <?php echo $Form->textarea('flag_desc', array('cols'=>0, 'rows'=>0)); ?>
+                       
+        </div>
+       
+    </li>
+    <li>
+        <?php echo $Form->input('slug', array('type'=>'hidden', 'value'=>$property['properties.slug'])); ?>
+        <span class="load-ajax"></span>
+        <a href="javascript: void(0);" class="send"> Send</a>
+    </li>
+</ul>
+<?php echo $Form->end(array('update'=>'sendtofriend', 'position'=>'INNER')); ?>
+<script type="text/javascript">
+    $('a.send').click(function(){
+        $('form#flag-listing-form').submit();
+    });
+</script>

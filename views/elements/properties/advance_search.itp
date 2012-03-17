@@ -1,0 +1,141 @@
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#first_select').change(function() {
+            var select_value = encodeURIComponent($(this).val());
+            $('#second_select').load('<?php echo WWW_ROOT; ?>/ajax.php?a=' + select_value);
+        });
+
+        $('#city_select').change(function() {
+
+            var select_value = encodeURIComponent($(this).val());
+            $('#checkboxlist').load('<?php echo WWW_ROOT; ?>/ajax2.php?a=' + select_value);
+        });
+
+		$('#close_a_search').click(function () {
+			popupStatus = 0;
+			$('#popup_a_search').fadeOut();
+			$('.main_search').css('z-index', 'auto');
+			return false;
+		});
+
+//		$('input.any_checkbox').change(function () {
+//			$(this).parents('.check_features_bocks').find('.other_checkbox').removeAttr('checked');
+//		});
+//
+//		$('input.other_checkbox').change(function () {
+//			$(this).parents('.check_features_bocks').find('.any_checkbox').removeAttr('checked');
+//		});
+    });
+</script>
+<div id="popup_a_search">
+    <?php echo $Form->create('advanceSearchForm2', array('action' => $searchFormAction, 'method' => 'GET', 'id' => 'advance-search-form2')); ?>
+    <div class="advance_search_main">
+    	<div class="pop_search_mid">
+			<a id="close_a_search" href="#">X</a>
+			<label id="searchlabel">ADVANCED SEARCH</label>
+            <div class="add_search" style="margin-top:10px">
+               	<ul>
+                   	<li style="width: 210px;">
+						<label>PRICE RANGE</label><br />
+						<?php echo $Form->input('from', array('type'=>'text', 'class' => 'price_range')); ?> to
+						<?php echo $Form->input('to', array('type'=>'text', 'class' => 'price_range')); ?>
+                    </li>
+                    <li style="width: 55px;">
+                      	<span>BED</span><br />
+                        <?php echo $Form->number('bed', array(0, UnitInfoConsts::MAX_BED), null, array('class' => 'styled')); ?>
+                    </li>
+                    <li style="width:155px;">
+                      	<span>BATH</span><br />
+                        <?php echo $Form->float_number('bath', array(0, UnitInfoConsts::MAX_BATH), null, array('class' => 'styled')); ?>
+                    </li>
+                    <li class="big_select">
+                      	<label>CITY</label><div class="clear"></div>
+						<select name="city" id="city_select" class="styled">
+							<option value="0">Select City</option>
+							<?php foreach ($city_advance_search as $row) { ?>
+							<option value="<?php echo $row->name; ?>"><?php echo $row->name; ?></option>
+							<?php }; ?>
+						</select>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="search_container" style="margin-top:10px">
+				<div class="scontain_left">
+					<ul>
+						<li>
+							<label>PROPERTY TYPE</label><div class="clear"></div>
+							<select name="prop_type" class="styled">
+								<option value="0">Property Type</option>
+								<?php foreach ($unit_types as $row) { ?>
+								<option value="<?php echo $row->id; ?>"><?php echo $row->unit_type; ?></option>
+								<?php }; ?>
+							</select>
+						</li>
+						<li>
+							<label>LEASE LENGTH</label><div class="clear"></div>
+							<?php  echo $Form->select('lease_length', $lease, null, array('class' => 'styled')); ?>
+						</li>
+					</ul>
+				</div>
+
+				<div class="scontain_right">
+					<div id="checkboxlist"></div>
+				</div>
+        	</div>
+			<div class="clear"></div>
+
+			<div class="new_line"></div>
+			<div class="search_container">
+				<div class="scontain_left">
+					<p>UNIT FEATURES</p>
+					<div class="check_features_bocks left">
+						<label><input class="any_checkbox" type="checkbox" value="0" />Any</label>
+						<?php foreach ($apartment_unit_features as $row) { ?>
+						<label>
+							<?php echo $Form->input("pr_feature_id[" . $row->id ."]", array('type'=>'checkbox', 'value' => $row->id, 'class'=>'other_checkbox')); ?>
+<!--							<input type="checkbox" class="other_checkbox" name="u_f[]" value="--><?php //echo $row->id ?><!--" />-->
+							<?php echo $row->feature ?>
+						</label>
+						<?php }; ?>
+					</div>
+				</div>
+
+				<div class="scontain_right">
+					<p>BUILDING FEATURES</p>
+					<div class="check_features_bocks right">
+						<label><input class="any_checkbox" type="checkbox" value="0" />Any</label>
+						<?php foreach ($apartment_building_features as $row) { ?>
+						<label>
+							<?php echo $Form->input("pr_feature_id[" . $row->id ."]", array('type'=>'checkbox', 'value' => $row->id, 'class'=>'other_checkbox')); ?>
+							<!--							<input type="checkbox" class="other_checkbox" name="u_f[]" value="--><?php //echo $row->id ?><!--" />-->
+							<?php echo $row->feature ?>
+						</label>
+						<?php }; ?>
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+
+			<div class="new_line"></div>
+			<label class="neiglabel">SEARCH</label><div class="clear"></div>
+			<div class="txt_area">
+				<div class="txt_l">
+					<div class="txt_r">
+						<div class="txt_m">
+							<?php echo $Form->input('s', array('type'=>'text', 'class'=>'search {default:"Search city, zip or keywords"}', 'value'=>'Search city, zip or keywords')); ?>
+							<a href="javascript: void(0);" class="search" title='Search' onclick="javascript: document.advanceSearchForm2.submit(); return false;"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clear_search">
+				<a class="search" href="#" onclick="javascript: document.advanceSearchForm2.submit(); return false;"></a>
+				<a href="#" onclick="javascript: document.advanceSearchForm2.reset(); return false;">Clear Search</a>
+			</div>
+
+    	</div>
+	</div>
+
+    <?php echo $Form->end(); ?>
+</div>

@@ -1,0 +1,7 @@
+<?php
+      if(is_numeric($totalUnreadMessages)) { ?>
+<li>
+    <span class="chat">Messages&nbsp;&nbsp;<?php echo $totalUnreadMessages; ?></span>
+    <?php echo $Form->link('View', array('class'=>'messages', 'method'=>$Content->params['prefix'] . '_inbox'), array('title'=>'Go to Inbox', 'class'=>'view_btn')); ?>
+</li>
+<?php } ?>

@@ -1,0 +1,34 @@
+<div class="featured_box updates_box padding">
+    <div class="feature_bot">
+        <div class="updates_mid">
+            <div class="head">
+                <div class="h_left">
+                    <div class="h_right">
+                        <div class="h_mid">
+                                UPDATES
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul>
+                <?php
+                    $Content->render(array('class'=>'messages', 'method'=>'member_alerts'));
+                    include($Content->element);
+                ?>                
+                <?php
+                  //  $Content->render(array('class'=>'properties', 'method'=>'dashboard_alerts'));
+                    //include($Content->element);
+                ?>
+            </ul>            
+       </div>
+    </div>
+</div>
+<?php
+    $Content->render(array('class'=>'properties', 'method'=>'getLatestPropertiesList'), 'properties/latest_properties_list_widget');
+    include($Content->element);
+?>
+<div class="signup_box">
+    <div class="advt">
+        <?php echo $Include->image('advt.png'); ?>
+    </div>
+</div>
